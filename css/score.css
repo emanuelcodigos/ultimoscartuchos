@@ -1,0 +1,58 @@
+.mi-puntaje{
+    padding: 10px; 
+    background-color: rgba(218, 218, 218, 0.5);
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.mi-puntaje .puntuacion {
+    max-width: 400px; 
+    display: flex; 
+    justify-content: center; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+.puntuacion img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.puntuacion p{
+    
+    font-size: 3rem; 
+    font-weight: bold; 
+    margin: 0;
+}
+.lineaDivisora{
+    border: 1px solid rgb(42, 2, 29);
+    margin: auto; 
+    width: 60%;
+}
+
+.recordsIndividuales{
+    margin: 5px; 
+    padding: 10px; 
+    background-color: cadetblue;
+     display: flex; 
+     justify-content: space-between; 
+     border-radius: 20px;
+}
+.recordsIndividuales .info{
+    display: flex; 
+    justify-content: left; 
+    flex-direction: row; 
+    align-items: center;
+}
+.recordsIndividuales p{
+    margin: 0;
+}
+.info p{
+    margin: 0;
+    margin-left: 10px;
+}
+.info img{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}

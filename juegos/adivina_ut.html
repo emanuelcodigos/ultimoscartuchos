@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/mystyles.css">
+</head>
+<body>
+     <!-- Navigation-->
+     <div class="flex mb-3">
+        <div class="temporizador" id="reloj">15</div>
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+     </div>
+     
+     <nav id="sidebar-wrapper">
+         <ul class="sidebar-nav" id="nav-bar">
+             <li class="sidebar-brand"><a href="#page-top">Ultimos Cartuchos</a></li>
+             <li class="sidebar-nav-item"><a href="#page-top">inicio</a></li>
+             <li class="sidebar-nav-item"><a href="#services">Juegos</a></li>
+             <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a></li>
+            
+         </ul>
+     </nav>
+      <!-- Services-->
+      <section class="content-section text-center">
+        <div class="container px-4 px-lg-5" id="contenido">
+            <div class="content-section-heading">
+                <h3 class="mb-3 text-secondary">Trivia Cartuchos</h3>
+            </div>
+            <div class="contendor subcontenedor">
+                
+                <div class="enunciado mb-3 myshadow">
+                    <p id="pregunta"></p>
+                    <img id="imgPregunta" src="" alt="">
+                </div>
+                <div class="mb-5">
+                    <input class="form-control mb-2 myshadow" type="button" id="resp1">
+                    <input class="form-control mb-2 myshadow" type="button" id="resp2">
+                    <input class="form-control mb-2 myshadow" type="button" id="resp3">
+                </div>
+                
+            </div>
+            <button onclick="principal()">Dame las preg</button>
+            <button onclick="verPuntos()">ver puntos</button>
+        </div>
+        
+         
+        </div>
+       
+        
+         
+        </div>
+
+    </section>
+    
+    
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+<script src="/js/generic.js"></script>
+<script src="/js/scripts.js"></script>
+<script src="/js/trivia.js"></script>
+
+
+</html>
