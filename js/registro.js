@@ -111,6 +111,7 @@ function loginWithGoogle(){
     firebase.auth().signInWithPopup(provider).then(res => {
 
       let user = res.user;
+      console.log(user);
 
       return firebase.firestore().collection("usuarios").doc(user.uid)
       .get().then(el => {
