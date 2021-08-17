@@ -62,7 +62,7 @@ function signUpWithEmail(){
 
             }).then(respuesta =>{
 
-              document.location.href = "/";
+              document.location.href = "/ultimoscartuchos";
                 
             }).catch(error=>{
                alert('Ocurrio un error al registrase');
@@ -102,7 +102,6 @@ function inciarSesion(){
 
    
 }
-
 
 function loginWithGoogle(){
 
