@@ -111,7 +111,6 @@ function loginWithGoogle(){
     firebase.auth().signInWithPopup(provider).then(res => {
 
       let user = res.user;
-      console.log(user);
 
       return firebase.firestore().collection("usuarios").doc(user.uid)
       .get().then(el => {
@@ -131,14 +130,14 @@ function loginWithGoogle(){
 
             }).then(respuesta =>{
 
-              document.location.href = "/";
+              document.location.href = "/ultimoscartuchos";
                 
             }).catch(error=>{
                alert('Ocurrio un error al registrase');
             });
 
           }else{
-            document.location.href = "/";
+            document.location.href = "/ultimoscartuchos";
           }
       });
       
