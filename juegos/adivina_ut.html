@@ -16,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet"/>
+        <link href="../css/musicales.css" rel="stylesheet"/>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -31,51 +32,61 @@
             </ul>
         </nav>
         
-       
-        <!-- Portfolio-->
-        <section class="content-section" id="more-games">
-            <div class="container px-4 px-lg-5">
-                <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0">Juegos</h3>
-                    <h2 class="mb-5">OTROS JUEGOS</h2>
+        <div class="container__player">
+            <div class="player">
+                <div class="player__controls">
+                    <div class="player__btn player__btn--small">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <h5 class="player_title">Playlist Cartuchos</h5>
+                    <div class="player__btn player__btn--small">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                   
                 </div>
-                <div class="row gx-0">
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Me gustaria que Vicki</div>
-                                    <p class="mb-0">Elige quien podria ser un buen invitado para el Show!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Cosas que Vicki no sabía</div>
-                                    <p class="mb-0">Contanos algun dato que pensas que Vicki no sabe!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-2.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Y ese funkito quien es?</div>
-                                    <p class="mb-0">Adivina que Funko Pop es, con solo una imagen!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-3.jpg" alt="..." />
-                        </a>
-                    </div>
+
+                <div class="player__album">
+                    <img src="../assets/img/icon_google.png" alt="" class="player__img">
                 </div>
+                <h2 class="player__artist">Desconocido</h2>
+                <h3 class="player__song">Desconocido</h3>
+                <div class="player__level">
+                 <p>00:01</p>
+                 <p>01:00</p>
+                </div>
+                <input type="range" value="5" min="0" class="player__level--line">
+                
+                
+                <audio class="player__audio" controls id="audio">
+                    <source src="https://firebasestorage.googleapis.com/v0/b/ultimos-cartuchos.appspot.com/o/WhatsApp%20Ptt%202021-08-15%20at%2010.53.29%20AM.ogg?alt=media&token=e6d7278e-6f73-4d24-a721-0a23ee562140" type="audio/ogg">
+                </audio>
+
+                <div class="player__controls">
+                    <div class="player__btn player__btn--medium">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <div class="player__btn player__btn--medium">
+                        <i class="fas fa-backward"></i>
+                    </div>
+                    <div class="player__btn player__btn--play">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="player__btn player__btn--medium">
+                        <i class="fas fa-forward"></i>
+                    </div>
+                    <div class="player__btn player__btn--medium">
+                        <i class="fas fa-retweet"></i>
+                    </div>
+                   
+                </div>
+
+
+                
+
             </div>
-        </section>
+        </div>
+
+
         <!-- Call to Action-->
         <section class="content-section bg-primary text-white">
             <div class="container px-4 px-lg-5 text-center">
