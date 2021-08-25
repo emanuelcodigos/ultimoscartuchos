@@ -2,7 +2,7 @@
 .container__player{
     background-color: rgb(65, 59, 85);  
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     justify-content: center;
     min-height: 100vh;
 }
@@ -91,7 +91,7 @@
 }
 
 .player__level{
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -101,5 +101,86 @@
 }
 
 .player__level--line{
+    width: 100%;
+}
+
+.pregunta{
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 10px;
     width: 90%;
+    height: 90%;
+}
+
+
+.music__container{
+
+    background-color: rgb(65, 59, 85);  
+    min-height: 100vh;
+    margin: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.music__timer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.music__timer--circle{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    border-radius: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.music__grid{
+
+    display: grid;
+    grid-template-columns: 70% 30%;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.music__grid img{
+    width: 40%;
+    margin: auto;
+}
+
+.music__grid--button{
+    position: relative;
+    border-radius: 10px;
+}
+
+.music__grid--circle{
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 20px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.music__pregunta{
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+
 }
