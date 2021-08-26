@@ -97,26 +97,31 @@
                 <div class="music__timer--circle"><h3 id="timer">180</h3></div>
             </div>
             <div class="music__grid">
-                <div style="background-color: blue; height: 100%; border-radius: 10px;">
-                <img src="../assets/img/auris.JPG" alt="">
+                <div style="background-color: rgb(218, 218, 218); height: 100%; border-radius: 10px;">
+                    <div id="waveform"></div>
                 </div>
                 <div style="background-color: green; height: 100%;" class="music__grid--button">
-                    <div class="music__grid--circle"><i class="fas fa-play"></i></div>
+                    <div class="music__grid--circle" id="btn-play"><i class="fas fa-play"></i></div>
                 </div>
             </div>
 
             <div class="music__pregunta">
                 <h3>QUE CANCION ES?</h3>
+                <div id="cancion-correcta"></div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Escribe aqui" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Aceptar</button>
+                    <input id="txtCancion" type="text" class="form-control" placeholder="Escribe aqui" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="btn-aceptar">Aceptar</button>
                   </div>
-                  <button class="btn btn-primary" type="button" id="ayuda">Ayuda</button>
+                  <div style="display: flex; justify-content: space-around;">
+                    <button class="btn btn-primary" type="button" id="ayuda">Ayuda</button>
+                    <button class="btn btn-primary" type="button" id="siguiente">siguiente</button>
+                  </div>
+                  
                   <div class="muisc__song" id="cancionActual">
                     
                   </div>
-                  <div id="waveform"></div>
-
+                  
+                  <source id="audioPrueba" src="../assets/sinMiDiablo-babasonicos.mp3">
             </div>
 
         </div>

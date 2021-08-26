@@ -184,3 +184,12 @@
     border-radius: 10px;
 
 }
+
+.cancion__correcta{
+    margin: 5px;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: gray;
+    
+}
