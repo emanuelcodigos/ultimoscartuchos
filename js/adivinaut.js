@@ -14,8 +14,7 @@ const divInputRespuesta = document.querySelector('#div-input');
 const divContainerAyuda = document.querySelector('#ayuda__container');
 const ayuda = document.querySelector('#btn-ayuda');
 const loading = document.querySelector('#pantalla-loading');
-let tiempoTranscurrido = 200;
-let arrCanciones;
+let arrCanciones = new Array();
 let cancionActual = 0;
 let puntaje = 0;
 
@@ -24,6 +23,21 @@ var wavesurfer = WaveSurfer.create({
     waveColor: 'violet',
     progressColor: 'purple'
 });
+const timerDiv = document.querySelector('#timer');
+
+function timer(){
+    let tiempoTranscurrido = 200;
+    let contador = setInterval(function(){
+
+       timerDiv.innerHTML = tiempoTranscurrido;
+       tiempoTranscurrido = tiempoTranscurrido - 5;
+
+       if(tiempoTranscurrido < 0){
+           clearInterval(contador);
+           finalizar();
+       }
+    }, 5000);
+}
 
 const btnComenzar = document.querySelector('#btn-comenzar');
 btnComenzar.addEventListener('click', function(){
@@ -34,19 +48,6 @@ btnComenzar.addEventListener('click', function(){
     siguienteCancion();
 });
 
-function timer(){
-    const timer = document.querySelector('#timer');
-
-    let contador = setInterval(function(){
-       timer.innerHTML = tiempoTranscurrido;
-       tiempoTranscurrido--;
-
-       if(tiempoTranscurrido < 0){
-           clearInterval(contador);
-           finalizar();
-       }
-    }, 1000);
-}
 
 function getPreguntas(){
 
@@ -72,7 +73,9 @@ function getPreguntas(){
              
          });
          
+          
           arrCanciones = desordenar(arrPreguntas);
+          //dameTodo(arrPreguntas);
           loading.style.display = 'none';
           timer();
         
@@ -126,11 +129,6 @@ function siguienteCancion(){
     }
     
 }
-/*
-const siguiente = document.querySelector('#siguiente');
-siguiente.addEventListener('click', function(){
-    siguienteCancion();
-});*/
 
 const play = document.querySelector('#btn-play');
 play.addEventListener('click', function(){
@@ -181,9 +179,9 @@ ayuda.addEventListener('click', function(){
 
     divInputRespuesta.style.display = 'none';
 
-    divContainerAyuda.innerHTML = `<div class="posibles_respuesta" id="posibleResp0" onClick="respuestaConAyuda('`+respuestasRandom[0]+`')">`+respuestasRandom[0]+`</div>` + 
-    `<div class="posibles_respuesta" id="posibleResp1" onClick="respuestaConAyuda('`+respuestasRandom[1]+`')">`+respuestasRandom[1]+`</div>` +
-    `<div class="posibles_respuesta" id="posibleResp2" onClick="respuestaConAyuda('`+respuestasRandom[2]+`')">`+respuestasRandom[2]+`</div>`+
+    divContainerAyuda.innerHTML = `<button class="posibles_respuesta btn btn-secondary" id="posibleResp0" onClick="respuestaConAyuda('`+respuestasRandom[0]+`')">`+respuestasRandom[0]+`</button>` + 
+    `<button class="posibles_respuesta btn btn-secondary" id="posibleResp1" onClick="respuestaConAyuda('`+respuestasRandom[1]+`')">`+respuestasRandom[1]+`</button>` +
+    `<button class="posibles_respuesta btn btn-secondary" id="posibleResp2" onClick="respuestaConAyuda('`+respuestasRandom[2]+`')">`+respuestasRandom[2]+`</button>`+
     `<div></div>`;
 
     ayuda.classList.add('notblock');
@@ -239,9 +237,25 @@ function verificarRespuesta(opcion, respuesta){
 
       }, 4000);
 
-    
-
 }
+
+
+function dameTodo(array){
+
+    for(let i = 0; i < array.length; i++){
+        console.log(array[i][1]);
+    }
+
+    console.log('--------------------');
+    
+    for(i = 0; i < arrCanciones.length; i++){
+        console.log(arrCanciones[i][1]);
+    }
+    
+}
+
+
+
 
 
 
