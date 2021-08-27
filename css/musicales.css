@@ -1,118 +1,45 @@
-
-.container__player{
+body{
     background-color: rgb(65, 59, 85);  
+}
+.loading{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    /*align-items: center;*/
     justify-content: center;
+    align-items: center;
+    background: rgba(25, 25, 26, 1);
+    z-index: 9999;
+}
+.grid__loading{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div__comojugar{
+    
+    background-color: rgb(65, 59, 85);  
     min-height: 100vh;
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
-.player{
-    width: 300px;
-    height: 550px;
-    background-color: rgb(65, 59, 85);  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /*justify-content: center;*/
-    border-radius: 12px;
-    box-shadow: 9px 9px 16px rgba(48, 44, 63, 0.9),
-    -5px -5px 12px rgba(231, 231, 231, 0.2);
-}
-
-.player__controls{
-    display: flex;
-    width: 95%;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-bottom: 25px;
-    margin-top: 25px;
-}
-
-.player__btn{
-    cursor: pointer;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-   
-}
-.player__album{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-}
-
-.player__album img{
-    width: 100%;
-    border-radius: 100%;
-    box-shadow: 9px 9px 16px rgba(48, 44, 63, 0.9),
-    -5px -5px 12px rgba(231, 231, 231, 0.2);
-}
-
-.player__artist{
-   font-size: 1.2rem;
-   font-weight: bold;
-   opacity: 0.5;
-   color: white;
-   margin-top: 10px;
-}
-
-.player__song{
-    position: relative;
-    width: 100%;
-    text-align: center;
+.card__puntaje{
+    width: 18rem;
+    margin: auto;
     font-weight: bold;
-    font-size: 1rem;
-    color: white;
-    margin-top: 5px;
+    color: rgb(56, 56, 56);
+    margin-bottom: 10px;
 }
-
-.player__audio{
-    display: none;
+.mg-r-l{
+    margin-left: 5px;
+    margin-right: 5px;
 }
-
-.player__btn--medium{
-    font-size: 1.3rem;
-    min-height: 50px;
-    min-width: 50px;
-    align-items: center;
-    color: white;   
-}
-.player__btn--play{
-    font-size: 1.5rem;
-    min-height: 50px;
-    min-width: 50px;
-    border-radius: 100%;
-    background-color: white;
-    align-items: center;
-    color: rgb(65, 59, 85); 
-}
-
-.player__level{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    font-size: 1rem;
-    color: white;
-}
-
-.player__level--line{
-    width: 100%;
-}
-
-.pregunta{
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 10px;
-    border-radius: 10px;
-    width: 90%;
-    height: 90%;
-}
-
-
 .music__container{
 
     background-color: rgb(65, 59, 85);  
@@ -120,6 +47,7 @@
     margin: 10px;
     max-width: 600px;
     margin: auto;
+    
 }
 
 .music__timer{
@@ -190,6 +118,73 @@
     width: 100%;
     padding: 10px;
     text-align: center;
-    background-color: gray;
+    background-color: rgb(153, 236, 142);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #2c2c2c;
     
+}
+
+.help{
+    padding: 10px;
+    background-color: #f3f3f3;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgb(1, 77, 1);
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: rgb(1, 77, 1);
+}
+
+.help p, i{
+    margin: 0;
+    padding: 0;
+}
+
+.help p {
+    margin-left: 5px;
+}
+
+
+.posibles_respuesta{
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+    background-color: #a5d4dd;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #2c2c2c  ;
+}
+
+.notblock{
+    display: none;
+}
+
+.input__respuesta{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#cancion-correcta{
+    text-align: center;
+}
+#cancion-correcta p{
+    margin: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.incorrecto{
+    color: rgb(219, 71, 71);
+}
+.correcto{
+    color: rgb(57, 207, 57);
+}
+
+.cancion__correcta i{
+    margin-right: 10px;
 }

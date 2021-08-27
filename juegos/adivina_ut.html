@@ -1,171 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Adivina Adivina Ut</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <!-- Simple line icons-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/styles.css" rel="stylesheet"/>
-        <link href="../css/musicales.css" rel="stylesheet"/>
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
-        <nav id="sidebar-wrapper">
-            <ul class="sidebar-nav" id="nav-bar">
-                <li class="sidebar-brand"><a href="#page-top">Ultimos Cartuchos</a></li>
-                <li class="sidebar-nav-item"><a href="../">inicio</a></li>
-                <li class="sidebar-nav-item"><a href="../#services">Juegos</a></li>
-                <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a>
-                </li>
 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Adivina Adivina Ut</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+        rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../css/musicales.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav" id="nav-bar">
+            <li class="sidebar-brand"><a href="#page-top">Ultimos Cartuchos</a></li>
+            <li class="sidebar-nav-item"><a href="../">inicio</a></li>
+            <li class="sidebar-nav-item"><a href="../#services">Juegos</a></li>
+            <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div id="pantalla-loading" class="loading">
+        <div class="grid__loading">
+            <img src="../assets/img/trivia-logo.png" alt="ultimos cartuchos app" width="300px">
+            <img src="../assets/three-dots.svg" alt="loading">
+        </div>
+    </div>
+ 
+    <div id="div-comoJugar" class="div__comojugar">
+     <br><br><br>
+    <div class="card text-center">
+        <div class="card-header text-secondary">Adivina Adivina UT</div>
+        <div class="card-body">
+          <h5 class="card-title">Como jugar</h5>
+          <p class="card-text">Vas a escuchar el fragmento de una cancion, pero su letra será reemplazada por 'UT'.
+              Deberas adivinar de qué cancion se trata.
+              Sonaran 5 canciones en un tiempo maximo de 200 segundos, trata de adivinar las más puedas. 
+          </p>
+          <h5 class="card-title">Utiliza ayuda</h5>
+          <p>Si no estás seguro de la cancion podes presionar el boton de ayuda para obtener pistas</p>
+          <h5 class="card-title">Puntaje</h5>
+          <div class="card card__puntaje">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Adivinar la cancion<i class="fas fa-long-arrow-alt-right mg-r-l"></i>500 puntos</li>
+              <li class="list-group-item">Adivinar el Artista<i class="fas fa-long-arrow-alt-right mg-r-l"></i>150 puntos</li>
+              <li class="list-group-item">Adivinar con ayuda<i class="fas fa-long-arrow-alt-right mg-r-l"></i>50 puntos</li>
             </ul>
-        </nav>
-        
-        <div class="container__player" style="display: none;">
-            <div class="player">
-                <div class="player__controls">
-                    <div class="player__btn player__btn--small">
-                        <i class="fas fa-arrow-left"></i>
-                    </div>
-                    <h5 class="player_title">Playlist Cartuchos</h5>
-                    <div class="player__btn player__btn--small">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                   
-                </div>
+          </div>
+          <button id="btn-comenzar" class="btn btn-primary">COMENZAR</button>
+        </div>
+        <div class="card-footer text-muted">
+          Aprovecha bien tu tiempo
+        </div>
+      </div>
+    </div>
+   
 
-                <div class="player__album">
-                    <img src="../assets/img/icon_google.png" alt="" class="player__img">
-                </div>
-                <h2 class="player__artist">Desconocido</h2>
-                <h3 class="player__song">Desconocido</h3>
+    <div id="music-container" class="music__container notblock">
+       
+        <div class="music__timer">
+            <div class="music__timer--circle">
+                <h3 id="timer">180</h3>
+            </div>
+        </div>
+        <div class="music__grid">
+            <div style="background-color: rgb(218, 218, 218); height: 100%; border-radius: 10px;">
+                <div id="waveform"></div>
+            </div>
+            <div style="background-color: green; height: 100%;" class="music__grid--button">
+                <div class="music__grid--circle" id="btn-play"><i class="fas fa-play"></i></div>
+            </div>
+        </div>
 
-                <div id="controlersAudio" style="display: none;">
-                <div class="player__level">
-                 <p>00:01</p>
-                 <p>01:00</p>
+        <div class="music__pregunta">
+            <h3>QUE CANCION ES?</h3>
+            <div id="cancion-correcta"></div>
+            <div class="input__respuesta" id="div-input">
+                <input class="form-control" id="txtCancion" type="text" placeholder="Escribe la cancion o el artista"
+                    aria-describedby="button-addon2">
+                <button class="btn btn-dark" type="button" id="btn-aceptar">Aceptar</button>
+            </div>
+            <div style="display: flex; justify-content: space-around;">
+                <div id="btn-ayuda" class="btn btn-success help"><i class="far fa-question-circle"></i>
+                    <p></i>AYUDA</p>
                 </div>
-                <input type="range" value="5" min="0" class="player__level--line">
-            
+            </div>
 
-                <div class="player__controls">
-                    <div class="player__btn player__btn--medium">
-                        <i class="fas fa-random"></i>
-                    </div>
-                    <div class="player__btn player__btn--medium">
-                        <i class="fas fa-backward"></i>
-                    </div>
-                    <div class="player__btn player__btn--play">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <div class="player__btn player__btn--medium">
-                        <i class="fas fa-forward"></i>
-                    </div>
-                    <div class="player__btn player__btn--medium">
-                        <i class="fas fa-retweet"></i>
-                    </div>
-                   
-                </div>
+            <div class="muisc__song notblock" id="cancionActual"></div>
 
-                </div>
+            <source id="audioPrueba" src="../assets/sinMiDiablo-babasonicos.mp3">
+            <br>
 
-
-                <div id="pregunta" class="pregunta">
-                    <h2>Que canción es?</h2>
-                    <input id="txtNombreCancion" type="text" placeholder="Escribe la cancion aqui">
-                    <button class="btn btn-primary">ver pistas</button>
-                    <div id="pistasDelaCancion"></div>
-                </div>
-                
+            <div id="ayuda__container">
 
             </div>
         </div>
 
-        <div class="music__container">
-            <div class="music__timer">
-                <div class="music__timer--circle"><h3 id="timer">180</h3></div>
-            </div>
-            <div class="music__grid">
-                <div style="background-color: rgb(218, 218, 218); height: 100%; border-radius: 10px;">
-                    <div id="waveform"></div>
-                </div>
-                <div style="background-color: green; height: 100%;" class="music__grid--button">
-                    <div class="music__grid--circle" id="btn-play"><i class="fas fa-play"></i></div>
-                </div>
-            </div>
+    </div>
 
-            <div class="music__pregunta">
-                <h3>QUE CANCION ES?</h3>
-                <div id="cancion-correcta"></div>
-                <div class="input-group mb-3">
-                    <input id="txtCancion" type="text" class="form-control" placeholder="Escribe aqui" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="btn-aceptar">Aceptar</button>
-                  </div>
-                  <div style="display: flex; justify-content: space-around;">
-                    <button class="btn btn-primary" type="button" id="ayuda">Ayuda</button>
-                    <button class="btn btn-primary" type="button" id="siguiente">siguiente</button>
-                  </div>
-                  
-                  <div class="muisc__song" id="cancionActual">
-                    
-                  </div>
-                  
-                  <source id="audioPrueba" src="../assets/sinMiDiablo-babasonicos.mp3">
-            </div>
 
+    <!-- Call to Action-->
+    <section class="content-section bg-primary text-white">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mb-4">Sobre el desarrollador</h2>
+            <a class="btn btn-light me-4" href="#!">Mira mis otros proyectos!</a>
+            <a class="btn btn-xl btn-dark" href="#!">Regalame un cafe!</a>
         </div>
+    </section>
+    <!-- Footer-->
+    <footer class="footer text-center">
+        <div class="container px-4 px-lg-5">
+            <ul class="list-inline mb-5">
+                <li class="list-inline-item">
+                    <a class="social-link rounded-circle text-white mr-3" href="#!"><i
+                            class="icon-social-facebook"></i></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="social-link rounded-circle text-white mr-3" href="#!"><i
+                            class="icon-social-twitter"></i></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                </li>
+            </ul>
+            <p class="text-muted small mb-0">Copyright &copy; Your Website 2021</p>
+        </div>
+        <br><br><br><br>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="../js/generic.js"></script>
+    <script src="../js/scripts.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="../js/adivinaut.js"></script>
 
+</body>
 
-        <!-- Call to Action-->
-        <section class="content-section bg-primary text-white">
-            <div class="container px-4 px-lg-5 text-center">
-                <h2 class="mb-4">Sobre el desarrollador</h2>
-                <a class="btn btn-light me-4" href="#!">Mira mis otros proyectos!</a>
-                <a class="btn btn-xl btn-dark" href="#!">Regalame un cafe!</a>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="footer text-center">
-            <div class="container px-4 px-lg-5">
-                <ul class="list-inline mb-5">
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
-                    </li>
-                </ul>
-                <p class="text-muted small mb-0">Copyright &copy; Your Website 2021</p>
-            </div>
-            <br><br><br><br>
-        </footer>
-        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="../js/generic.js"></script>
-        <script src="../js/scripts.js"></script>
-        <script src="https://unpkg.com/wavesurfer.js"></script>
-        <script src="../js/adivinaut.js"></script>
-        
-    </body>
 </html>
