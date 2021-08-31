@@ -2,6 +2,11 @@
     font-family: 'Raleway', sans-serif;
 }
 
+body{
+    background: rgb(16,19,25);
+    background: linear-gradient(357deg, rgba(16,19,25,1) 0%, rgba(30,30,52,1) 27%, rgba(89,93,110,1) 100%);
+}
+
 .loading{
     position: fixed;
     top: 0;
@@ -22,8 +27,7 @@
 }
 
 .div__comojugar{
-    
-    background-color: rgb(65, 59, 85);  
+     
     min-height: 100vh;
     max-width: 600px;
     margin: auto;
@@ -43,14 +47,10 @@
 }
 .music__container{
 
-   /* background-color: rgb(65, 59, 85);  */
     min-height: 100vh;
     margin: 10px;
     max-width: 600px;
     margin: auto;
-    /*background-color: #2b2b2b;*/
-    background: rgb(16,19,25);
-    background: linear-gradient(357deg, rgba(16,19,25,1) 0%, rgba(30,30,52,1) 27%, rgba(89,93,110,1) 100%);
     
 }
 
@@ -66,7 +66,7 @@
     margin-bottom: 10px;
     width: 60px;
     height: 60px;
-    background-color: #ffffff;
+    background-color: #e0e0e0;
     border-radius: 100%;
     text-align: center;
     display: flex;
@@ -74,6 +74,7 @@
     align-items: center;
     border: 2px solid #000;
     position: relative;
+    color: #161616;
 }
 
 .div__music{
@@ -202,8 +203,8 @@ text-transform: uppercase;
 
 #cancion-correcta{
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 #cancion-correcta p{
     margin: 5px;

@@ -29,6 +29,13 @@ function timer(){
        timerDiv.innerHTML = tiempoTranscurrido;
        tiempoTranscurrido = tiempoTranscurrido - 5;
 
+       if(tiempoTranscurrido === 25){
+           let divTimer = document.querySelector('.music__timer--circle');
+           divTimer.style.backgroundColor = '#ff7373';
+           divTimer.style.color = '#ffffff';
+           divTimer.classList.add('animated', 'wobble');
+       }
+
        if(tiempoTranscurrido < 0){
            clearInterval(contador);
            finalizar();
@@ -182,13 +189,11 @@ ayuda.addEventListener('click', function(){
     respuestasRandom.sort(() => Math.random() - 0.5);
 
     divInputRespuesta.style.display = 'none';
-    divContainerAyuda.classList.add('animated', 'jello');
+    divContainerAyuda.classList.add('jello');
     divContainerAyuda.innerHTML = `<button class="posibles_respuesta btn btn-secondary" id="posibleResp0" onClick="respuestaConAyuda('`+respuestasRandom[0]+`')">`+respuestasRandom[0]+`</button>` + 
     `<button class="posibles_respuesta btn btn-secondary" id="posibleResp1" onClick="respuestaConAyuda('`+respuestasRandom[1]+`')">`+respuestasRandom[1]+`</button>` +
     `<button class="posibles_respuesta btn btn-secondary" id="posibleResp2" onClick="respuestaConAyuda('`+respuestasRandom[2]+`')">`+respuestasRandom[2]+`</button>`+
     `<div></div>`;
-
-    
 
 });
 
@@ -236,7 +241,7 @@ function verificarRespuesta(opcion, respuesta){
     }
 
     divCancionCorrecta.innerHTML = '<div class="cancion__correcta animated jello"><i class="fas fa-compact-disc"></i>'+cancion+' - '+artista+'</div>';
-    console.log(puntaje);
+    divContainerAyuda.classList.remove('jello');
       let tiempo = setTimeout(function(){
         
         divCancionCorrecta.innerHTML = '';
