@@ -1,10 +1,7 @@
 :root{
-    --bs-secondary: #797979;
+    font-family: 'Raleway', sans-serif;
 }
 
-body{
-    background-color: rgb(65, 59, 85);  
-}
 .loading{
     position: fixed;
     top: 0;
@@ -46,11 +43,14 @@ body{
 }
 .music__container{
 
-    background-color: rgb(65, 59, 85);  
+   /* background-color: rgb(65, 59, 85);  */
     min-height: 100vh;
     margin: 10px;
     max-width: 600px;
     margin: auto;
+    /*background-color: #2b2b2b;*/
+    background: rgb(16,19,25);
+    background: linear-gradient(357deg, rgba(16,19,25,1) 0%, rgba(30,30,52,1) 27%, rgba(89,93,110,1) 100%);
     
 }
 
@@ -72,49 +72,72 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.music__grid{
-
-    display: grid;
-    grid-template-columns: 70% 30%;
-    align-items: center;
-    padding: 15px;
-    border-radius: 10px;
+    border: 2px solid #000;
+    position: relative;
 }
 
-.music__grid img{
-    width: 40%;
+.div__music{
+    width: 90%;
     margin: auto;
+    margin-top: -25px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+.div__music--div{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.div__music--text{
+    margin-left: 10px;   
+    height: 70px;
+}
+.div__music--text p{
+    margin: 0;
+    padding: 0;
+    color: #535353;
+    font-size: 0.9rem;
+}
+.div__music--text .principal{
+  font-weight: bold;
+text-transform: uppercase;
+  color: var(--bs-secondary);
 }
 
 .music__grid--button{
-    position: relative;
     border-radius: 10px;
 }
 
 .music__grid--circle{
-    height: 40px;
-    width: 40px;
+    height: 60px;
+    width: 60px;
     border-radius: 100%;
-    background-color: #ffffff;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+    background-color: #e0e0e0;
+    box-shadow: 2px 2px 5px #9e9e9e;
     font-size: 20px;
     color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .music__pregunta{
-    margin: 10px;
+    margin: 1rem;
     text-align: center;
     padding: 10px;
     background-color: #ffffff;
     border-radius: 10px;
 
+}
+.music__pregunta h3{
+    margin: 10px;
+    font-family: 'Raleway';
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--bs-secondary);
 }
 
 .cancion__correcta{
@@ -141,6 +164,7 @@ body{
     font-size: 0.8rem;
     font-weight: bold;
     color: rgb(1, 77, 1);
+    width: 100px;
 }
 
 .help p, i{
@@ -166,7 +190,7 @@ body{
 }
 
 .notblock{
-    display: none;
+    display: none !important;
 }
 
 .input__respuesta{
@@ -178,6 +202,8 @@ body{
 
 #cancion-correcta{
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 #cancion-correcta p{
     margin: 5px;
@@ -185,12 +211,27 @@ body{
     font-weight: bold;
 }
 .incorrecto{
+    margin: 5px;
+    padding: 0;
     color: rgb(219, 71, 71);
+    font-size: 1.5rem;
+    font-family: 'Raleway';
+    font-weight: 900;
 }
 .correcto{
-    color: rgb(57, 207, 57);
+    margin: 5px;
+    padding: 0;
+    color: rgb(35, 143, 35);
+    font-size: 1.5rem;
+    font-family: 'Raleway';
+    font-weight: 900;
 }
 
 .cancion__correcta i{
     margin-right: 10px;
+}
+
+.div__ayuda-help{
+    display: flex;
+    justify-content: space-around;
 }

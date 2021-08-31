@@ -17,9 +17,11 @@
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
         rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800;900&display=swap" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/musicales.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/animate.css">
 </head>
 
 <body id="page-top">
@@ -46,7 +48,7 @@
     <div id="div-comoJugar" class="div__comojugar">
      <br><br><br>
     <div class="card text-center">
-        <div class="card-header text-secondary">Adivina Adivina UT</div>
+        <div class="card-header text-secondary">ADIVINA ADIVINA UT</div>
         <div class="card-body">
           <h5 class="card-title">Como jugar</h5>
           <p class="card-text">Vas a escuchar el fragmento de una cancion, pero su letra será reemplazada por 'UT'.
@@ -76,36 +78,42 @@
        
         <div class="music__timer">
             <div class="music__timer--circle">
-                <h3 id="timer"></h3>
+                <h3 id="timer">200</h3>
             </div>
         </div>
-        <div class="music__grid">
-            <div style="background-color: rgb(218, 218, 218); height: 100%; border-radius: 10px;">
-                <div id="waveform"></div>
-            </div>
-            <div style="background-color: green; height: 100%;" class="music__grid--button">
-                <div class="music__grid--circle" id="btn-play"><i class="fas fa-play"></i></div>
+        <div id="div-reproductor" class="div__music">
+            <div class="div__music--div">
+                
+                <div id="btn-play" class="music__grid--circle"><i class="fas fa-play"></i></div>
+                
+                <div class="div__music--text">
+                    <p class="principal">Adivina Adivina UT</p>
+                    <p>Cancion desconocida</p>
+                    <p>Artista desconocido</p>
+                </div>
             </div>
         </div>
 
         <div class="music__pregunta">
-            <h3>QUE CANCION ES?</h3>
+            <h3 id="pregCancion">¿QUE CANCION ES?</h3>
             <div id="cancion-correcta"></div>
             <div class="input__respuesta" id="div-input">
                 <input class="form-control" id="txtCancion" type="text" placeholder="Escribe la cancion o el artista"
                     aria-describedby="button-addon2">
                 <button class="btn btn-dark" type="button" id="btn-aceptar">Aceptar</button>
             </div>
-            <div style="display: flex; justify-content: space-around;">
-                <div id="btn-ayuda" class="btn btn-success help"><i class="far fa-question-circle"></i>
-                    <p></i>AYUDA</p>
+            <div id="info-help" class="div__ayuda-help notblock">
+                <div id="numero-actual" class="btn btn-secondary help">
+                    <i class="fas fa-music"></i>
+                    <p>5/7</p>
+                </div>
+                <div id="btn-ayuda" class="btn btn-success help">
+                    <i class="far fa-question-circle"></i>
+                    <p>AYUDA</p>
                 </div>
             </div>
 
             <div class="muisc__song notblock" id="cancionActual"></div>
-
-            <source id="audioPrueba" src="../assets/sinMiDiablo-babasonicos.mp3">
-            <br>
 
             <div id="ayuda__container"></div>
         </div>
@@ -152,7 +160,6 @@
     <!-- Core theme JS-->
     <script src="../js/generic.js"></script>
     <script src="../js/scripts.js"></script>
-    <script src="https://unpkg.com/wavesurfer.js"></script>
     <script src="../js/adivinaut.js"></script>
 
 </body>

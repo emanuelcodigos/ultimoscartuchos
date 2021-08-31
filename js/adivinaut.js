@@ -13,16 +13,13 @@ const divCancionCorrecta = document.querySelector('#cancion-correcta');
 const divInputRespuesta = document.querySelector('#div-input');
 const divContainerAyuda = document.querySelector('#ayuda__container');
 const ayuda = document.querySelector('#btn-ayuda');
+const divAyudaInfo = document.querySelector('#info-help');
 const loading = document.querySelector('#pantalla-loading');
 let arrCanciones = new Array();
 let cancionActual = 0;
 let puntaje = 0;
 
-var wavesurfer = WaveSurfer.create({
-    container: '#waveform',
-    waveColor: 'violet',
-    progressColor: 'purple'
-});
+
 const timerDiv = document.querySelector('#timer');
 
 function timer(){
@@ -46,6 +43,8 @@ btnComenzar.addEventListener('click', function(){
     document.querySelector('#music-container').classList.remove('notblock');
     timer();
     siguienteCancion();
+   document.querySelector('#pregCancion').classList.add('animated', 'tada');
+
 });
 
 
@@ -99,68 +98,70 @@ function desordenar(array) {
       array[randomIndex] = temporaryValue;
     }
   
-    array = array.slice(0,5);
+    array = array.slice(0,7);
     return array;
 }
 
 
 function siguienteCancion(){
     
-    if(cancionActual < 5){
+    
+    if(cancionActual < 7){
+    cancionDesconocida();
     txtCancion.value = '';
     let cancion = arrCanciones[cancionActual][0];
     
     audio.innerHTML = '<audio controls id="reproductor"><source id="urlCancion" src="'+cancion+'" type="audio/mpeg"></audio>'
-    let prueba = document.querySelector('#audioPrueba').getAttribute('src');
-    wavesurfer.load(prueba);
-    /*wavesurfer.on('ready', function () {
-        wavesurfer.play();
-    });*/
+    
     cancionActual++;
-    //reproductor.play();
+   
     divContainerAyuda.innerHTML = '';
     divInputRespuesta.style.display = 'flex';
     setTimeout(function(){
-       ayuda.classList.remove('notblock');
+       divAyudaInfo.classList.remove('notblock');
+       divAyudaInfo.classList.add('animated','shakeX');
     }, 3000);
-    reproducir();
+    
+    reproducir(true);
     }else{
        finalizar();
     }
-    
 }
 
-const play = document.querySelector('#btn-play');
-play.addEventListener('click', function(){
-    reproducir();
-});
 
-function reproducir(){
+function reproducir(status){
+    let play = document.querySelector('#btn-play');
     const reproductor = document.querySelector('#reproductor');
     if(reproductor.paused || reproductor.ended){
-        reproductor.play();
-        play.innerHTML = '<i class="fas fa-step-forward"></i>' 
+        if(status){ 
+            reproductor.play();
+            play.innerHTML = '<i class="fas fa-step-forward"></i>';
+        }
     }else{
+         
         reproductor.pause();
         play.innerHTML = '<i class="fas fa-play">';
+            
     }
 }
 
-function finalizar(){
-    console.log('juego finalizado');
-}
 
 btnAceptar.addEventListener('click', function(){
     
     if(txtCancion.value != ''){
-      reproducir();
+      reproducir(false);
       let textoIngresado = txtCancion.value;
-      
+      textoIngresado = quitarAcentos(textoIngresado);
+
       verificarRespuesta(1, textoIngresado.toLowerCase());
     }
 
 });
 
+function quitarAcentos(cadena){
+	const acentos = {'á':'a','é':'e','í':'i','ó':'o','ú':'u','Á':'A','É':'E','Í':'I','Ó':'O','Ú':'U'};
+	return cadena.split('').map( letra => acentos[letra] || letra).join('').toString();	
+}
 
 function puntuar(puntos){
 
@@ -168,6 +169,9 @@ function puntuar(puntos){
 }
 
 ayuda.addEventListener('click', function(){
+
+    divAyudaInfo.classList.add('notblock');
+    divAyudaInfo.classList.remove('shakeX');
 
     respuestasRandom = [
         arrCanciones[cancionActual - 1][1],
@@ -178,13 +182,12 @@ ayuda.addEventListener('click', function(){
     respuestasRandom.sort(() => Math.random() - 0.5);
 
     divInputRespuesta.style.display = 'none';
-
+    divContainerAyuda.classList.add('animated', 'jello');
     divContainerAyuda.innerHTML = `<button class="posibles_respuesta btn btn-secondary" id="posibleResp0" onClick="respuestaConAyuda('`+respuestasRandom[0]+`')">`+respuestasRandom[0]+`</button>` + 
     `<button class="posibles_respuesta btn btn-secondary" id="posibleResp1" onClick="respuestaConAyuda('`+respuestasRandom[1]+`')">`+respuestasRandom[1]+`</button>` +
     `<button class="posibles_respuesta btn btn-secondary" id="posibleResp2" onClick="respuestaConAyuda('`+respuestasRandom[2]+`')">`+respuestasRandom[2]+`</button>`+
     `<div></div>`;
 
-    ayuda.classList.add('notblock');
     
 
 });
@@ -192,20 +195,23 @@ ayuda.addEventListener('click', function(){
 
 function respuestaConAyuda(respuesta){
 
+    reproducir(false);
     verificarRespuesta(2, respuesta.toLowerCase());
-    reproducir();
+    
 
 }
-
 
 function verificarRespuesta(opcion, respuesta){
 
     let cancion = arrCanciones[cancionActual - 1][1];
     let artista = arrCanciones[cancionActual - 1][2];
     let correcta = false;
+    let divResultado = document.querySelector('#div-reproductor');
 
     if(opcion === 1){
  
+        cancion = quitarAcentos(cancion);
+        artista = quitarAcentos(artista);
         
         if(cancion.toLowerCase() == respuesta){
             puntuar(500);
@@ -224,12 +230,13 @@ function verificarRespuesta(opcion, respuesta){
     }
 
     if(correcta){
-        divCancionCorrecta.innerHTML = '<p class="correcto">CORRECTO!</p><div class="cancion__correcta"><i class="fas fa-compact-disc"></i>'+cancion+' - '+artista+'</div>';
+        divResultado.innerHTML = '<p class="correcto animated swing">CORRECTO!</p>';
     }else{
-        divCancionCorrecta.innerHTML = '<p class="incorrecto">INCORRECTO!</p><div class="cancion__correcta"><i class="fas fa-compact-disc"></i>'+cancion+' - '+artista+'</div>';
+        divResultado.innerHTML = '<p class="incorrecto animated swing">INCORRECTO!</p>';
     }
-   
- 
+
+    divCancionCorrecta.innerHTML = '<div class="cancion__correcta animated jello"><i class="fas fa-compact-disc"></i>'+cancion+' - '+artista+'</div>';
+    console.log(puntaje);
       let tiempo = setTimeout(function(){
         
         divCancionCorrecta.innerHTML = '';
@@ -240,19 +247,47 @@ function verificarRespuesta(opcion, respuesta){
 }
 
 
-function dameTodo(array){
+function cancionDesconocida(){
 
-    for(let i = 0; i < array.length; i++){
-        console.log(array[i][1]);
-    }
+    let divResultado = document.querySelector('#div-reproductor');
+    divResultado.innerHTML = `<div class="div__music--div">
+    
+    <div class="music__grid--circle animated headShake" id="btn-play"><i class="fas fa-play"></i></div>
+    
+    <div class="div__music--text">
+        <p class="principal">Adivina Adivina UT</p>
+        <p>Cancion desconocida</p>
+        <p>Artista desconocido</p>
+    </div>
+    </div>`;
 
-    console.log('--------------------');
-    
-    for(i = 0; i < arrCanciones.length; i++){
-        console.log(arrCanciones[i][1]);
-    }
-    
+    let play = document.querySelector('#btn-play');
+    play.addEventListener('click', function(){
+    reproducir(true);
+   
+});
+
 }
+
+function finalizar(){
+    console.log('juego finalizado');
+
+    let global = document.querySelector('#music-container');
+    global.innerHTML = `<div class="card text-center">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">Tu puntaje fue `+ puntaje+`.</p>
+      <a href="#" class="btn btn-primary">Volver a jugar</a>
+    </div>
+    <div class="card-footer text-muted">
+      Jue
+    </div>
+  </div>`
+}
+
 
 
 
