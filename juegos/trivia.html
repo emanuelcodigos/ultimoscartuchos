@@ -16,100 +16,109 @@
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
         rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800;900&display=swap" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/trivia.css">
     <link rel="stylesheet" href="../css/score.css">
+    <link rel="stylesheet" href="../css/juegos.general.css">
+    <link rel="stylesheet" href="../css/animate.css">
 </head>
 
 <body>
-    <div id="divLoading">
-        <div><img src="../assets/loading.svg" alt="cargando"></div>
+
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav" id="nav-bar">
+            <li class="sidebar-brand"><a href="#page-top">Ultimos Cartuchos</a></li>
+            <li class="sidebar-nav-item"><a href="../">inicio</a></li>
+            <li class="sidebar-nav-item"><a href="../#services">Juegos</a></li>
+            <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div id="pantalla-loading" class="loading">
+        <div class="grid__loading">
+            <img src="../assets/img/trivia-logo.png" class="animated jello" alt="ultimos cartuchos app" width="300px">
+            <img src="../assets/three-dots.svg" alt="loading">
+        </div>
     </div>
-    <div id="particles-js"></div>
-    <div id="contenido-pricipal">
-        <!-- Navigation-->
-        <div class="flex mb-3">
-            <div class="temporizador" id="reloj">15</div>
-            <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+
+
+    <div id="div-comoJugar" class="div__comojugar">
+        <br><br><br>
+        <div class="card text-center">
+            <div class="card-header text-secondary">TRIVIA CARTUCHOS</div>
+            <div class="card-body">
+                <h5 class="card-title">Como jugar</h5>
+                <p class="card-text">.
+                </p>
+                <h5 class="card-title">Puntaje</h5>
+                <div class="card card__puntaje">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Opcion correcta<i class="fas fa-long-arrow-alt-right mg-r-l"></i>500
+                            puntos</li>
+                        <li class="list-group-item">Opcion incorrecta<i class="fas fa-long-arrow-alt-right mg-r-l"></i>0
+                            puntos</li>
+                        <li class="list-group-item">Sin responder<i class="fas fa-long-arrow-alt-right mg-r-l"></i>0
+                            puntos</li>
+                    </ul>
+                </div>
+                <button id="btn-comenzar" class="btn btn-primary animated">COMENZAR</button>
+            </div>
+            <div class="card-footer text-muted">
+                Aprovecha bien tu tiempo
+            </div>
+        </div>
+    </div>
+
+    <section id="trivia-container" class="trivia__container notblock">
+
+        <div class="trivia__timer">
+            <div class="trivia__timer--circle" id="reloj">15</div>
         </div>
 
-        <nav id="sidebar-wrapper">
-            <ul class="sidebar-nav" id="nav-bar">
-                <li class="sidebar-brand"><a href="#page-top">Ultimos Cartuchos</a></li>
-                <li class="sidebar-nav-item"><a href="../">inicio</a></li>
-                <li class="sidebar-nav-item"><a href="../#services">Juegos</a></li>
-                <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a>
-                </li>
-
-            </ul>
-        </nav>
-
-        <!-- Services-->
-        <section id="pantallaJuego">
-            <div class="content-section text-center">
-                <div class="container px-4 px-lg-5" id="contenido">
-                    <div class="content-section-heading">
-                        <h3 class="mb-3 text-secondary">Trivia Cartuchos</h3>
-                    </div>
-                    <div class="contendor subcontenedor">
-
-                        <div class="enunciado mb-3 myshadow">
-                            <p id="pregunta"></p>
-                            <img id="imgPregunta" src="" alt="">
-                        </div>
-                        <div class="mb-5">
-                            <input class="form-control mb-2 myshadow" type="button" id="resp1">
-                            <input class="form-control mb-2 myshadow" type="button" id="resp2">
-                            <input class="form-control mb-2 myshadow" type="button" id="resp3">
-                        </div>
-
-                    </div>
+        <div id="pantalla-juego" class="div__trivia">
+            <div class="contendor subcontenedor">
+    
+                <div class="pregunta">
+                    <p id="pregunta" class="animated"></p>
+                    <img id="imgPregunta" src="" alt="">
                 </div>
-            </div>
-    </div>
-    </div>
-
-    </section>
-
-    <!-- pantalla resultado-->
-
-    <section id="pantallResultado" class="content-section text-center notblock">
-
-        <div class="container px-4 px-lg-5" id="contenido">
-            <div class="content-section-heading">
-                <h3 class="mb-1 text-secondary">Tu puntaje</h3>
-            </div>
-            <div class="contendor subcontenedor mi-puntaje">
-                <div class="puntuacion">
-                    <img src="/assets/img/moneda.png">
-                    <p id="puntajeObtenido"></p>
-
-                </div>
-                <div class="lineaDivisora"></div>
-
-                <div id="puntajeAcumulado">
-                    <p class="mb-1 text-secondary">TUS UT ACUMULADOS</p>
-                    <div class="puntuacion">
-                        <img src="/assets/img/moneda.png" style="width: 30px; height: 30px;">
-                        <span id="misPuntosAcumulados"></span>
-
-                    </div>
+                <div id="resultado"></div>
+                <div id="div-posResp" class="animated">
+                    <button class="posibles_respuesta" id="resp1"></button>
+                    <button class="posibles_respuesta" id="resp2"></button>
+                    <button class="posibles_respuesta" id="resp3"></button>
                 </div>
 
-
             </div>
+        </div>
 
-            <div class="contendor subcontenedor mi-puntaje" id="recordGlobales" >
-                <h4 class="text-secondary" style="text-align: start; margin: 5px;">RANKING</h4>
-            </div>
-                <div style="margin: auto; display: flex; justify-content: space-around;">
-                    <button class="btn btn-primary ">SALIR</button>
-                    <button class="btn btn-primary ">VOLVER A JUGAR</button>
     </section>
     
+    <section id="resultado">
+        <br><br><br>
+    <div class="contenido__resultado notblock">
 
+        <div class="contenido__resultado--puntuacion">
+            <img src="../assets/img/user.png" alt="icono de usuario" width="90px">
+            <p class="felicidades">Felicitaciones</p>
+            <p>Tu puntaje fue</p>
+            <p class="txt__puntaje">2500</p>
+        </div>
+
+        <div id="rankig__jugadores">
+
+        </div>
     </div>
+
+    </section>
+
+
 </body>
 
 
@@ -122,10 +131,6 @@
 <script src="../js/generic.js"></script>
 <script src="../js/scripts.js"></script>
 <script src="../js/trivia.js"></script>
-<script src="../js/particles.min.js"></script>
-<script src="../js/particulas.js"></script>
-
-
 
 
 </html>

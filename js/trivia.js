@@ -1,7 +1,6 @@
 window.onload = function(){
  
     consultarAutenticacion();
-    crearConfeti(false);
     getPreguntas();
 }
 
@@ -13,6 +12,13 @@ const resp1 = document.querySelector('#resp1');
 const resp2 = document.querySelector('#resp2');
 const resp3 = document.querySelector('#resp3');
 const imgPregunta = document.querySelector('#imgPregunta');
+
+const divLoading = document.querySelector('#pantalla-loading');
+const btnComenzar = document.querySelector('#btn-comenzar');
+const divComoJugar = document.querySelector('#div-comoJugar');
+const divContenidoPrincipal = document.querySelector('#trivia-container');
+const divPosResp = document.querySelector('#div-posResp');
+const divResultado = document.querySelector('#resultado');
 
 let puntosTotales = 0;
 let preguntActual = 1; 
@@ -71,7 +77,6 @@ function desordenar(array) {
 
 function getPreguntas(){
 
-    loading.style.display = 'flex';
     let arrPreguntas = new Array();
     return db.collection('trivia').get()
     .then(resp=>{
@@ -94,8 +99,9 @@ function getPreguntas(){
          });
          
           arrPrincipal = desordenar(arrPreguntas);
-          loading.style.display = 'none';
-          principal();
+          divLoading.style.display = 'none';
+          btnComenzar.classList.add('jello');
+          //principal();
 
 
     }).catch(err =>{
@@ -104,16 +110,22 @@ function getPreguntas(){
 
 }
 
+btnComenzar.addEventListener('click', function(){
+    
+    divComoJugar.classList.add('notblock');
+    divContenidoPrincipal.classList.remove('notblock');
+    principal();
+});
+
 function contarPuntaje(respuesta){
      
      if(respuesta === arrPrincipal[preguntaNumeroActual][1]){
-         //console.log('correcto');
+        
          puntosTotales += 500;
-
+         divResultado.innerHTML = '<div class="correcto animated tada">CORRECTO!</div>';
      }else{
-         //console.log('incorrecto');
+        divResultado.innerHTML = '<div class="incorrecto animated tada">INCORRECTO!</div>';
      }
-  
 }
 
 
@@ -130,12 +142,17 @@ function llenarCampos(){
     respuestasRandom.sort(() => Math.random() - 0.5);
 
     preg.innerHTML = arrPrincipal[preguntaNumeroActual][0];
+    preg.classList.add('headShake');
     if(arrPrincipal[preguntaNumeroActual][4]){ 
     imgPregunta.src = arrPrincipal[preguntaNumeroActual][4];
     }
+    resp1.innerHTML = respuestasRandom[0];
+    resp2.innerHTML = respuestasRandom[1];
+    resp3.innerHTML = respuestasRandom[2];
     resp1.value = respuestasRandom[0];
     resp2.value = respuestasRandom[1];
     resp3.value = respuestasRandom[2];
+
   
 }
 
@@ -186,7 +203,8 @@ function mostrarCorrecta(){
 
     resp1.style.background = '#da4646'; 
     resp2.style.background = '#da4646'; 
-    resp3.style.background = '#da4646'; 
+    resp3.style.background = '#da4646';
+    divPosResp.classList.add('jello');
 
     if(resp1.value === arrPrincipal[preguntaNumeroActual - 1][1]){
       resp1.style.background = '#68da73';
@@ -202,15 +220,18 @@ function mostrarCorrecta(){
         resp3.style.background = '#e4e4ef';
         imgPregunta.src = '';
         click = false;
+        divPosResp.classList.remove('jello');
+        preg.classList.remove('headShake');
+        divResultado.innerHTML = '';
         principal();
 
     }, 3000);
 }
 
 
- function finalizar(){
+ /*function finalizar(){ 
     reloj.style.display = 'none';
-   crearConfeti(true); 
+    
     verResultados();
     firebase.auth().onAuthStateChanged(res=>{
         loading.style.display = 'flex';
@@ -246,9 +267,19 @@ function mostrarCorrecta(){
         }
       
     });
+
  }
+ */
 
+function finalizar(){
 
+    divContenidoPrincipal.innerHTML = '';
+    divContenidoPrincipal.classList.add('notblock');
+    divLoading.style.display = 'flex';
+
+    
+
+}
  function verResultados(puntos, totales){
     juego = document.querySelector('#pantallaJuego');
     juego.innerHTML = '';
@@ -257,8 +288,6 @@ function mostrarCorrecta(){
 
     document.querySelector('#puntajeObtenido').innerHTML = puntos;
     document.querySelector('#misPuntosAcumulados').innerHTML = totales;
-
-    
 
  }
 
@@ -296,12 +325,3 @@ function recordDeOtroUsuario(nombre, puntaje, foto){
     node.appendChild(ranking);
 }
 
-function crearConfeti(bool){
-
-    if(bool === true){
-        document.querySelector('#particles-js').style.display = 'initial';
-    }else{
-        document.querySelector('#particles-js').style.display = 'none';
-    }
-    
-}

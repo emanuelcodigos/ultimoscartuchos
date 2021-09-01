@@ -1,116 +1,81 @@
-body{
-    background-color: #1c1f28;
-}
+.trivia__container{
 
-.contenedor{
-    max-width: 120rem;
-    width: 90%;
-    margin: 0 auto;
-
-}
-.subcontenedor{
+    min-height: 100vh;
+    margin: 10px;
     max-width: 600px;
+    margin: auto;
+    
 }
-
-a{
-    text-decoration: none;
-}
-
-h1, h2, h3, h4{
-   font-family: var(--fuenteHeading);
-}
-
-.flex{
+.trivia__timer{
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
-.temporizador{
-    position: fixed;
-    left: 15px;
-    top: 17px;
-    text-align: center;
-    color: rgb(24, 1, 1);
-    z-index: 999;
-    font-weight: bold;
-    font-size: 30px;
-    background-color: #e4e4ef;
-    padding: 8px;
+.trivia__timer--circle{
+    margin-top: 30px;
+    margin-bottom: 10px;
     width: 60px;
     height: 60px;
+    background-color: #e0e0e0;
     border-radius: 100%;
-}
-
-.enunciado{
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     text-align: center;
-    background-color: #e4e4ef;
-    border-radius: 10px;
-    color: rgb(22, 22, 22);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    position: relative;
+    color: #161616;
+    font-weight: 900;
+    font-size: 1.4rem;
 }
 
-.myshadow{
-    box-shadow: 2px 3px 6px #2e2e2e;
+.div__trivia{
+    width: 95%;
+    margin: auto;
 }
 
-.enunciado img{
+.pregunta{
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    margin-bottom: 10px;
+    height: 100%;
     width: 100%;
-    border-radius: 10px; 
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #2c2c2c;
+    display: block;
+   
 }
 
-.enunciado p{
-   font-size: 1.2rem;
-   font-weight: 500;
+.pregunta p{
+    font-family: 'Raleway';
+    font-weight: 800;
+    color: #161616;
 }
 
-.subcontenedor input{
-    background-color: #e4e4ef;
+.pregunta img{
+    width: 100%;
+    border-radius: 5px;
+    max-height: 280px;
+}
+
+.posibles_respuesta{
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+    width: 100%;
+    background-color: #dddca5;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #2c2c2c;
+    display: block;
+    font-family: 'Raleway';
 }
 
 .notblock{
     display: none;
 }
-
-.score{
-    width: 80%;
-    background: url(/assets/img/score.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#divLoading{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(254,254,255, .65);
-    z-index: 9999;
-    display: none;
-}
-
-#divLoading img{
-    width: 60px;
-    height: 60px;
-}
-
-/*particulas js*/
-
-#particles-js{
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    z-index: -1;
-}
-
-#contenido-pricipal{
-    position: relative;
-    z-index: 99;
-}
-
