@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
     // Scroll to top button appear
-    document.addEventListener('scroll', () => {
+    /*document.addEventListener('scroll', () => {
         const scrollToTop = document.body.querySelector('.scroll-to-top');
         if (document.documentElement.scrollTop > 100) {
             if (!scrollToTopVisible) {
@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', event => {
                 scrollToTopVisible = false;
             }
         }
-    })
+    })*/
 })
 
 function fadeOut(el) {
@@ -70,6 +70,7 @@ function fadeOut(el) {
         }
     })();
 };
+
 
 function fadeIn(el, display) {
     el.style.opacity = 0;

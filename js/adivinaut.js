@@ -15,6 +15,7 @@ const divContainerAyuda = document.querySelector('#ayuda__container');
 const ayuda = document.querySelector('#btn-ayuda');
 const divAyudaInfo = document.querySelector('#info-help');
 const loading = document.querySelector('#pantalla-loading');
+const divContenidoPrincipal = document.querySelector('#pantalla-juego');
 let arrCanciones = new Array();
 let cancionActual = 0;
 let puntaje = 0;
@@ -131,7 +132,7 @@ function siguienteCancion(){
     
     reproducir(true);
     }else{
-       finalizar();
+       finalizar(puntaje);
     }
 }
 
@@ -274,24 +275,7 @@ function cancionDesconocida(){
 
 }
 
-function finalizar(){
-    console.log('juego finalizado');
 
-    let global = document.querySelector('#music-container');
-    global.innerHTML = `<div class="card text-center">
-    <div class="card-header">
-      Featured
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">Tu puntaje fue `+ puntaje+`.</p>
-      <a href="#" class="btn btn-primary">Volver a jugar</a>
-    </div>
-    <div class="card-footer text-muted">
-      Jue
-    </div>
-  </div>`
-}
 
 
 

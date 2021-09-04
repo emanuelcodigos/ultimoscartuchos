@@ -5,7 +5,7 @@ window.onload = function(){
 }
 
 const db = firebase.firestore();
-const loading = document.querySelector('#divLoading');
+//const loading = document.querySelector('#divLoading');
 const reloj = document.querySelector('#reloj');
 const preg = document.querySelector('#pregunta');
 const resp1 = document.querySelector('#resp1');
@@ -13,10 +13,10 @@ const resp2 = document.querySelector('#resp2');
 const resp3 = document.querySelector('#resp3');
 const imgPregunta = document.querySelector('#imgPregunta');
 
-const divLoading = document.querySelector('#pantalla-loading');
+const loading = document.querySelector('#pantalla-loading');
 const btnComenzar = document.querySelector('#btn-comenzar');
 const divComoJugar = document.querySelector('#div-comoJugar');
-const divContenidoPrincipal = document.querySelector('#trivia-container');
+const divContenidoPrincipal = document.querySelector('#pantalla-juego');
 const divPosResp = document.querySelector('#div-posResp');
 const divResultado = document.querySelector('#resultado');
 
@@ -99,7 +99,7 @@ function getPreguntas(){
          });
          
           arrPrincipal = desordenar(arrPreguntas);
-          divLoading.style.display = 'none';
+          loading.style.display = 'none';
           btnComenzar.classList.add('jello');
           //principal();
 
@@ -193,7 +193,7 @@ function principal(){
         llenarCampos();
     }else{
         clearInterval(contador);
-        finalizar();
+        finalizar(puntosTotales);
     }
     
 }
@@ -228,8 +228,8 @@ function mostrarCorrecta(){
     }, 3000);
 }
 
-
- /*function finalizar(){ 
+/*
+ function finalizar(){ 
     reloj.style.display = 'none';
     
     verResultados();
@@ -269,17 +269,10 @@ function mostrarCorrecta(){
     });
 
  }
- */
+*/
 
-function finalizar(){
 
-    divContenidoPrincipal.innerHTML = '';
-    divContenidoPrincipal.classList.add('notblock');
-    divLoading.style.display = 'flex';
 
-    
-
-}
  function verResultados(puntos, totales){
     juego = document.querySelector('#pantallaJuego');
     juego.innerHTML = '';

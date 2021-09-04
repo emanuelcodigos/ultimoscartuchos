@@ -2,6 +2,7 @@
     font-family: 'Raleway', sans-serif;
 }
 
+
 body{
     background: rgb(16,19,25);
     background: linear-gradient(357deg, rgba(16,19,25,1) 0%, rgba(30,30,52,1) 27%, rgba(89,93,110,1) 100%);
@@ -70,8 +71,10 @@ body{
     width: 95%;
     max-width: 500px;
     height: 100vh;
+    font-family: 'Raleway';
     margin: auto;
     background-color: honeydew;
+    border-radius: 10px;
 }
 
 .contenido__resultado--puntuacion{
@@ -83,7 +86,11 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 0 0 30px 30px;
+    border-radius:  10px 10px 30px 30px;
+    font-weight: 900;
+}
+.contenido__resultado--puntuacion p{
+    margin: 0;
 }
 
 .contenido__resultado--puntuacion img{
@@ -91,4 +98,62 @@ body{
     margin: 10px;
     border-radius: 100%;
     width: 100px;
+}
+.txt__puntaje{
+    
+    font-size: 3rem;
+}
+
+.div__puesto-jugador{
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 2px rgb(85, 85, 85);
+    background-color: rgb(241, 241, 241);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+.rankig__jugadores--titulo{
+  margin: 1rem;
+}
+.div__puesto-jugador p{
+    margin: 0;
+    padding: 0;
+}
+
+.jugador__ranking{
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    align-items: center;
+}
+
+.jugador__ranking img{
+    width: 40px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+
+.jugador__ranking p{
+    font-size: 1rem;
+    color: rgb(27, 27, 27);
+    text-transform: capitalize;
+} 
+
+.puntaje__jugador-ranking{
+    font-size: 1rem;
+    color: rgb(27, 27, 27);
+    text-transform: capitalize;
+}
+
+.btn__nuevo-juego{
+    display: block;
+    margin: auto;
+    padding: 10px;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
 }
