@@ -72,8 +72,8 @@ btnComenzar.addEventListener('click', function(){
 });
 
 function principal(){
-    reiniciarCampos();
     imgPelicula.src = arrPrincipalPelis[peliculaActual]['portada_blur'];
+    reiniciarCampos();
     divPortadaPelicula.style.backgroundColor = arrPrincipalPelis[peliculaActual]['color_potada'];
     tiempoActual = parseInt(arrPrincipalPelis[peliculaActual]['duracion']);
     reloj.innerHTML = tiempoActual;
@@ -163,6 +163,11 @@ function botonSiguiente(){
 
 function reiniciarCampos(){
 
+    divLoading = document.querySelector('#loading-secundario');
+    //imgPelicula.style.visibility = 'hidden';
+    imgPelicula.style.display = 'none';
+    divLoading.style.display = 'flex';
+    
     divInputRespuesta.classList.remove('notblock');
     titulo.innerHTML = 'Pelicula: Desconocida';
     divInfoPelicula.innerHTML = `
@@ -174,6 +179,12 @@ function reiniciarCampos(){
     divResultadoRespuesta.innerHTML = '';
     divResultadoRespuesta.classList.remove('tada');
     divPantallaJuego.classList.remove('jello');
+
+    let timer = setTimeout(function(){
+
+        divLoading.style.display = 'none';
+        imgPelicula.style.display = 'flex';
+    }, 2000);
     
 }
 
