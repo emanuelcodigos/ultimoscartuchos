@@ -15,7 +15,7 @@ var firebaseConfig = {
   function cerrarSesion(){
     firebase.auth().signOut()
     .then(res => {
-       document.location.href = "/";
+       document.location.href = "/ultimoscartuchos";
     }).catch(err=>{
 
     });
@@ -56,6 +56,13 @@ var firebaseConfig = {
 
   function finalizar(puntaje){
 
+    if(puntaje == null){
+      puntaje = 0;
+    }
+
+    if(puntaje > 5000){
+      puntaje = 0;
+    }
     divContenidoPrincipal.innerHTML = '';
     divContenidoPrincipal.classList.add('notblock');
     loading.style.display = 'flex';
@@ -70,7 +77,7 @@ var firebaseConfig = {
         .then( resp =>{
             data = resp.data();
             puntosAcumulados = data['puntaje'] + puntaje;
-
+            
             divResultado.innerHTML = `<div class="contenido__resultado"><div class="contenido__resultado--puntuacion">
             <img src="`+data['photoURL']+`" alt="icono de usuario" width="90px">
             <p class="felicidades">Felicitaciones</p>
@@ -103,7 +110,7 @@ var firebaseConfig = {
         <div id="rankig-jugadores"></div>
         </div>`;
         rankingDeOtrosJugadores();
-        divLoading.style.display = 'none';
+        loading.style.display = 'none';
        }
 
     });

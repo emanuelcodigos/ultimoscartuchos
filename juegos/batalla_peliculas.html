@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+        rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+        rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800;900&display=swap" rel="stylesheet">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/score.css">
+    <link rel="stylesheet" href="../css/juegos.general.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/batalla_pelis.css">
+</head>
+
+<body>
+
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav" id="nav-bar">
+            <li class="sidebar-brand"><a href="#page-top">Ultimos Cartuchos</a></li>
+            <li class="sidebar-nav-item"><a href="../">inicio</a></li>
+            <li class="sidebar-nav-item"><a href="../#services">Juegos</a></li>
+            <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div id="pantalla-loading" class="loading">
+        <div class="grid__loading">
+            <img src="../assets/img/trivia-logo.png" class="animated jello" alt="ultimos cartuchos app" width="300px">
+            <img src="../assets/three-dots.svg" alt="loading">
+        </div>
+    </div>
+
+    <div id="div-comoJugar" class="div__comojugar ">
+        <br><br><br>
+        <div class="card text-center">
+            <div class="card-header text-secondary">LA BATALLA DE LAS PELICULAS</div>
+            <div class="card-body">
+                <h5 class="card-title">Como jugar</h5>
+                <p class="card-text">Vas a escuchar la reseña de una pelicula o serie, tenes que tratar de adivinar 
+                    cuál es su nombre.  
+                </p>
+                <h5 class="card-title">Puntaje</h5>
+                <div class="card card__puntaje">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Respuesta correcta<i class="fas fa-long-arrow-alt-right mg-r-l"></i>500
+                            puntos</li>
+                        <li class="list-group-item">Respuesta incorrecta<i class="fas fa-long-arrow-alt-right mg-r-l"></i>0
+                            puntos</li>
+                        <li class="list-group-item">Sin responder<i class="fas fa-long-arrow-alt-right mg-r-l"></i>0
+                            puntos</li>
+                    </ul>
+                </div>
+                <button id="btn-comenzar" class="btn btn-primary animated">COMENZAR</button>
+            </div>
+            <div class="card-footer text-muted">
+                Aprovecha bien tu tiempo
+            </div>
+        </div>
+    </div>
+
+    <section id="pantalla-juego" class="peliculas__container notblock">
+
+        <div class="trivia__timer">
+            <div class="trivia__timer--circle" id="reloj">15</div>
+        </div>
+
+        <div id="div-pantalla-juego" class="div__pelis animated">
+            <div class="contendor subcontenedor">
+    
+                <div id="portada" class="portada__peli">
+                  <img src="" id="img-pelicula">
+                </div> 
+                <div class="animated" id="resultado-respuesta"></div>
+                <h3 class="titulo__peli" id="titulo-pelicula">Pelicula: Desconocida</h3>
+                <div id="info-pelicula" class="div__info_peli">
+                   <div class="div__info_peli__dato"><i class="fas fa-film"></i><p>Genero: desconocido</p></div>
+                   <div class="div__info_peli__dato"><i class="fas fa-video"></i><p>Director: desconocido</p></div>
+                   <div class="div__info_peli__dato"><i class="far fa-calendar-alt"></i><p>Fecha de estreno: desconocida</p></div>
+                </div>
+                <div class="input__respuesta" id="div-input">
+                    <input class="form-control" id="txtPelicula" type="text" placeholder="Escribe el nombre aquí"
+                        aria-describedby="button-addon2">
+                    <button class="btn btn-dark" type="button" id="btn-aceptar">Aceptar</button>
+                </div>
+                <br>
+                <div class="div__btn-sig" id="divBtnSig"></div>
+
+            </div>
+        </div>
+
+    </section>
+    
+    <section id="resultado">
+    </section>
+
+    
+     
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+<script src="../js/generic.js"></script>
+<script src="../js/scripts.js"></script>
+<script src="../js/batalla.peliculas.js"></script>
+
+
+</html>

@@ -1,0 +1,121 @@
+body{
+    background: rgb(161, 161, 161);
+}
+.peliculas__container{
+
+    min-height: 100vh;
+    margin: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+.trivia__timer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trivia__timer--circle{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 60px;
+    height: 60px;
+    background-color: #e0e0e0;
+    border-radius: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    position: relative;
+    color: #161616;
+    font-weight: 900;
+    font-size: 1.4rem;
+    margin-bottom: -1rem;
+}
+
+.div__pelis{
+    width: 95%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    font-family: 'Raleway';
+    color: rgb(56, 56, 56);
+}
+
+.portada__peli{
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #007c82;
+    border-radius: 10px;
+}
+
+.portada__peli img{
+    max-height: 250px;
+    margin: auto;
+}
+
+.div__info_peli{
+  padding: 7px;
+  background-color: rgb(221, 221, 221);
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
+}
+
+.div__info_peli__dato{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.div__info_peli__dato p{
+    margin: 0;
+    margin-left: 10px;
+    font-weight: 400;
+}
+.titulo__peli{
+    margin: 1rem;
+    margin-top: 0.5rem;
+}
+.input__respuesta{
+    margin: 7px;
+    margin-top: 1.5rem;
+}
+
+.input__respuesta button{
+    width: 100%;
+    margin-top: 1rem;
+}
+
+@media (min-width: 678px){
+    .input__respuesta{
+        display: flex;
+    }
+    .input__respuesta button{
+        margin: auto;
+        width: auto;
+    }
+}
+
+.correcto .incorrecto{
+    font-size: 2rem;
+}
+
+.div__btn-sig{
+    margin: auto;
+    width: 90%;
+}
+.div__btn-sig button{
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+.notblock{
+    display: none;
+}

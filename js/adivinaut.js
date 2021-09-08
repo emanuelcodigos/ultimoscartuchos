@@ -39,7 +39,7 @@ function timer(){
 
        if(tiempoTranscurrido < 0){
            clearInterval(contador);
-           finalizar();
+           finalizar(puntaje);
        }
     }, 5000);
 }
