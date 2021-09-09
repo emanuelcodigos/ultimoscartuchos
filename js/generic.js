@@ -101,11 +101,11 @@ var firebaseConfig = {
 
        }else{
 
-        divResultado.innerHTML = `<br><br><br><div class="contenido__resultado"><div class="contenido__resultado--puntuacion">
+        divResultado.innerHTML = `<div class="contenido__resultado"><div class="contenido__resultado--puntuacion">
         <img src="../assets/img/user.png" alt="icono de usuario" width="90px">
         <p class="felicidades">Felicitaciones</p>
         <p>Tu puntaje fue</p>
-        <p class="txt__puntaje">`+puntosTotales+`</p>
+        <p class="txt__puntaje">`+puntaje+`</p>
         </div>
         <div id="rankig-jugadores"></div>
         </div>`;
@@ -143,12 +143,17 @@ function rankingDeOtrosJugadores(){
           </div>
           `
       });
-      divJugadoresForEach += `<button class="btn btn-primary btn__nuevo-juego">VOLVER A JUGAR</button>`;
+      divJugadoresForEach += `<button class="btn btn-primary btn__nuevo-juego" onclick="volverAJugar()">VOLVER A JUGAR</button>`;
       divJugadores.innerHTML = divJugadoresForEach; 
       
   }).catch(err =>{
      //alert('No pudimos obtener el record de otros usuarios');
      console.log(err);
   });
- 
+
+}
+
+
+function volverAJugar(){
+  location.href = location.href;
 }

@@ -68,13 +68,11 @@ body{
 }
 
 .contenido__resultado{
-    width: 95%;
     max-width: 500px;
     height: 100vh;
     font-family: 'Raleway';
     margin: auto;
     background-color: honeydew;
-    border-radius: 10px;
 }
 
 .contenido__resultado--puntuacion{
@@ -86,7 +84,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius:  10px 10px 30px 30px;
+    border-radius:  0 0 30px 30px;
     font-weight: 900;
 }
 .contenido__resultado--puntuacion p{

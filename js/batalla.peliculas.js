@@ -18,7 +18,7 @@ const divResultadoRespuesta = document.querySelector('#resultado-respuesta');
 let titulo = document.querySelector('#titulo-pelicula');
 
 const imgPelicula = document.querySelector('#img-pelicula');
-//variables
+
 let puntaje = 0;
 let reloj = document.querySelector('#reloj');
 let arrPrincipalPelis = new Array();
@@ -72,6 +72,7 @@ btnComenzar.addEventListener('click', function(){
 });
 
 function principal(){
+    if(peliculaActual <= 4){ 
     imgPelicula.src = arrPrincipalPelis[peliculaActual]['portada_blur'];
     reiniciarCampos();
     divPortadaPelicula.style.backgroundColor = arrPrincipalPelis[peliculaActual]['color_potada'];
@@ -82,6 +83,7 @@ function principal(){
     audio.src = arrPrincipalPelis[peliculaActual]['audio'];
     //divContenidoPrincipal.appendChild(audio);
 
+    
     let timer = setInterval(function(){
    
     if(tiempoActual < 0){
@@ -92,6 +94,9 @@ function principal(){
         tiempoActual--;
     } 
     },1000);
+    }else{
+        finalizar(puntaje);
+    }
 }
 
 let btnResponder = document.querySelector('#btn-aceptar');
@@ -110,6 +115,7 @@ function respuesta(){
         if(quitarAcentos(resp).toUpperCase() == arrPrincipalPelis[peliculaActual]['pelicula'].toUpperCase()
            || quitarAcentos(resp).toUpperCase() == arrPrincipalPelis[peliculaActual]['pelicula_original'].toUpperCase()){
             mostrarCorrecta(0);
+            puntaje = puntaje + 500;
         }else{
             mostrarCorrecta(1);
         }
@@ -129,6 +135,7 @@ function mostrarCorrecta(result){
     `;
 
     divPantallaJuego.classList.add('jello');
+    divResultadoRespuesta.classList.remove('correcto', 'incorrecto');
     if(result == 0){
         divResultadoRespuesta.innerHTML = 'CORRECTO';
         divResultadoRespuesta.classList.add('correcto');
