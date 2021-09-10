@@ -83,3 +83,48 @@ function fadeIn(el, display) {
         }
     })();
 };
+
+if(document.querySelector('#img-logo')){
+    const audioIntroUc = new Audio('../assets/intro.mp3');
+    //audioIntroUc.autoplay = true;
+    audioIntroUc.controls = true;
+    audioIntroUc.play();
+    
+    let logo = document.querySelector('#img-logo');
+    let i = 0;
+    let timerLogo = setTimeout(function(){
+
+        logo.classList.add('animated', 'bounceInDown');
+        
+        let timerLoop = setInterval(function(){
+            if(logo.classList.contains('bounceInDown')){
+                logo.classList.remove('bounceInDown');
+            }
+            logo.classList.remove('rubberBand');
+            setTimeout(function(){
+                logo.classList.add('rubberBand');
+            },1000);
+    
+        }, 3000);
+
+    }, 1000);
+
+    let timerBtn = setTimeout(function(){
+
+        let btns = document.querySelector('#btn-animated');
+        btns.classList.add('animated', 'jello');
+
+    }, 2500);
+
+    function pausarIntro(){
+        let btnAudio = document.querySelector('#btn-audio-intro');
+         if(audioIntroUc.paused || audioIntroUc.ended){
+            audioIntroUc.play();
+            btnAudio.innerHTML = 'Pausar musica';
+         }else{
+           audioIntroUc.pause();
+           btnAudio.innerHTML = 'Reanudar musica';
+         }
+    }
+   
+}

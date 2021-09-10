@@ -10903,7 +10903,7 @@ html {
   height: 100%;
   transition: all 0.4s ease 0s;
   transform: translateX(250px);
-  background: #1D809F;
+  background: #232225;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -11134,4 +11134,21 @@ footer.footer .social-link:hover {
   line-height: 7.5rem;
   font-size: 2.25rem;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.header__index{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__index a{
+  width: 90%;
+  max-width: 450px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  margin: 1rem;
+  margin-bottom: 0;
+
 }

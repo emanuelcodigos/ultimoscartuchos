@@ -45,7 +45,10 @@
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 2px 2px 5px #2c2c2c;
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
    
 }
 
@@ -53,6 +56,9 @@
     font-family: 'Raleway';
     font-weight: 800;
     color: #161616;
+    margin: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .pregunta img{
