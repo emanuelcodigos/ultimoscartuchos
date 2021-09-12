@@ -87,7 +87,7 @@ function fadeIn(el, display) {
 if(document.querySelector('#img-logo')){
     const audioIntroUc = new Audio('assets/intro.mp3');
     audioIntroUc.src = 'assets/intro.mp3';
-    audioIntroUc.play();
+    
     
     let logo = document.querySelector('#img-logo');
     let i = 0;
@@ -115,6 +115,7 @@ if(document.querySelector('#img-logo')){
 
     }, 2500);
 
+    audioIntroUc.play();
     function pausarIntro(){
         let btnAudio = document.querySelector('#btn-audio-intro');
          if(audioIntroUc.paused || audioIntroUc.ended){
