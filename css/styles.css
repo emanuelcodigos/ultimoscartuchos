@@ -2963,8 +2963,8 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #fff;
-  background-color: #1D809F;
-  border-color: #1D809F;
+  background-color: #706395;
+  border-color: #5a5074;
 }
 .btn-primary:hover {
   color: #fff;
@@ -7406,7 +7406,7 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  background-color: #1D809F !important;
+  background-color: #706395  !important;
 }
 
 .bg-secondary {
@@ -11165,6 +11165,7 @@ footer.footer .social-link:hover {
   min-width: 220px;
   padding: 8px;
 	margin: 5px;
+  margin-right: 1rem;
 	border-radius: 8px;
   color: #000;
   position: relative;

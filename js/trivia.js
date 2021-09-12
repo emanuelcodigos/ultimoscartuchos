@@ -228,51 +228,6 @@ function mostrarCorrecta(){
     }, 3000);
 }
 
-/*
- function finalizar(){ 
-    reloj.style.display = 'none';
-    
-    verResultados();
-    firebase.auth().onAuthStateChanged(res=>{
-        loading.style.display = 'flex';
-        if(res != null){
-           
-            console.log('tu puntajes es: '+ puntosTotales);
-
-            let user = firebase.auth().currentUser;
-            
-            db.collection('usuarios').doc(user.uid).get()
-            .then( resp =>{
-                data = resp.data();
-                puntosAcumulados = data['puntaje'] + puntosTotales;
-                verResultados(puntosTotales, puntosAcumulados);
-                recordDeOtrosUsuarios();
-                 
-                db.collection('usuarios').doc(user.uid).update({ 
-
-                    puntaje:puntosAcumulados
-                }).then(res =>{
-                   console.log("actualizado correctamente");
-                   loading.style.display = 'none';
-
-                }).catch(err =>{
-                    console.log(err);
-                    loading.style.display = 'none';
-                });
-            });
-
-        }else{
-            console.log('tu puntajes es: '+ puntosTotales);
-            console.log('Tenes que iniciar sesion para guardar el puntajes');
-        }
-      
-    });
-
- }
-*/
-
-
-
  function verResultados(puntos, totales){
     juego = document.querySelector('#pantallaJuego');
     juego.innerHTML = '';
