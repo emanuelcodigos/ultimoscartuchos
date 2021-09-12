@@ -1,4 +1,4 @@
-
+const db = firebase.firestore();
 btnAceptar = document.querySelector('#btn-aceptar');
 
 btnAceptar.addEventListener('click', function(){
@@ -19,7 +19,7 @@ btnAceptar.addEventListener('click', function(){
 
 function guardarDatos(pelicula, peliOrg, direc, genero, fecha, modo, colorPort,duracion){
 
-    const db = firebase.firestore();
+    
     let id = '';
     
     db.collection('batalla_peliculas').add({
@@ -100,7 +100,50 @@ function guardarDatos(pelicula, peliOrg, direc, genero, fecha, modo, colorPort,d
 
 }
 
-function culi(){
-    let audio = document.querySelector('#srcPeli');
-    console.log(audio.files);
-}
+
+let btnTrivia = document.querySelector('#btn-aceptarTrivia');
+
+btnTrivia.addEventListener('click', function(){
+    
+    let pregunta = document.querySelector('#txtTriviaPregunta').value;
+    let correcta = document.querySelector('#txtTriviaCorrecta').value;
+    let falsa1 = document.querySelector('#txtTriviaFalsa1').value;
+    let falsa2 = document.querySelector('#txtTriviaFalsa2').value;
+    let imgTrivia = document.querySelector('#fileTriviaImg');
+
+    
+    let id = '';
+
+    db.collection('trivia').add({
+      pregunta: pregunta,
+      correcta: correcta,
+      falsa1: falsa1,
+      falsa2: falsa2
+    }).then(resp => {
+        console.log('datos guardados');
+        id = resp.id;
+        if(imgTrivia.files != null){
+
+        let ref = firebase.storage().ref("trivia/"+ imgTrivia.files[0].name);
+        let imagenPortada = imgTrivia.files[0];
+
+        let refImagen = ref.put(imagenPortada);
+
+        refImagen.on("state_changed", ()=>{},(err)=>{alert(err)},()=>{
+
+            refImagen.snapshot.ref.getDownloadURL().then(url=>{
+
+                db.collection("trivia").doc(id).update({
+                     imagen: url
+                }).then(resp =>{
+                    console.log('#archivo subido correctamente');
+                });
+            });     
+        });
+       }
+    });
+
+
+    
+
+});

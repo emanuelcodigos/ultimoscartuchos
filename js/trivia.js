@@ -70,7 +70,7 @@ function desordenar(array) {
       array[randomIndex] = temporaryValue;
     }
   
-    array = array.slice(0,5);
+    array = array.slice(0,10);
     return array;
   }
 
@@ -90,8 +90,8 @@ function getPreguntas(){
             arrActual.push(arrData['correcta']);
             arrActual.push(arrData['falsa1']);
             arrActual.push(arrData['falsa2']);
-            if(arrData['img']){
-                arrActual.push(arrData['img']);
+            if(arrData['imagen']){
+                arrActual.push(arrData['imagen']);
             }
 
             arrPreguntas.push(arrActual);
@@ -183,13 +183,13 @@ function principal(){
             preguntaNumeroActual++;
             mostrarCorrecta();
         }
-        if(preguntaNumeroActual >= 5){
+        if(preguntaNumeroActual >= 10){
             clearInterval(contador);
         }
 
     }, 1000);
 
-    if(preguntaNumeroActual < 5){
+    if(preguntaNumeroActual < 10){
         llenarCampos();
     }else{
         clearInterval(contador);

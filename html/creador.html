@@ -40,7 +40,7 @@
         </ul>
     </nav>
 
-    <section style="margin: 20px;">
+    <section style="margin: 20px; background-color: darkcyan; padding: 10px;">
      <h2>Batalla de las peliculas</h2>
 
      <input type="text" id="txtPeli" placeholder="nombre pelicula">
@@ -69,18 +69,20 @@
 
     </section>
 
-    <section id="">
+    <section style="margin: 20px; background-color: darkcyan; padding: 10px;">
         <h3>Adivina Adivina ut</h3>
+        <input type="text" placeholder="pregunta" id="txtTriviaPregunta">
+        <input type="text" placeholder="correcta" id="txtTriviaCorrecta">
+        <input type="text" placeholder="falsa 1" id="txtTriviaFalsa1">
+        <input type="text" placeholder="falsa 2" id="txtTriviaFalsa2">
+        <p>Imagen</p>
+        <input type="file" id="fileTriviaImg">
+        <br><br>
+        <button style="width: 100%; background-color: cornflowerblue; padding: 5px;" id="btn-aceptarTrivia">Aceptar</button>
 
     </section>
 
-    
-
-   
-
-    
-     
-
+    <br><br><br><br>
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>

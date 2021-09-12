@@ -11152,3 +11152,31 @@ footer.footer .social-link:hover {
   margin-bottom: 0;
 
 }
+
+.cardSlider{
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+    overflow-x: auto;
+}
+
+.cardInfo{
+    
+  min-width: 220px;
+  padding: 8px;
+	margin: 5px;
+	border-radius: 8px;
+  color: #000;
+  position: relative;
+  min-height: 330px;
+}
+.cardInfo a{
+  width: 90%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.5rem;
+  margin: auto;
+  margin-top: 2rem;
+  
+}

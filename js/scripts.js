@@ -85,10 +85,10 @@ function fadeIn(el, display) {
 };
 
 if(document.querySelector('#img-logo')){
-    const audioIntroUc = new Audio('../assets/intro.mp3');
-    //audioIntroUc.autoplay = true;
-    audioIntroUc.controls = true;
-    audioIntroUc.play();
+    const audioIntroUc = new Audio();
+    //audioIntroUc.src = '../assets/intro.mp3';
+    //audioIntroUc.controls = true;
+    //audioIntroUc.play();
     
     let logo = document.querySelector('#img-logo');
     let i = 0;
@@ -96,7 +96,7 @@ if(document.querySelector('#img-logo')){
 
         logo.classList.add('animated', 'bounceInDown');
         
-        let timerLoop = setInterval(function(){
+        /*let timerLoop = setInterval(function(){
             if(logo.classList.contains('bounceInDown')){
                 logo.classList.remove('bounceInDown');
             }
@@ -105,7 +105,7 @@ if(document.querySelector('#img-logo')){
                 logo.classList.add('rubberBand');
             },1000);
     
-        }, 3000);
+        }, 3000);*/
 
     }, 1000);
 
