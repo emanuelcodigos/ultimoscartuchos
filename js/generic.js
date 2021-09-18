@@ -27,7 +27,6 @@ var firebaseConfig = {
 
         if(res != null){
             
-          
           let child = document.createElement('li');
           child.setAttribute('class', 'sidebar-nav-item');
 

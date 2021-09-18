@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Ultimos Cartuchos App</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Simple line icons-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800;900&display=swap" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="../css/animate.css">
+        <link rel="stylesheet" href="../css/twittor.css">
+    </head>
+    
+    <div class="loading" id="loadingNuevo">
+      <img src="../assets/three-dots.svg" alt="loading">
+    </div>
+    <body id="page-top">
+        <!-- Navigation-->
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav" id="nav-bar">
+                <li class="sidebar-brand"><a href="#page-top">Ultimos Cartuchos</a></li>
+                <li class="sidebar-nav-item"><a href="#page-top">inicio</a></li>
+                <li class="sidebar-nav-item"><a href="#services">Juegos</a></li>
+                <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a></li>
+               
+            </ul>
+        </nav>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">CREAR INVITADO</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form id="formNuevoInvitado">
+            <label for="nombre">Nombre</label>
+            <input class="form-control" type="text" name="nombre" id="txt-nombre">
+            <br>
+            
+            <label for="descripcion">Descripcion</label>
+            <textarea name="descripcion" class="form-control" id="txt-descripcion" style="height: 200px"></textarea>
+
+          </form>
+         
+          <div id="faltan-datos"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" id="btn-nuevoInv">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+        <div type="button" class="boton__escribir" data-bs-toggle="modal" data-bs-target="#exampleModal" id="crearPersonaje">
+          <i class="fas fa-pen-alt"></i>
+        </div>
+      
+        <section style="height: 100vh;font-family: 'Raleway';">
+            <div class="header">
+            <br><br><br>
+             <h2>ME GUSTARIA QUE VICKY</h2>
+
+            <div class="div__botones">
+              <div class="botones">
+                <div id="btn-recientes" class="boton__traer" onclick="mostrarSegun(0)">Mas recientes</div>
+                <div id="btn-masVotos" class="boton__traer" onclick="mostrarSegun(1)">Mas votados</div>
+              </div>
+            </div>
+            </div> 
+
+            <section id="elemetos" class="publicacion"></section>
+            <br>
+            <div style="margin: auto; display: flex; justify-content: center;">
+              <button class="btn btn-secondary" onclick="cargarMas()">Cargar mas</button>
+            </div>
+            <br><br>
+
+        
+        </section>
+
+
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../js/generic.js"></script>
+        <script src="../js/scripts.js"></script>
+        <script src="../js/invitados.js"></script>
+        
+    </body>
+</html>

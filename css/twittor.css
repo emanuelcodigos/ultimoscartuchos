@@ -1,0 +1,116 @@
+.loading{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 9999;
+    display: none;
+}
+
+.loading img{
+    width: 70px;
+    height: 70px;
+}
+
+.boton__escribir{
+    width: 60px; height: 60px; right: 10px; bottom: 20px;color: #ffffff;
+    border-radius: 100%; display: flex; justify-content: center;
+    flex-direction: column; align-items: center; position: fixed; 
+    background-color: #72649a; text-align: center; font-size: 2rem;
+}
+
+.header{
+    background-color: #72649a; 
+    text-align: center;
+    color: #ffffff;
+}
+.header .div__botones{
+    margin-bottom: 2rem; 
+    padding: 5px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.div__botones .botones{
+    margin: auto; 
+    width: 90%; 
+    display: flex; 
+    justify-content: center;
+    background-color: #635883; 
+    border-radius: 10px; 
+    padding: 5px;
+}
+
+.botones .boton__traer{
+    width: 50%; 
+    border-radius: 10px;
+}
+.seleccionado{
+    background-color: #72649a;
+}
+
+.campos__incompletos{
+    text-align: center;
+    background-color: #ce2525;
+    padding: 5px;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+.publicacion{
+    width: 95%;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+
+}
+
+.publicacion .nombre{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3c3c3c;
+}
+
+.publicacion .creador{
+    text-align: center;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    color: rgb(153 153 153);
+}
+
+.publicacion .div__botones{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: auto;
+}
+
+.div__botones .boton{
+    padding: 5px;
+    font-size: 1.5rem;
+    color: rgb(76 76 76);
+}
+
+.mr-5{
+    margin-right: 5px;
+}
+
+.separador{
+    height: 1px;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgb(153 153 153);
+}
+
+.publicacion .like{
+    color: green !important;
+}
+.publicacion .dislike{
+    color: red !important;
+}

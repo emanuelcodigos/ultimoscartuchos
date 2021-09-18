@@ -16,13 +16,14 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../css/registro.css">
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav" id="nav-bar">
-                <li class="sidebar-brand"><a href="/index.html">Ultimos Cartuchos</a></li>
+                <li class="sidebar-brand"><a href="../index.html">Ultimos Cartuchos</a></li>
                 <li class="sidebar-nav-item"><a href="../index.html">inicio</a></li>
                 <li class="sidebar-nav-item"><a href="../index.html/#services">Juegos</a></li>
                 <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a></li>
@@ -31,86 +32,69 @@
         </nav>
         
         <!-- Login-->
-        <section class="content-section bg-primary text-white text-center" id="login">
-            <div class="container px-4 px-lg-5 mb-5" style="max-width: 400px;">
+        <section class="content-section bg-primary text-white text-center vh100">
+            <div  id="login" class="container px-4 px-lg-5 mb-3 contenido__principal">
+                <br>
                 <div class="content-section-heading">
                     <h3 class="text-secondary mb-0">Ultimos cartuchos App</h3>
                     <h2 class="mb-5">Iniciar Sesion</h2>
  
                 </div>
 
-                <div style="width: 100%;">
-                    <input style="background-color: #ffffff; margin: 5px; padding: 10px; width: 100%;" 
-                    type="email" name="email" id="emailLogIn" placeholder="Email">
-                    <input style="background-color: #ffffff; margin: 5px; padding: 10px; width: 100%;" 
-                    type="password" name="email" id="passwordLogin" placeholder="Contraseña">
-                    <button style="width: 100%;" class="btn btn-dark" id="btnIngresar">ingresar</button>
+                <div class="div__login">
+                    <input class="form-control" type="email" name="email" id="emailLogIn" placeholder="Email">
+                    <input class="form-control" type="password" name="email" id="passwordLogin" placeholder="Contraseña">
+                    <button class="btn btn-dark" id="btnIngresar">ingresar</button>
                 </div>
-                <div style="display: flex; flex-direction: row; align-items: center; margin-top: 15px;">
-                    <div style="border-bottom: solid 2px #1a1a1a; width: 33.3%;"></div>
-                    <div style="width: 33.3%; margin: 5px;"><p class="text-faded">O ingresa con</p></div>
-                    <div style="border-bottom: solid 2px #1a1a1a; width: 33.3%;"></div>
-                </div>
-
-                <div style="display: flex; justify-content: space-around;">
-
-                    <div id="loginGoogle" style="background-color: #ffffff; padding-left: 20px; padding-right: 20px; border-radius: 10px; display: flex; align-items: center;">
-                    <img style="border-radius: 100%;" src="../assets/img/icon_google.png" alt="entrar con google" width="40" height="40">
-                    <p style="margin: 0; margin-left: 10px; text-align: center; font-weight: bold; color: rgb(26, 26, 26);">Google</p>
-                    </div>
-                   
-                    <div style="background-color: #ffffff; padding-left: 20px; padding-right: 20px; border-radius: 10px; display: flex; align-items: center;">
-                        <img style="border-radius: 100%;" src="../assets/img/icon_google.png" alt="entrar con google" width="40" height="40">
-                        <p style="margin: 0; margin-left: 10px; text-align: center; font-weight: bold; color: rgb(26, 26, 26);">Facebook</p>
-                    </div>
-
-                </div>
+                
             </div>
-            <div style="display: flex; justify-content: center;" class="text-faded" id="registraseAqui">
-                <p style="bottom: 0;">No tenes cuenta</p>
-                <p style="font-weight: bold; bottom: 0; margin-left: 5px;">Registrate aquí</p>
-            </div>
-        </section>
-        <!-- Sign Up-->
-        <section class="content-section bg-primary text-white text-center" id="signUp" style="display: none;">
-            <div class="container px-4 px-lg-5 mb-5" style="max-width: 400px;">
+
+            <div id="signUp" style="display: none;" class="container px-4 px-lg-5 mb-3 contenido__principal">
+                <br>
                 <div class="content-section-heading">
                     <h3 class="text-secondary mb-0">Ultimos cartuchos App</h3>
                     <h2 class="mb-5">Registrarme</h2>
  
                 </div>
 
-                <div style="width: 100%;">
-                    <input style="background-color: #ffffff; margin: 5px; padding: 10px; width: 100%;" 
-                    type="email" id="emailSignUp" placeholder="Email">
-                    <input style="background-color: #ffffff; margin: 5px; padding: 10px; width: 100%;" 
-                    type="password"  id="passwordSignUp" placeholder="Contraseña">
-                    <input style="background-color: #ffffff; margin: 5px; padding: 10px; width: 100%;" 
-                    type="password" id="passwordConfirmSignUp" placeholder="Confirmar contraseña">
-                    <button style="width: 100%;" class="btn btn-dark" id="btnRegistrame">Confirmar</button>
-                </div>
-                <div style="display: flex; flex-direction: row; align-items: center; margin-top: 15px;">
-                    <div style="border-bottom: solid 2px #1a1a1a; width: 33.3%;"></div>
-                    <div style="width: 33.3%; margin: 5px;"><p class="text-faded">O registrate con</p></div>
-                    <div style="border-bottom: solid 2px #1a1a1a; width: 33.3%;"></div>
-                </div>
-
-                <div style="display: flex; justify-content: space-around;">
-
-                    <div style="background-color: #ffffff; padding-left: 20px; padding-right: 20px; border-radius: 10px; display: flex; align-items: center;">
-                    <img style="border-radius: 100%;" src="../assets/img/icon_google.png" alt="entrar con google" width="40" height="40">
-                    <p style="margin: 0; margin-left: 10px; text-align: center; font-weight: bold; color: rgb(26, 26, 26);">Google</p>
-                    </div>
-                   
-                    <div style="background-color: #ffffff; padding-left: 20px; padding-right: 20px; border-radius: 10px; display: flex; align-items: center;">
-                        <img style="border-radius: 100%;" src="../assets/img/icon_google.png" alt="entrar con google" width="40" height="40">
-                        <p style="margin: 0; margin-left: 10px; text-align: center; font-weight: bold; color: rgb(26, 26, 26);">Facebook</p>
-                    </div>
+                <div class="div__login">
+                    <input class="form-control" type="email" id="emailSignUp" placeholder="Email">
+                    <input class="form-control" type="text" id="nickSignUp" placeholder="Nick Name">
+                    <input class="form-control" type="password"  id="passwordSignUp" placeholder="Contraseña">
+                    <input class="form-control" type="password" id="passwordConfirmSignUp" placeholder="Confirmar contraseña">
+                    <button class="btn btn-dark" id="btnRegistrame">Confirmar</button>
                 </div>
             </div>
+
+            <div style="margin: auto; width: 90%; max-width: 400px;">
+                <div class="ingreso__con">
+                    <div class="line"></div>
+                    <div class="texto"><p class="text-faded">O ingresa con</p></div>
+                    <div class="line"></div>
+                </div>
+                <div class="div__modo-ingreso">
+
+                    <div id="loginGoogle" class="modo-ingreso">
+                    <img  src="../assets/img/icon_google.png" alt="entrar con google" width="40px" height="40px">
+                    <p >Google</p>
+                    </div>
+                   
+                    <div class="modo-ingreso face">
+                        <img src="../assets/img/icon_facebook.png" alt="entrar con google" width="30px" height="30px">
+                        <p>Facebook</p>
+                    </div>
+    
+                </div>
+
+                <div class="div__registrate-aqui" id="registraseAqui">
+                    <p>No tenes cuenta</p>
+                    <p class="text-bold">Registrate aquí</p>
+                </div>
+            </div>
+            
+            
         </section>
-
-
+       
          <!-- Footer-->
          <footer class="footer text-center">
             <div class="container px-4 px-lg-5">

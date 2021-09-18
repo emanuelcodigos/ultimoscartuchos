@@ -1,0 +1,55 @@
+.vh100{
+  height: 100vh;
+}
+.contenido__principal{
+    margin: auto;
+    max-width: 400px;
+}
+.div__login{
+    width: 100%;
+}
+
+.div__login input{
+    background-color: #ffffff; margin-bottom: 10px; padding: 10px; width: 100%;
+}
+.div__login button{
+    width: 100%;
+}
+
+.ingreso__con{
+    display: flex; flex-direction: row; align-items: center; margin-top: 15px;
+}
+
+.ingreso__con .line{
+    border-bottom: solid 2px #1a1a1a; width: 33.3%;
+}
+
+.ingreso__con .texto{
+    width: 33.3%; margin: 5px;
+}
+
+.div__modo-ingreso{
+    display: flex; justify-content: space-around; margin-bottom: 1.5rem;
+}
+
+.modo-ingreso{
+    background-color: #ffffff; padding-left: 20px; color: rgb(26, 26, 26);
+    padding-right: 20px; border-radius: 10px; display: flex; align-items: center;
+}
+
+.face{
+    background-color: #3b5998;
+    color: #ffffff;
+}
+
+.modo-ingreso p{
+    margin: 0; margin-left: 10px; text-align: center; font-weight: bold;
+}
+
+.div__registrate-aqui{
+    display: flex; justify-content: center;
+}
+
+.div__registrate-aqui .text-bold{
+    font-weight: bold; bottom: 0; margin-left: 5px;
+}
