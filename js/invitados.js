@@ -6,26 +6,34 @@ window.onload = function () {
 
 const db = firebase.firestore();
 const sectionInvitados = document.querySelector('#elemetos');
+let loading = document.querySelector('#loadingNuevo');
+let btnCargarMasPublicaciones = document.querySelector('#cargarMas');
 let numeroPubliActual = 0;
 let likesPubliActual = 0;
 let modoRecientes = false;
 let currentUserId = '';
 
 function getInfoPublicaciones() {
+    
     db.collection('invitados').doc('nroPublicacionesInvitados').get()
         .then(resp => {
             let data = resp.data();
             numeroPubliActual = data['actual'] + 1;
             likesPubliActual = data['mayor_likes'] + 1;
             mostrarSegun(0);
+            
+            btnCargarMasPublicaciones.classList.remove('notblock');
+            
+            
         }).catch(err => {
             console.log(err);
+            
         })
 }
 
 function getInvitados() {
-
-    db.collection('invitados').where('nro_publicacion', '<', numeroPubliActual).orderBy('nro_publicacion', 'desc').limit(3).get()
+    loading.style.display = 'flex';
+    db.collection('invitados').where('nro_publicacion', '<', numeroPubliActual).orderBy('nro_publicacion', 'desc').limit(10).get()
         .then(resp => {
 
             firebase.auth().onAuthStateChanged(user => {
@@ -41,15 +49,18 @@ function getInvitados() {
                 }
             });
             
+            loading.style.display = 'none';
 
         }).catch(err => {
             console.log(err);
+            loading.style.display = 'flex';
         });
 
 }
 
 function getInvitadosPorLikes() {
-    db.collection('invitados').where('likes', '<', likesPubliActual).orderBy('likes', 'desc').limit(3).get()
+    loading.style.display = 'flex';
+    db.collection('invitados').where('likes', '<', likesPubliActual).orderBy('likes', 'desc').limit(10).get()
         .then(resp => {
 
             firebase.auth().onAuthStateChanged(user => {
@@ -64,9 +75,11 @@ function getInvitadosPorLikes() {
                     });
                 }
             });
+            loading.style.display = 'flex';
 
         }).catch(err => {
             console.log(err);
+            loading.style.display = 'flex';
         });
 }
 
@@ -116,7 +129,7 @@ function crearElementoInvitado(element, id, like) {
 
             let classLike = '';
             if(like === 1){
-                classLike = 'style="color:#468448;"';
+                classLike = 'style="color:#368c34;"';
             }
             
             let div = document.createElement('div');
@@ -141,7 +154,7 @@ const btnCrear = document.querySelector('#btn-nuevoInv');
 
 btnCrear.addEventListener('click', function () {
 
-    let loading = document.querySelector('#loadingNuevo');
+    
     loading.style.display = 'flex';
     firebase.auth().onAuthStateChanged(res => {
         if (res != null) {
@@ -271,6 +284,10 @@ function mostrarSegun(opcion) {
     }
 }
 
+btnCargarMasPublicaciones.addEventListener('click', function(){
+    cargarMas();
+})
+
 function cargarMas() {
     if (modoRecientes) {
         getInvitados();
@@ -279,15 +296,6 @@ function cargarMas() {
     }
 }
 
-
-function setColorLike(id){
-   let btnSelect = document.querySelector('btn_'+id);
-   if(btnSelect.style.color == 'green'){
-       btnSelect.style.color = '#000';
-   } else{
-    btnSelect.style.color = 'green';
-   }
-}
 
 function reaccionarLike(id){
 
@@ -345,6 +353,7 @@ function reaccionarLike(id){
 
                 }else{
                     data[id] = 1;
+                    btnSelect.style.color = '#368c34';
                     db.collection('likes_por_usuario').doc('user_'+currentUserId).set(data)
                      .then(resp1=>{
                       db.collection('invitados').doc(id).get()

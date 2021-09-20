@@ -119,3 +119,7 @@
 .publicacion .dislike{
     color: red !important;
 }
+
+.notblock{
+    display: none;
+}
