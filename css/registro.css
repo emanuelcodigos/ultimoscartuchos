@@ -53,3 +53,7 @@
 .div__registrate-aqui .text-bold{
     font-weight: bold; bottom: 0; margin-left: 5px;
 }
+
+.notblock{
+    display: none;
+}

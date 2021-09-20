@@ -3,6 +3,30 @@ window.onload = function(){
     consultarAutenticacion();
 }
 
+const divLogin = document.querySelector('#login');
+const divSignUp = document.querySelector('#signUp');
+const divRigisIngresar = document.querySelector('#registraseAqui');
+const txtOpcionesIngreso = document.querySelector('#txtOpcionesIngreso');
+let ingresar = true;
+
+divRigisIngresar.addEventListener('click', function(){
+    if(ingresar === true){
+      divLogin.classList.add('notblock');
+      divSignUp.classList.remove('notblock');
+      divRigisIngresar.innerHTML = `<p>Tengo una cuenta</p><p class="text-bold">inciar sesion</p>`;
+      txtOpcionesIngreso.innerHTML = 'o registrate con';
+      ingresar = false;
+    }else{
+        divSignUp.classList.add('notblock');
+        divLogin.classList.remove('notblock');
+        divRigisIngresar.innerHTML = `<p>No tenes cuenta?</p><p class="text-bold">Registrate aquí</p>`;
+        txtOpcionesIngreso.innerHTML = 'o ingresa con';
+        ingresar = true;
+
+    }
+
+});
+
 if(document.querySelector('#btnRegistrame')){
     let btnSignUp = document.querySelector('#btnRegistrame');
     btnSignUp.addEventListener('click', e=> {
@@ -26,14 +50,6 @@ if(document.querySelector('#loginGoogle')){
     });
   }
 
-if(document.querySelector('#registraseAqui')){
-    let registrar = document.querySelector('#registraseAqui');
-    registrar.addEventListener('click', function(){
-
-        document.querySelector('#signUp').style.display = 'block'; 
-        document.querySelector('#login').style.display = 'none'; 
-    });
-}
 
 
 function signUpWithEmail(){
@@ -41,8 +57,9 @@ function signUpWithEmail(){
     let email = document.querySelector('#emailSignUp').value;
     let password = document.querySelector('#passwordSignUp').value;
     let passwordConfirm = document.querySelector('#passwordConfirmSignUp').value;
+    let nickName = document.querySelector('#nickSignUp').value;
 
-    if(email != '' && password != '' && passwordConfirm != ''){
+    if(email != '' && password != '' && passwordConfirm != '' && nickName != ''){
 
         if(password === passwordConfirm){
 
@@ -52,7 +69,7 @@ function signUpWithEmail(){
             //document.location.href = '/';
             return firebase.firestore().collection("usuarios").doc(user.uid).set({
  
-                nombre: "",
+                nombre: nickName,
                 apellido: "",
                 email: email,
                 photoURL:user.photoURL,
@@ -61,9 +78,13 @@ function signUpWithEmail(){
                 puntaje: 0,
 
             }).then(respuesta =>{
-
-              document.location.href = "/ultimoscartuchos";
-                
+            
+              firebase.firestore().collection("likes_por_usuario").doc('user_'+user.uid).set({
+               publcacion0: 0
+              })
+              .then(respLike =>{
+                document.location.href = "/ultimoscartuchos";
+              });
             }).catch(error=>{
                alert('Ocurrio un error al registrase');
             });
@@ -129,7 +150,12 @@ function loginWithGoogle(){
 
             }).then(respuesta =>{
 
-              document.location.href = "/ultimoscartuchos";
+                firebase.firestore().collection("likes_por_usuario").doc('user_'+user.uid).set({
+                    publcacion0: 0
+                   })
+                   .then(respLike =>{
+                     document.location.href = "/ultimoscartuchos";
+                   });
                 
             }).catch(error=>{
                alert('Ocurrio un error al registrase');

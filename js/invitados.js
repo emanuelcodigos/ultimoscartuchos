@@ -77,19 +77,21 @@ function crearDivInvitado(element, id, user) {
         
         db.collection("likes_por_usuario").doc("user_" + currentUserId).get()
             .then(resp => {
+                if(resp.exists){
                 let data = resp.data();
                 if (data[id] != null) {
                     if (data[id] === 1) {
                         crearElementoInvitado(element, id, 1);
-                    } else if (data[id] === 0) {
-                        crearElementoInvitado(element, id, 0);
-                    } else {
+                    } else{ 
                         crearElementoInvitado(element, id);
                     }
 
                 } else {
                     crearElementoInvitado(element, id);
                 }
+            }else{
+                alert('no pudimos cargar las publicaciones');
+            }
             });
 
     } else if (user === 0) {
@@ -113,23 +115,21 @@ function crearElementoInvitado(element, id, like) {
             likesPubliActual = element['likes'];
 
             let classLike = '';
-            let classDislike = '';
-            if (like == 0) {
-                classDislike = 'dislike';
-            } else if (like == 1) {
-                classLike = 'like';
+            if(like === 1){
+                classLike = 'style="color:#468448;"';
             }
+            
             let div = document.createElement('div');
             div.innerHTML = `<div>
             <p class="nombre">` + element['nombre'] + `</p>
             <p>` + element['descripcion'] + `</p>
             <p class="creador">Creado por `+ creador + `</p>
             <div class="div__botones">
-            <div class="boton `+ classLike + `" id="like_`+id+`" onclick="reaccionar(1,'`+id+`')">
+            <div id="btn_`+id+`" class="boton" `+classLike+` onclick="reaccionarLike('`+id+`')">
             <p style="margin: 0;"><i class="far fa-thumbs-up mr-5"></i>`+ element['likes'] + `</p>
             </div>
-            <div class="boton ` + classDislike + `" id="dislike_`+id+`" onclick="reaccionar(0,'`+id+`')">
-            <p style="margin: 0;"><i class="far fa-thumbs-down mr-5"></i>`+ element['dislikes'] + `</p></div>
+            <div class="boton"><p style="margin: 0;"><i class="fas fa-share-square"></i></p></div>
+            
             </div>
             <div class="separador"></div>`;
             sectionInvitados.appendChild(div);
@@ -280,92 +280,98 @@ function cargarMas() {
 }
 
 
+function setColorLike(id){
+   let btnSelect = document.querySelector('btn_'+id);
+   if(btnSelect.style.color == 'green'){
+       btnSelect.style.color = '#000';
+   } else{
+    btnSelect.style.color = 'green';
+   }
+}
 
+function reaccionarLike(id){
 
-function reaccionar(op, id) {
+    if(currentUserId != ''){
+        let btnSelect = document.querySelector('#btn_'+id);
+        btnSelect.style.display = 'none'; 
+        db.collection('likes_por_usuario').doc('user_' + currentUserId).get()
+        .then(resp =>{
 
-    if (op === 1 /*like*/) {
-        
-        if (currentUserId != '') {
-            db.collection('likes_por_usuario').doc('user_' + currentUserId).get()
-                .then(resp => {
+            if(resp.exists){
+                let data = resp.data();
+                
+                if(data[id] != null){
+                    if(data[id] === 1){
+                     btnSelect.style.color = '#4c4c4c';
+                     data[id] = 0;
+                     db.collection('likes_por_usuario').doc('user_'+currentUserId).set(data)
+                     .then(resp1=>{
+                      db.collection('invitados').doc(id).get()
+                      .then(public =>{
+                        let likesActual = public.data();
+                        likesActual = likesActual['likes'] - 1;
+                        if(likesActual >= 0){
 
-                    if (resp.exists) {
-                        let data = resp.data();
-                        if (data[id] != null) {
-                            console.log(data[id]);
-                            if (data[id] === 1) {
-                                data[id] = 2
-                                db.collection('likes_por_usuario').doc('user_' + currentUserId).update(data);
-                                
-
-                            } else if (data[id] === 0) {
-                                data[id] = 1
-                                db.collection('likes_por_usuario').doc('user_' + currentUserId).update(data);
-
-                            } else if (data[id] === 2) {
-                                data[id] = 1;
-                                db.collection('likes_por_usuario').doc('user_' + currentUserId).update(data);
-                            }
-
-                        } else {
-                            data[id] = 1;
-                            db.collection('likes_por_usuario').doc('user_' + currentUserId).update(data);
-
+                        db.collection('invitados').doc(id).update({
+                            likes: likesActual
+                            });
+                        }else{
+                            likesActual += 1; 
                         }
+                        btnSelect.innerHTML = `<p style="margin: 0;"><i class="far fa-thumbs-up mr-5"></i>`+likesActual+`</p>`;
+                        btnSelect.style.display = 'flex';
+                      });
 
+                     });
 
-                    } else {
-                        console.log('el usuario no tiene likes');
+                    }else{
+                     btnSelect.style.color = '#368c34';
+                     data[id] = 1;
+                     db.collection('likes_por_usuario').doc('user_'+currentUserId).set(data)
+                     .then(resp1=>{
+                      db.collection('invitados').doc(id).get()
+                      .then(public =>{
+                        let likesActual = public.data();
+                        likesActual = likesActual['likes'] + 1;
+                        db.collection('invitados').doc(id).update({
+                          likes: likesActual
+                        });
+                        btnSelect.innerHTML = `<p style="margin: 0;"><i class="far fa-thumbs-up mr-5"></i>`+likesActual+`</p>`;
+                        btnSelect.style.display = 'flex';
+                      });
+
+                     });
                     }
-                });
 
-        } else {
-            console.log('tines que inicar sesion');
-        }
+                }else{
+                    data[id] = 1;
+                    db.collection('likes_por_usuario').doc('user_'+currentUserId).set(data)
+                     .then(resp1=>{
+                      db.collection('invitados').doc(id).get()
+                      .then(public =>{
+                        let likesActual = public.data();
+                        likesActual = likesActual['likes'] + 1;
+                        
+                        db.collection('invitados').doc(id).update({
+                          likes: likesActual
+                        });
+                        btnSelect.innerHTML = `<p style="margin: 0;"><i class="far fa-thumbs-up mr-5"></i>`+likesActual+`</p>`
+                        btnSelect.style.display = 'flex';
+                      });
 
-    } else if (op === 0) {
+                     });
+                }
 
-        if (currentUserId != '') {
-            db.collection('likes_por_usuario').doc('user_' + currentUserId).get()
-                .then(resp => {
+            }else{
+                alert('No hay informacion sobre tu cuenta');
+            }
 
-                    if (resp.exists) {
-                        let data = resp.data();
-                        if (data[id] != null) {
-                            if (data[id] === 0) {
-                                data[id] = 2;
-                                db.collection('likes_por_usuario').doc('user_' + currentUserId).update(data);
+        }).catch(err =>{
+            console.log(err);
+        })
 
-                            } else if (data[id] === 1) {
-                                data[id] = 0;
-                                db.collection('likes_por_usuario').doc('user_' + currentUserId).update(data);
-
-                            } else if (data[id] === 2) {
-                                data[id] = 0;
-                                db.collection('likes_por_usuario').doc('user_' + currentUserId).update(data);
-                            }
-
-
-                        } else {
-                            data[id] = 0;
-                            db.collection('likes_por_usuario').doc('user_' + currentUserId).update(data);
-                        }
-
-
-                    } else {
-                        console.log('el usuario no tiene likes');
-                    }
-                });
-
-        } else {
-            console.log('tines que inicar sesion');
-        }
-
+    }else{
+        alert('Debes inicar sesion');
     }
-
-
-
-
 
 }
