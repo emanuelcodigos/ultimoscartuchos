@@ -1,26 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donde esta el Kinga</title>
+    <title>Dónde está el Kinga</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Simple line icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+        rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+        rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800;900&display=swap" rel="stylesheet">
+    <!-- Core theme CSS (includes Bootstrap)-->
+   
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/score.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/trivia.css">
+    
 </head>
-<body>
-    <br><br>
-    <section style="width: 800px; margin: auto; display: flex; justify-content: center; flex-direction: column;">
-    
-    <div style="margin: auto;margin-left: auto;margin-right: auto;
-        display: flex;overflow-x: auto; background-color: rgb(15, 15, 15);">
-     
-        <img src="../assets/img/kinga1.jpg" alt="" style="margin-bottom: 20px; width: 750px; height: 375px;">
+
+<body style="background-color: #158fd2;">
+
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav" id="nav-bar">
+            <li class="sidebar-brand"><a href="#page-top">Ultimos Cartuchos</a></li>
+            <li class="sidebar-nav-item"><a href="../">inicio</a></li>
+            <li class="sidebar-nav-item"><a href="../#services">Juegos</a></li>
+            <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a>
+            </li>
+
+        </ul>
+    </nav>
+    <br><br><br>
+    <section style="margin: auto;">
+
+        <div style="background-color: rgb(200, 200, 200); border-radius: 10px; margin-bottom: 1rem;
+        font-weight: bold; padding: 10px; max-width: 500px; text-align: center;">Encontra a Martin Garabal</div>
+
+        <div style="margin-left: auto; margin-right: auto; display: flex; overflow-x: auto; flex-direction: column;">
+
+        <img id="map" src="../assets/img/kinga2.jpg" style="width: 750px; height: 375px;">
        
-    </div>
-    <div style="padding: 10px; text-align: center; background-color: black;">
-        <p style="color: seashell;">desliza para ver el resto de la imagen</p>
-       </div>
+        <div style="width: 750px; margin-top: 1rem;">
+            <p style="margin: 5px; background-color: rgb(195, 195, 195); border-radius: 10px; text-align: center;">
+            Desliza para ver la imagen completa</p>
+        </div>
+        </div>
+
+        <p style="font-size: 1.3rem; font-weight: bold; text-align: center;" id="respuesta"></p>
+        <div style="display: flex; margin-left: 2rem; margin-right: 2rem; justify-content: space-around;">
+
+            <div class="trivia__timer">
+                <div class="trivia__timer--circle" style="margin: 0;" id="reloj">15</div>
+            </div>
+            <div style="padding: 10px; background-color: darkgray; border-radius: 10px;">1/5</div>
+        </div>
+
+
+        
+
     </section>
+
     
-    
+     
 </body>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+<script src="../js/generic.js"></script>
+<script src="../js/scripts.js"></script>
+<script src="../js/kinga.js"></script>
+
+
 </html>
