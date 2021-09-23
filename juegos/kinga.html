@@ -22,11 +22,13 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/score.css">
     <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/trivia.css">
+    <link rel="stylesheet" href="../css/juegos.general.css">
+    <link rel="stylesheet" href="../css/kinga.css">
+    
     
 </head>
 
-<body style="background-color: #158fd2;">
+<body>
 
     <!-- Navigation-->
     <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
@@ -40,35 +42,44 @@
 
         </ul>
     </nav>
-    <br><br><br>
-    <section style="margin: auto;">
+    <br>
+    <section>
 
-        <div style="background-color: rgb(200, 200, 200); border-radius: 10px; margin-bottom: 1rem;
-        font-weight: bold; padding: 10px; max-width: 500px; text-align: center;">Encontra a Martin Garabal</div>
-
-        <div style="margin-left: auto; margin-right: auto; display: flex; overflow-x: auto; flex-direction: column;">
-
-        <img id="map" src="../assets/img/kinga2.jpg" style="width: 750px; height: 375px;">
-       
-        <div style="width: 750px; margin-top: 1rem;">
-            <p style="margin: 5px; background-color: rgb(195, 195, 195); border-radius: 10px; text-align: center;">
-            Desliza para ver la imagen completa</p>
-        </div>
+        <div class="div__timer-actual">
+            
+            <div class="timer-circle" style="margin: 0;" id="reloj"></div>
+            
+            <div class="div__nivel">10/10</div>
         </div>
 
-        <p style="font-size: 1.3rem; font-weight: bold; text-align: center;" id="respuesta"></p>
-        <div style="display: flex; margin-left: 2rem; margin-right: 2rem; justify-content: space-around;">
+        <div class="div__pregunta maxWidth">
+            <p class="pregunta-fijo">TENES QUE ENCONTRAR</p>
+            <p id="pregunta" class="div__pregunta-pregunta"></p>
+        </div>
 
-            <div class="trivia__timer">
-                <div class="trivia__timer--circle" style="margin: 0;" id="reloj">15</div>
+    
+        <div class="container__map">
+            <div class="div__delizar">
+                <p><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i>
+                   Desliza para ver la imagen completa
+                   <i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i>
+                </p>
             </div>
-            <div style="padding: 10px; background-color: darkgray; border-radius: 10px;">1/5</div>
+            <div id="map" class="map">
+                <img id="map-img" src="../assets/img/kinga1.jpg" alt="donde esta el kinga">
+            </div>
+            <div class="div__delizar">
+                <p><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i>
+                   Desliza para ver la imagen completa
+                   <i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i>
+                </p>
+            </div>
         </div>
-
-
-        
 
     </section>
+    <div id="div-respuesta" class="div__respueta-correcta notblock">
+        
+    </div>
 
     
      

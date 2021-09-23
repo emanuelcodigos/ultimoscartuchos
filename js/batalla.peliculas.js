@@ -24,7 +24,9 @@ let reloj = document.querySelector('#reloj');
 let arrPrincipalPelis = new Array();
 let audio = new Audio();
 let peliculaActual = 0;
-let tiempoActual = 0;
+//let tiempoActual = 0;
+let timer;
+
 
 
 function getPreguntas(){
@@ -72,11 +74,13 @@ btnComenzar.addEventListener('click', function(){
 });
 
 function principal(){
-    if(peliculaActual <= 4){ 
+    if(peliculaActual <= 4){
+    reloj.style.backgroundColor = '#e0e0e0';
+    reloj.style.color = '#161616';
     imgPelicula.src = arrPrincipalPelis[peliculaActual]['portada_blur'];
     reiniciarCampos();
     divPortadaPelicula.style.backgroundColor = arrPrincipalPelis[peliculaActual]['color_potada'];
-    tiempoActual = parseInt(arrPrincipalPelis[peliculaActual]['duracion']);
+    let tiempoActual = parseInt(arrPrincipalPelis[peliculaActual]['duracion']) + 15;
     reloj.innerHTML = tiempoActual;
     audio.controls = true;
     audio.autoplay = true;
@@ -84,15 +88,20 @@ function principal(){
     //divContenidoPrincipal.appendChild(audio);
 
     
-    let timer = setInterval(function(){
+    timer = setInterval(function(){
    
     if(tiempoActual < 0){
         clearInterval(timer);
+        divInputRespuesta.classList.add('notblock');
+        respuesta();
     }else{
         reloj.innerHTML = tiempoActual;
-        //tiempoActual = tiempoActual - 5;
         tiempoActual--;
     } 
+    if(tiempoActual == 14){
+        reloj.style.backgroundColor = '#ee4747';
+        reloj.style.color = '#ffffff';
+    }
     },1000);
     }else{
         finalizar(puntaje);
@@ -101,6 +110,7 @@ function principal(){
 
 let btnResponder = document.querySelector('#btn-aceptar');
 btnResponder.addEventListener('click', function(){
+    clearInterval(timer); 
     divInputRespuesta.classList.add('notblock');
     respuesta();
    
@@ -108,7 +118,7 @@ btnResponder.addEventListener('click', function(){
 
 function respuesta(){
     audio.pause();
-    tiempoActual = -1;
+    //tiempoActual = -1;
     let input = document.querySelector('#txtPelicula');
     resp = input.value;
     if(resp != ''){
@@ -119,6 +129,8 @@ function respuesta(){
         }else{
             mostrarCorrecta(1);
         }
+    }else{
+        mostrarCorrecta(1);
     }
     peliculaActual++;
     input.value = '';
@@ -145,7 +157,7 @@ function mostrarCorrecta(result){
     }
 
     divResultadoRespuesta.classList.add('tada');
-    botonSiguiente();
+    //botonSiguiente();
 
     let reiniciar = setTimeout(function(){
 

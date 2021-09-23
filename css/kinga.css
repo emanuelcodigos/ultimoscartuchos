@@ -1,0 +1,171 @@
+body{
+    background-color: #14618c;
+}
+
+.maxWidth{
+    max-width: 500px;
+}
+.marginAuto{
+    margin: auto;
+}
+
+.div__timer-actual{
+    display: flex;
+    justify-content: center;
+}
+
+.timer-circle{
+    width: 60px;
+    height: 60px;
+    background-color: #e0e0e0;
+    border-radius: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    position: relative;
+    color: #161616;
+    font-weight: 900;
+    font-size: 1.6rem;
+    margin-right: 0.5rem;
+}
+
+.div__nivel{
+    width: 70px;
+    height: 60px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    position: relative;
+    color: #161616;
+    font-weight: 900;
+    font-size: 1.4rem;
+    margin-left: 0.5rem;
+}
+.div__pregunta{
+    margin: auto;
+    margin-top: 1rem;
+    background-color: #14618c;
+    text-align: center;
+    width: 90%;
+    border-radius: 10px;
+    color: #e0e0e0;
+    padding: 0.2rem;
+    box-shadow: 2px 2px 5px #132c3b;
+}
+
+.pregunta-fijo{
+    font-size: 0.8rem;
+    margin: 0;
+    text-align: center;
+    color: #c08571;
+    font-weight: bold;
+}
+
+.div__pregunta-pregunta{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.container__map{
+    margin: auto;
+    display: flex;
+    overflow-x: auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.map{
+    width: 750px;
+    height: 375px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.map img{
+  width: 100%;
+  position: absolute;
+}
+
+.div__delizar{
+    text-align: center;
+    color: #e0e0e0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin: 0.8rem;
+}
+.div__delizar p{
+    margin: 0;
+    padding: 0;
+}
+
+.pista_mostrar{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 3px solid red;
+    border-radius: 100%;
+    left: 540px;
+    top: 256px;  
+}
+
+.div__respueta-correcta{
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(46, 46, 46, 0.8);
+
+}
+.respueta-correcta{
+    width: 300px;
+    height: 350px;
+    background-color: silver;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;   
+    text-align: center;
+}
+
+.respueta-correcta img{
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 10px;
+}
+
+.respueta-correcta button{
+    width: 90%;
+    margin: auto;
+}
+
+.notblock{
+    display: none;
+}
+

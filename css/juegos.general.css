@@ -2,12 +2,6 @@
     font-family: 'Raleway', sans-serif;
 }
 
-
-body{
-    background: rgb(16,19,25);
-    background: linear-gradient(357deg, rgba(16,19,25,1) 0%, rgba(30,30,52,1) 27%, rgba(89,93,110,1) 100%);
-}
-
 .loading{
     position: fixed;
     top: 0;
