@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Stylish Portfolio - Start Bootstrap Template</title>
+        <title>Iniciar Sesion</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -18,12 +18,15 @@
         <link href="../css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="../css/registro.css">
     </head>
+    <div class="loading__2" id="loading2">
+        <img src="../assets/three-dots.svg" alt="loading">
+    </div>
     <body id="page-top">
         <!-- Navigation-->
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav" id="nav-bar">
-                <li class="sidebar-brand"><a href="../index.html">Ultimos Cartuchos</a></li>
+                <li class="sidebar-brand"><a href="*">Ultimos Cartuchos</a></li>
                 <li class="sidebar-nav-item"><a href="../index.html">inicio</a></li>
                 <li class="sidebar-nav-item"><a href="../index.html/#services">Juegos</a></li>
                 <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a></li>
@@ -67,7 +70,10 @@
             </div>
 
             <div style="margin: auto; width: 90%; max-width: 400px;">
-                <div id="alertas-err" style="padding: 5px; background-color: rgb(233, 35, 35); color: #fff;"></div>
+                <div id="alertas-err">
+
+                </div>
+                
                 <div class="ingreso__con">
                     <div class="line"></div>
                     <div class="texto"><p id="txtOpcionesIngreso" class="text-faded">O ingresa con</p></div>
@@ -96,24 +102,6 @@
             
         </section>
        
-         <!-- Footer-->
-         <footer class="footer text-center">
-            <div class="container px-4 px-lg-5">
-                <ul class="list-inline mb-5">
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
-                    </li>
-                </ul>
-                <p class="text-muted small mb-0">Copyright &copy; Your Website 2021</p>
-            </div>
-            <br>
-        </footer>
         <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>

@@ -35,6 +35,7 @@
 .modo-ingreso{
     background-color: #ffffff; padding-left: 20px; color: rgb(26, 26, 26);
     padding-right: 20px; border-radius: 10px; display: flex; align-items: center;
+    box-shadow: 2px 2px 5px #433b5a;
 }
 
 .face{
@@ -52,6 +53,16 @@
 
 .div__registrate-aqui .text-bold{
     font-weight: bold; bottom: 0; margin-left: 5px;
+}
+
+.alert_error{
+    width: 90%;
+    background-color: #e13c3c;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin: auto;
+    border-radius: 10px;
 }
 
 .notblock{

@@ -15,9 +15,9 @@ var firebaseConfig = {
   function cerrarSesion(){
     firebase.auth().signOut()
     .then(res => {
-       document.location.href = "/ultimoscartuchos";
+       document.location.href = "../";
     }).catch(err=>{
-
+       alert('No se pudo cerrar la sesion');
     });
   }
 
@@ -33,7 +33,7 @@ var firebaseConfig = {
           child.innerHTML = '<a id="btnCerrarSesion" onclick="cerrarSesion()">Cerrar sesion</a>'
           let childTwo = document.createElement('li');
           childTwo.setAttribute('class', 'sidebar-nav-item');
-          childTwo.innerHTML = '<a class="nav-link">Configuracion</a>'
+          childTwo.innerHTML = '<a href="../html/perfil" class="nav-link">Configuracion</a>'
 
           let node = document.querySelector('#nav-bar');
           
@@ -43,17 +43,19 @@ var firebaseConfig = {
           let itemRegister = document.querySelector('#itemIniciarSesion');
           node.removeChild(itemRegister);
 
-          
+          if(document.querySelector('#btnIndexLogin')){
+            let btnLogin = document.querySelector('#btnIndexLogin');
+            btnLogin.innerHTML = 'Mi perfil';
+            btnLogin.href = 'html/perfil';
+          }
 
-        }else{
-          
         }
         
     });
       
   }
 
-  function finalizar(puntaje){
+function finalizar(puntaje){
 
     if(puntaje == null){
       puntaje = 0;
@@ -77,14 +79,21 @@ var firebaseConfig = {
             data = resp.data();
             puntosAcumulados = data['puntaje'] + puntaje;
             
-            divResultado.innerHTML = `<div class="contenido__resultado"><div class="contenido__resultado--puntuacion">
-            <img src="`+data['photoURL']+`" alt="icono de usuario" width="90px">
-            <p class="felicidades">Felicitaciones</p>
-            <p>Tu puntaje fue</p>
-            <p class="txt__puntaje">`+puntaje+`</p>
+            divResultado.innerHTML = `<div class="div__resultado">
+            <img src="`+data['photoURL']+`" class="img__user" alt="">
+            <div class="puntacion">
+               <div class="puntos">
+                   <img src="/assets/img/coin.svg" alt="" width="40px">
+                   <p>`+puntaje+`</p>
+                </div>
+                <div class="barra__puntuacion">
+                   <div class="mis__puntos"></div>
+                   <div class="puntos__totales"></div>
+                </div>
+                <p>7 de 10</p>
             </div>
-            <div id="rankig-jugadores"></div>
-            </div>`;
+            </div>
+            <div id="ranking" class="div__ranking">`;
         
             db.collection('usuarios').doc(user.uid).update({ 
                 puntaje:puntosAcumulados
@@ -100,14 +109,21 @@ var firebaseConfig = {
 
        }else{
 
-        divResultado.innerHTML = `<div class="contenido__resultado"><div class="contenido__resultado--puntuacion">
-        <img src="../assets/img/user.png" alt="icono de usuario" width="90px">
-        <p class="felicidades">Felicitaciones</p>
-        <p>Tu puntaje fue</p>
-        <p class="txt__puntaje">`+puntaje+`</p>
-        </div>
-        <div id="rankig-jugadores"></div>
-        </div>`;
+        divResultado.innerHTML = `<div class="div__resultado">
+            <img src="../assets/img/user.png" class="img__user" alt="">
+            <div class="puntacion">
+               <div class="puntos">
+                   <img src="/assets/img/coin.svg" alt="" width="40px">
+                   <p>`+puntaje+`</p>
+                </div>
+                <div class="barra__puntuacion">
+                   <div class="mis__puntos"></div>
+                   <div class="puntos__totales"></div>
+                </div>
+                <p>7 de 10</p>
+            </div>
+            </div>
+            <div id="ranking" class="div__ranking">`;
         rankingDeOtrosJugadores();
         loading.style.display = 'none';
        }
@@ -118,29 +134,28 @@ var firebaseConfig = {
 
 function rankingDeOtrosJugadores(){
 
-  const divJugadores = document.querySelector('#rankig-jugadores');
-  let divJugadoresForEach = `<h4 class="rankig__jugadores--titulo">RANKING GENERAL</h4>`;
+  const divJugadores = document.querySelector('#ranking');
+  let divJugadoresForEach = `<h2>RANKING GENERAL</h2>`;
 
   db.collection('usuarios').orderBy("puntaje", "desc").limit(3).get()
   .then(resp => {
       return resp; 
   }).then(snap=>{
-      
+      let copa = 1;
       snap.forEach(doc =>{
-
+      
           let img =  doc.data()['photoURL'];;
           if(doc.data()['photoURL'] === null){
               img = '../assets/img/user.png';
           }
           divJugadoresForEach += `
-          <div class="div__puesto-jugador">
-          <div class="jugador__ranking">
-          <img src="`+img+`" alt="icono de usuario">
-          <p>`+doc.data()['nombre']+`</p>
-          </div>
-          <p class="puntaje__jugador-ranking">`+doc.data()['puntaje']+` puntos</p>
-          </div>
-          `
+          <div id="div_ranking_usuario" class="ranking__usuario">
+              <img src="`+img+`" class="br100" alt="icono de usuario">
+              <p>`+doc.data()['nombre']+`</p>
+              <img src="/assets/img/top`+copa+`.svg" alt="icono trofeo">
+              <p>`+doc.data()['puntaje']+`</p>
+            </div>`;
+            copa++;
       });
       divJugadoresForEach += `<button class="btn btn-primary btn__nuevo-juego" onclick="volverAJugar()">VOLVER A JUGAR</button>`;
       divJugadores.innerHTML = divJugadoresForEach; 

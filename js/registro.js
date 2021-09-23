@@ -1,5 +1,14 @@
 window.onload = function(){
- 
+    
+  firebase.auth().onAuthStateChanged(res=>{
+
+    if(res != null){
+      location.href = '../';
+    }else{
+      const divLoading = document.querySelector('#loading2');
+      divLoading.style.display = 'none';
+    }
+    });
     consultarAutenticacion();
 }
 
@@ -7,6 +16,7 @@ const divLogin = document.querySelector('#login');
 const divSignUp = document.querySelector('#signUp');
 const divRigisIngresar = document.querySelector('#registraseAqui');
 const txtOpcionesIngreso = document.querySelector('#txtOpcionesIngreso');
+const divAlert = document.querySelector('#alertas-err');
 let ingresar = true;
 
 divRigisIngresar.addEventListener('click', function(){
@@ -94,11 +104,16 @@ function signUpWithEmail(){
            });
 
         }else{
-            alert('las contraseñas son distintas');
+            divAlert.innerHTML = '<div class="alert_error">Las contraseñas son distintas</div>';
         }
     }else{
-        alert('rellena los campos');
+        divAlert.innerHTML = '<div class="alert_error">Todos los campos son obligatorios</div>';
     }
+
+    let timer = setTimeout(function(){
+
+      divAlert.innerHTML = '';
+    },5000);
 }
 
 function inciarSesion(){
@@ -118,8 +133,13 @@ function inciarSesion(){
         });
 
     }else{
-        alert('completa todos los campos');
+        divAlert.innerHTML = '<div class="alert_error">Completa todos los campos</div>'
     }
+
+    let timer = setTimeout(function(){
+
+        divAlert.innerHTML = '';
+      },5000);
 
    
 }

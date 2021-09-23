@@ -61,86 +61,6 @@
     font-weight: 900;
 }
 
-.contenido__resultado{
-    max-width: 500px;
-    height: 100vh;
-    font-family: 'Raleway';
-    margin: auto;
-    background-color: honeydew;
-}
-
-.contenido__resultado--puntuacion{
- 
-    background-color: rgb(100, 40, 143);
-    color: #fff;
-    font-family: 'Raleway';
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius:  0 0 30px 30px;
-    font-weight: 900;
-}
-.contenido__resultado--puntuacion p{
-    margin: 0;
-}
-
-.contenido__resultado--puntuacion img{
-
-    margin: 10px;
-    border-radius: 100%;
-    width: 100px;
-}
-.txt__puntaje{
-    
-    font-size: 3rem;
-}
-
-.div__puesto-jugador{
-    width: 90%;
-    margin: auto;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 2px 2px 2px rgb(85, 85, 85);
-    background-color: rgb(241, 241, 241);
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-}
-.rankig__jugadores--titulo{
-  margin: 1rem;
-}
-.div__puesto-jugador p{
-    margin: 0;
-    padding: 0;
-}
-
-.jugador__ranking{
-    display: flex;
-    justify-content: left;
-    flex-direction: row;
-    align-items: center;
-}
-
-.jugador__ranking img{
-    width: 40px;
-    border-radius: 100%;
-    margin-right: 5px;
-}
-
-.jugador__ranking p{
-    font-size: 1rem;
-    color: rgb(27, 27, 27);
-    text-transform: capitalize;
-} 
-
-.puntaje__jugador-ranking{
-    font-size: 1rem;
-    color: rgb(27, 27, 27);
-    text-transform: capitalize;
-}
 
 .btn__nuevo-juego{
     display: block;
@@ -148,4 +68,83 @@
     padding: 10px;
     margin-top: 3rem;
     margin-bottom: 2rem;
+}
+
+#div-resultado{
+    max-width: 600px;
+    margin: auto;
+}
+.div__resultado{
+    background: linear-gradient(0deg, rgb(88 80 111) 0%, rgba(112,99,149,1) 56%);
+    display: flex; 
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+}
+
+.div__resultado .img__user{
+    width: 80px; border-radius: 100%; margin-top: 1rem;
+}
+
+.div__resultado .puntacion{
+    text-align: center; width: 80%;
+}
+
+.div__resultado .puntacion p {
+    font-weight: bold; color: darkgoldenrod; margin: 0; margin-bottom: 1rem;
+}
+.div__resultado .puntacion .puntos{
+    display: flex; justify-content: center;
+}
+.div__resultado .puntacion .puntos img{
+   width: 40px;
+   margin-right: 0.5rem;
+}
+.div__resultado .puntacion .puntos p{
+    font-size: 3rem;
+    margin: 0;
+    font-weight: bold;
+    color: rgb(228, 228, 228);
+}
+
+
+.puntacion .barra__puntuacion{
+    margin: auto; height: 1rem; width: 90%; background-color: rgb(110, 110, 110);
+    display: grid; grid-template-columns: 50% 50%;
+}
+
+.barra__puntuacion .mis__puntos{
+    height: 100%; width: 100%; background-color: rgb(18, 119, 18);
+}
+
+.barra__puntuacion .puntos__totales{
+    height: 100%; width: 100%; background-color: rgb(94, 156, 94);
+}
+
+.div__ranking{
+    width: 90%; margin: auto; margin-top: 1rem ;
+}
+.div__ranking h2{
+    font-weight: bold;
+    color: rgb(34, 34, 34);
+}
+
+.div__ranking .ranking__usuario{
+    background-color: rgb(235, 235, 235); display: flex; 
+    justify-content: space-evenly; flex-direction: row; align-items: center;
+    padding: 1rem; margin-bottom: 0.5rem; border-radius: 10px;
+}
+
+.div__ranking .ranking__usuario img{
+    width: 40px;
+}
+.br100{
+    width: 100px;
+    border-radius: 100%;
+}
+.div__ranking .ranking__usuario p{
+    margin: 0;
+    font-weight: bold;
+    color: rgb(41, 41, 41);;
 }
