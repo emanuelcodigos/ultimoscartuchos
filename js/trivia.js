@@ -56,24 +56,16 @@ function desordenar(array) {
     var currentIndex = array.length; 
     var temporaryValue;
     var randomIndex;
-  
-    // Mientras queden elementos a mezclar...
     while (0 !== currentIndex) {
-  
-      // Seleccionar un elemento sin mezclar...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-  
-      // E intercambiarlo con el elemento actual
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-  
     array = array.slice(0,10);
     return array;
-  }
-
+}
 
 function getPreguntas(){
 
@@ -111,14 +103,12 @@ function getPreguntas(){
 }
 
 btnComenzar.addEventListener('click', function(){
-    
     divComoJugar.classList.add('notblock');
     divContenidoPrincipal.classList.remove('notblock');
     principal();
 });
 
 function contarPuntaje(respuesta){
-     
      if(respuesta === arrPrincipal[preguntaNumeroActual][1]){
         
          puntosTotales += 500;
@@ -152,10 +142,7 @@ function llenarCampos(){
     resp1.value = respuestasRandom[0];
     resp2.value = respuestasRandom[1];
     resp3.value = respuestasRandom[2];
-
-  
 }
-
 
 function principal(){
 
@@ -189,7 +176,7 @@ function principal(){
 
     }, 1000);
 
-    if(preguntaNumeroActual < 10){
+    if(preguntaNumeroActual < 2){
         llenarCampos();
     }else{
         clearInterval(contador);
@@ -228,48 +215,4 @@ function mostrarCorrecta(){
     }, 3000);
 }
 
- function verResultados(puntos, totales){
-    juego = document.querySelector('#pantallaJuego');
-    juego.innerHTML = '';
-
-    document.querySelector('#pantallResultado').style.display = 'initial';
-
-    document.querySelector('#puntajeObtenido').innerHTML = puntos;
-    document.querySelector('#misPuntosAcumulados').innerHTML = totales;
-
- }
-
-function recordDeOtrosUsuarios(){
-
-    db.collection('usuarios').orderBy("puntaje", "desc").limit(3).get()
-    .then(resp => {
-        return resp; 
-    }).then(snap=>{
-
-        snap.forEach(doc =>{
-
-            recordDeOtroUsuario(doc.data()['nombre'],doc.data()['puntaje'], doc.data()['photoURL']);
-        });
-        
-    });
-
-}
-
-function recordDeOtroUsuario(nombre, puntaje, foto){
-
-    if(nombre == ""){
-      nombre = 'sinnombre';
-    }
-    if(foto == null){
-        foto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA7ECizMinUV4oPQG6BUFIZZmeXehbj7pytQ&usqp=CAU"
-    }
-    let ranking = document.createElement("div");
-    
-    ranking.innerHTML = '<div class="recordsIndividuales"><div class="info"><img ' +
-    'src= '+foto+'><p>'+nombre+'</p>'+
-    '</div><p>'+puntaje+'</p></div>';
-   
-    let node = document.querySelector('#recordGlobales');
-    node.appendChild(ranking);
-}
 

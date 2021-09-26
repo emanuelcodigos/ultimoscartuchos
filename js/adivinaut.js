@@ -16,41 +16,17 @@ const ayuda = document.querySelector('#btn-ayuda');
 const divAyudaInfo = document.querySelector('#info-help');
 const loading = document.querySelector('#pantalla-loading');
 const divContenidoPrincipal = document.querySelector('#pantalla-juego');
+const divTimer = document.querySelector('#timer');
 let arrCanciones = new Array();
 let cancionActual = 0;
 let puntaje = 0;
-
-
-const timerDiv = document.querySelector('#timer');
-
-function timer(){
-    let tiempoTranscurrido = 200;
-    let contador = setInterval(function(){
-
-       timerDiv.innerHTML = tiempoTranscurrido;
-       tiempoTranscurrido = tiempoTranscurrido - 5;
-
-       if(tiempoTranscurrido === 25){
-           let divTimer = document.querySelector('.music__timer--circle');
-           divTimer.style.backgroundColor = '#ff7373';
-           divTimer.style.color = '#ffffff';
-           divTimer.classList.add('animated', 'wobble');
-       }
-
-       if(tiempoTranscurrido < 0){
-           clearInterval(contador);
-           finalizar(puntaje);
-       }
-    }, 5000);
-}
-
+let temporizador;
 const btnComenzar = document.querySelector('#btn-comenzar');
 btnComenzar.addEventListener('click', function(){
 
     document.querySelector('#div-comoJugar').style.display = 'none';
     document.querySelector('#music-container').classList.remove('notblock');
-    timer();
-    siguienteCancion();
+    principal();
    document.querySelector('#pregCancion').classList.add('animated', 'tada');
 
 });
@@ -58,34 +34,15 @@ btnComenzar.addEventListener('click', function(){
 
 function getPreguntas(){
 
-    let arrPreguntas = new Array();
-    return db.collection('adivina_ut').get()
+    return db.collection('adivina_adivina_ut').get()
     .then(resp=>{
         return resp;
     }).then(spanShot =>{
         spanShot.forEach(doc => {
-
-            arrData = doc.data();
-            let arrActual = new Array();
-            arrActual.push(arrData['cancion']);
-            arrActual.push(arrData['correcta']);
-            arrActual.push(arrData['artista']);
-            arrActual.push(arrData['incorrecta1']);
-            arrActual.push(arrData['incorrecta2']);
-            if(arrData['img']){
-                arrActual.push(arrData['img']);
-            }
-
-            arrPreguntas.push(arrActual);
-             
+            arrCanciones.push(doc.data());  
          });
-         
-          
-          arrCanciones = desordenar(arrPreguntas);
-          //dameTodo(arrPreguntas);
-          loading.style.display = 'none';
-          timer();
-        
+          arrCanciones = desordenar(arrCanciones);
+          loading.style.display = 'none'; 
     }).catch(err =>{
         console.log(err);
     });
@@ -111,31 +68,37 @@ function desordenar(array) {
 }
 
 
-function siguienteCancion(){
-    
-    
+function principal(){
     if(cancionActual < 7){
-    cancionDesconocida();
-    txtCancion.value = '';
-    let cancion = arrCanciones[cancionActual][0];
-    
-    audio.innerHTML = '<audio controls id="reproductor"><source id="urlCancion" src="'+cancion+'" type="audio/mpeg"></audio>'
-    
-    cancionActual++;
-   
-    divContainerAyuda.innerHTML = '';
-    divInputRespuesta.style.display = 'flex';
-    setTimeout(function(){
-       divAyudaInfo.classList.remove('notblock');
-       divAyudaInfo.classList.add('animated','shakeX');
-    }, 3000);
-    
-    reproducir(true);
+        txtCancion.value = '';
+        cancionDesconocida();
+        let cancion = arrCanciones[cancionActual]['cancion'];
+        let duracion = arrCanciones[cancionActual]['duracion'] + 15;
+        audio.innerHTML = '<audio controls id="reproductor"><source id="urlCancion" src="'+cancion+'" type="audio/mpeg"></audio>';
+     
+        temporizador = setInterval(function(){
+            duracion--;
+            divTimer.innerHTML = duracion;
+            if(duracion == 15){
+                divTimer.style.color = '#ffffff';
+                divTimer.style.backgroundColor = '#e84949';
+            }
+            if(duracion == 0){
+               clearInterval(temporizador);
+               verificarRespuesta(0,'falsa');
+            }
+        }, 1000);
+        divContainerAyuda.innerHTML = '';
+        divInputRespuesta.style.display = 'flex';
+        reproducir(true);
+        setTimeout(function(){
+            setCancionActualJugador();
+         }, 3000);
+        
     }else{
-       finalizar(puntaje);
+        finalizar(puntaje);
     }
 }
-
 
 function reproducir(status){
     let play = document.querySelector('#btn-play');
@@ -148,11 +111,9 @@ function reproducir(status){
     }else{
          
         reproductor.pause();
-        play.innerHTML = '<i class="fas fa-play">';
-            
+        play.innerHTML = '<i class="fas fa-play">'; 
     }
 }
-
 
 btnAceptar.addEventListener('click', function(){
     
@@ -182,10 +143,9 @@ ayuda.addEventListener('click', function(){
     divAyudaInfo.classList.remove('shakeX');
 
     respuestasRandom = [
-        arrCanciones[cancionActual - 1][1],
-        arrCanciones[cancionActual - 1][3],
-        arrCanciones[cancionActual - 1][4]
-
+        arrCanciones[cancionActual]['correcta'],
+        arrCanciones[cancionActual]['incorrecta1'],
+        arrCanciones[cancionActual]['incorrecta2']
     ];
     respuestasRandom.sort(() => Math.random() - 0.5);
 
@@ -198,19 +158,15 @@ ayuda.addEventListener('click', function(){
 
 });
 
-
 function respuestaConAyuda(respuesta){
-
     reproducir(false);
     verificarRespuesta(2, respuesta.toLowerCase());
-    
-
 }
 
 function verificarRespuesta(opcion, respuesta){
-
-    let cancion = arrCanciones[cancionActual - 1][1];
-    let artista = arrCanciones[cancionActual - 1][2];
+    clearInterval(temporizador);
+    let cancion = arrCanciones[cancionActual]['correcta'];
+    let artista = arrCanciones[cancionActual]['artista'];
     let correcta = false;
     let divResultado = document.querySelector('#div-reproductor');
 
@@ -223,14 +179,13 @@ function verificarRespuesta(opcion, respuesta){
             puntuar(500);
             correcta = true;
         }else if(artista.toLowerCase() == respuesta){
-            puntuar(150);
+            puntuar(250);
             correcta = true;
         }
 
-
     }else if (opcion === 2){
        if(cancion.toLowerCase() == respuesta){
-           puntuar(50);
+           puntuar(100);
            correcta = true;
        }
     }
@@ -243,10 +198,11 @@ function verificarRespuesta(opcion, respuesta){
 
     divCancionCorrecta.innerHTML = '<div class="cancion__correcta animated jello"><i class="fas fa-compact-disc"></i>'+cancion+' - '+artista+'</div>';
     divContainerAyuda.classList.remove('jello');
+    cancionActual++;
       let tiempo = setTimeout(function(){
         
         divCancionCorrecta.innerHTML = '';
-        siguienteCancion();
+        principal();
 
       }, 4000);
 
@@ -266,7 +222,8 @@ function cancionDesconocida(){
         <p>Artista desconocido</p>
     </div>
     </div>`;
-
+    divTimer.style.color = '#161616';
+    divTimer.style.backgroundColor = '#e0e0e0';
     let play = document.querySelector('#btn-play');
     play.addEventListener('click', function(){
     reproducir(true);
@@ -275,6 +232,14 @@ function cancionDesconocida(){
 
 }
 
+function setCancionActualJugador(){
+    divAyudaInfo.classList.remove('notblock');
+    divAyudaInfo.classList.add('animated','shakeX');
+
+    let infoActual = document.querySelector('#numero-actual');
+    infoActual.innerHTML = `<i class="fas fa-music"></i><p>`+ (cancionActual + 1)+`/7</p>`; 
+
+}
 
 
 

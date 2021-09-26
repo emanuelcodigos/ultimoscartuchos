@@ -62,8 +62,8 @@
           <div class="card card__puntaje">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Adivinar la cancion<i class="fas fa-long-arrow-alt-right mg-r-l"></i>500 puntos</li>
-              <li class="list-group-item">Adivinar el Artista<i class="fas fa-long-arrow-alt-right mg-r-l"></i>150 puntos</li>
-              <li class="list-group-item">Adivinar con ayuda<i class="fas fa-long-arrow-alt-right mg-r-l"></i>50 puntos</li>
+              <li class="list-group-item">Adivinar el Artista<i class="fas fa-long-arrow-alt-right mg-r-l"></i>250 puntos</li>
+              <li class="list-group-item">Adivinar con ayuda<i class="fas fa-long-arrow-alt-right mg-r-l"></i>100 puntos</li>
             </ul>
           </div>
           <button id="btn-comenzar" class="btn btn-primary animated jello">COMENZAR</button>
@@ -78,9 +78,7 @@
     <div id="music-container" class="music__container notblock">
        
         <div class="music__timer">
-            <div class="music__timer--circle">
-                <h3 id="timer">200</h3>
-            </div>
+            <div id="timer" class="music__timer--circle"></div>
         </div>
         <div id="div-reproductor" class="div__music">
             <div class="div__music--div">
@@ -105,8 +103,6 @@
             </div>
             <div id="info-help" class="div__ayuda-help notblock">
                 <div id="numero-actual" class="btn btn-secondary help">
-                    <i class="fas fa-music"></i>
-                    <p>5/7</p>
                 </div>
                 <div id="btn-ayuda" class="btn btn-success help">
                     <i class="far fa-question-circle"></i>

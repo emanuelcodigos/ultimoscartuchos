@@ -1,4 +1,6 @@
-
+body{
+    background: radial-gradient(circle, rgba(228,228,228,1) 0%, rgba(196,196,196,1) 80%);
+}
 .music__container{
 
     min-height: 100vh;
@@ -29,6 +31,8 @@
     border: 2px solid #000;
     position: relative;
     color: #161616;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .div__music{

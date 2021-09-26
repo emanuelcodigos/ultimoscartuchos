@@ -70,7 +70,7 @@
     </section>
 
     <section style="margin: 20px; background-color: darkcyan; padding: 10px;">
-        <h3>Adivina Adivina ut</h3>
+        <h3>Trivia</h3>
         <input type="text" placeholder="pregunta" id="txtTriviaPregunta">
         <input type="text" placeholder="correcta" id="txtTriviaCorrecta">
         <input type="text" placeholder="falsa 1" id="txtTriviaFalsa1">
@@ -82,7 +82,24 @@
 
     </section>
 
+    <br><br>
+
+
+    <section style="margin: 20px; background-color: rgb(62, 194, 79); padding: 15px;">
+    <h3>Adivina Adivina Ut</h3>
+    <br><br>
+    <input type="text" id="txtNombreAU" placeholder="cancion">
+    <input type="text" id="txtArtistaAU" placeholder="artista">
+    <input type="text" id="txtIncorrectaAU" placeholder="incorecta">
+    <input type="text" id="txtIncorrecta2AU" placeholder="incorecta">
+    <input type="number" id="txtDuracionAU" placeholder="duracion">
+    <input type="file" id="mp3SongAU">
+
+    <br><br>
+    <button onclick="guardarAdivinaUt()">Aceptar</button>
+    </section>
     <br><br><br><br>
+
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>

@@ -56,11 +56,10 @@ var firebaseConfig = {
   }
 
 function finalizar(puntaje){
-
+    
     if(puntaje == null){
       puntaje = 0;
     }
-
     if(puntaje > 5000){
       puntaje = 0;
     }
@@ -80,19 +79,22 @@ function finalizar(puntaje){
             puntosAcumulados = data['puntaje'] + puntaje;
             
             divResultado.innerHTML = `<div class="div__resultado">
-            <img src="`+data['photoURL']+`" class="img__user" alt="">
+            <img src="`+data['photoURL']+`" class="img__user" alt="imagen de usuario">
+            <p class="nombre__user">`+data['nombre']+`</p>
             <div class="puntacion">
                <div class="puntos">
                    <img src="/assets/img/coin.svg" alt="" width="40px">
                    <p>`+puntaje+`</p>
-                </div>
+                </div>   
+            </div>
+            </div>
+            <div class="fondo__barra">
                 <div class="barra__puntuacion">
                    <div class="mis__puntos"></div>
                    <div class="puntos__totales"></div>
                 </div>
-                <p>7 de 10</p>
-            </div>
-            </div>
+                <p class="txt__barra">7 de 10</p>
+            </div> 
             <div id="ranking" class="div__ranking">`;
         
             db.collection('usuarios').doc(user.uid).update({ 
@@ -137,7 +139,7 @@ function rankingDeOtrosJugadores(){
   const divJugadores = document.querySelector('#ranking');
   let divJugadoresForEach = `<h2>RANKING GENERAL</h2>`;
 
-  db.collection('usuarios').orderBy("puntaje", "desc").limit(3).get()
+  db.collection('usuarios').orderBy("puntaje", "desc").limit(4).get()
   .then(resp => {
       return resp; 
   }).then(snap=>{
@@ -152,12 +154,18 @@ function rankingDeOtrosJugadores(){
           <div id="div_ranking_usuario" class="ranking__usuario">
               <img src="`+img+`" class="br100" alt="icono de usuario">
               <p>`+doc.data()['nombre']+`</p>
-              <img src="/assets/img/top`+copa+`.svg" alt="icono trofeo">
+              <img src="../assets/img/top`+copa+`.svg" alt="icono trofeo">
               <p>`+doc.data()['puntaje']+`</p>
             </div>`;
             copa++;
       });
-      divJugadoresForEach += `<button class="btn btn-primary btn__nuevo-juego" onclick="volverAJugar()">VOLVER A JUGAR</button>`;
+      divJugadoresForEach += 
+     
+      `<div class="div__play_again">
+      <button class="btn btn-outline-light onclick="irAlInicio()""><i class="fas fa-home"></i></button>
+      <button class="btn btn-outline-light" onclick="volverAJugar()">Volver a Jugar</button>
+      <button class="btn btn-outline-light" onclick="irAConfiguracion()"><i class="fas fa-user-cog"></i></button>
+      </div>`;
       divJugadores.innerHTML = divJugadoresForEach; 
       
   }).catch(err =>{
@@ -166,8 +174,12 @@ function rankingDeOtrosJugadores(){
   });
 
 }
-
-
+function irAlInicio(){
+  location.href = '../';
+}
+function irAConfiguracion(){
+  location.href = '../html/perfil';
+}
 function volverAJugar(){
   location.href = location.href;
 }

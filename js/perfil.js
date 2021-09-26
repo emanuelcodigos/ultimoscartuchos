@@ -6,7 +6,7 @@ window.onload = function(){
         user = firebase.auth().currentUser.uid;
         mostrarMisDatos(user); 
     }else{
-        location.href = '../';
+        location.href = '../html/registro';
     }
     });
     consultarAutenticacion();

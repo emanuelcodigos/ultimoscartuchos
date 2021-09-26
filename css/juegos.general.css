@@ -62,14 +62,6 @@
 }
 
 
-.btn__nuevo-juego{
-    display: block;
-    margin: auto;
-    padding: 10px;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-}
-
 #div-resultado{
     max-width: 600px;
     margin: auto;
@@ -87,15 +79,16 @@
     width: 80px; border-radius: 100%; margin-top: 1rem;
 }
 
+.div__resultado .nombre__user{
+    margin: 0;font-size: 1rem;font-weight: bold; text-transform: uppercase;color: #eeeeee;
+}
+
 .div__resultado .puntacion{
     text-align: center; width: 80%;
 }
 
-.div__resultado .puntacion p {
-    font-weight: bold; color: darkgoldenrod; margin: 0; margin-bottom: 1rem;
-}
 .div__resultado .puntacion .puntos{
-    display: flex; justify-content: center;
+    display: flex; justify-content: center;margin-top: -0.5rem;
 }
 .div__resultado .puntacion .puntos img{
    width: 40px;
@@ -104,14 +97,21 @@
 .div__resultado .puntacion .puntos p{
     font-size: 3rem;
     margin: 0;
+    margin-top: -2px;
     font-weight: bold;
     color: rgb(228, 228, 228);
 }
 
-
-.puntacion .barra__puntuacion{
-    margin: auto; height: 1rem; width: 90%; background-color: rgb(110, 110, 110);
+.fondo__barra{
+    background-color:  rgb(235, 235, 235); width: 90%;
+    padding: 10px; border-radius: 10px;margin: 1rem auto;
+}
+.barra__puntuacion{
+    margin: auto; height: 1rem; width: 90%;
     display: grid; grid-template-columns: 50% 50%;
+}
+.txt__barra {
+    font-weight: bold; color: darkgoldenrod; margin: 0; text-align: center;
 }
 
 .barra__puntuacion .mis__puntos{
@@ -147,4 +147,15 @@
     margin: 0;
     font-weight: bold;
     color: rgb(41, 41, 41);;
+}
+
+.div__play_again{
+    position: fixed;bottom: 1rem;width: 90%;margin: auto;display: grid; grid-template-columns: 15% 70% 15%;
+    background: #655a83;padding: 0.5rem;border-radius: 10px;
+}
+.div__play_again button{
+    font-size: 1rem; font-weight: bold;border-color:#655a83;
+}
+.btn-outline-light:hover{
+   color: #ffffff;background-color: #564d70;border-color: #3c364e;
 }

@@ -142,8 +142,44 @@ btnTrivia.addEventListener('click', function(){
         });
        }
     });
-
-
-    
-
 });
+
+
+function guardarAdivinaUt(){
+
+    let correcta = document.querySelector('#txtNombreAU').value;
+    let artista = document.querySelector('#txtArtistaAU').value;
+    let incorrecta1 = document.querySelector('#txtIncorrectaAU').value;
+    let incorrecta2 = document.querySelector('#txtIncorrecta2AU').value;
+    let duracion = document.querySelector('#txtDuracionAU').value;
+    let song = document.querySelector('#mp3SongAU');
+    
+    db.collection('adivina_adivina_ut').add({
+        correcta: correcta,
+        artista: artista,
+        incorrecta1: incorrecta1,
+        incorrecta2: incorrecta2,
+        duracion: parseInt(duracion)
+    }).then(resp =>{
+       let id = resp.id;
+       console.log(id);
+       let ref = firebase.storage().ref("adivina_ut/"+ song.files[0].name);
+       let songFile = song.files[0];
+
+        let refSong = ref.put(songFile);
+
+       refSong.on("state_changed", ()=>{},(err)=>{alert(err)},()=>{
+
+        refSong.snapshot.ref.getDownloadURL().then(url=>{
+
+            db.collection("adivina_adivina_ut").doc(id).update({
+                 cancion: url
+            }).then(resp =>{
+                console.log('#archivo subido correctamente');
+            });
+        });     
+       });
+
+        
+    })
+}
