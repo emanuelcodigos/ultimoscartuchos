@@ -50,7 +50,7 @@ body{
 .div__pregunta{
     margin: auto;
     margin-top: 1rem;
-    background-color: #14618c;
+    background-color: #3b6075;
     text-align: center;
     width: 90%;
     border-radius: 10px;
@@ -63,14 +63,12 @@ body{
     font-size: 0.8rem;
     margin: 0;
     text-align: center;
-    color: #c08571;
+    color: #f9a40f;
     font-weight: bold;
 }
 
 .div__pregunta-pregunta{
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    font-weight: bold;
+    font-size: 1.6rem;text-transform: uppercase;font-weight: bold; margin: 1px;
 }
 
 .container__map{
@@ -122,6 +120,7 @@ body{
 }
 
 .div__respueta-correcta{
+    
     width: 100%;
     height: 100%;
     z-index: 9999;
@@ -131,14 +130,10 @@ body{
     left: 0;
     right: 0;
     margin: auto;
-    background-color: rgba(46, 46, 46, 0.8);
 
 }
 .respueta-correcta{
-    width: 300px;
-    height: 350px;
-    background-color: silver;
-    border-radius: 10px;
+    width: 80%;
     position: absolute;
     left: 0;
     right: 0;
@@ -151,19 +146,17 @@ body{
     text-align: center;
 }
 
-.respueta-correcta img{
-  width: 200px;
-  height: 200px;
-  margin: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  border-radius: 10px;
+.respueta-correcta p{
+    font-size: 3rem;
+    text-shadow: 2px 2px 3px #051905;
+    margin: 0;
+}
+.respueta-correcta .respuesta__puntos{
+    font-size: 4rem;
+    color: #424242;
+    font-weight: bold;
 }
 
-.respueta-correcta button{
-    width: 90%;
-    margin: auto;
-}
 
 .notblock{
     display: none;

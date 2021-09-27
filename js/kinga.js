@@ -24,8 +24,8 @@ let getDistancia = (e, target) => {
 
 img.addEventListener('click', function(e){
 
-    console.log(e.offsetX);
-    console.log(e.offsetY);
+    /*console.log(e.offsetX);
+    console.log(e.offsetY);*/
     respuesta(e);
     
 });
@@ -34,14 +34,14 @@ const db = firebase.firestore();
 
 function getPreguntas(){
 
-db.collection('encontra_al_kinga').get()
+db.collection('encontra_al_kinga').where('mapa','==', 1).get()
 .then(resp => {
 
     resp.forEach(element =>{
     arrPuntos.push(element.data());
 
     });
-
+    arrPuntos.sort(() => Math.random() - 0.5);
     principal();
 });
 }
@@ -50,18 +50,19 @@ let timer;
 function principal(){
     
     if(preguntaActual < 10){
-       divPregunta.innerHTML = arrPuntos[preguntaActual]['pregunta'];
+       divPregunta.innerHTML = 
+       `<p class="pregunta-fijo">TENES QUE ENCONTRAR</p>
+       <p class="div__pregunta-pregunta animated tada">`+arrPuntos[preguntaActual]['pregunta']+`</p>`;
        let temporizador = 16;
        timer = setInterval(function(){
             temporizador--;
             reloj.innerHTML = temporizador;
 
             if(temporizador == 0){
-                preguntaActual++;
                 mostrarCorrecta(0);
             }
         }, 1000);
-        //preguntaActual++;
+        
    }else{
        finalizar();
    }
@@ -72,37 +73,39 @@ function respuesta(e){
     if(intento < 2){
 
        let distancia = getDistancia(e, arrPuntos[preguntaActual]);
-       if(distancia < 20){
-           console.log('acertaste');  
+       if(distancia < 20){ 
            mostrarCorrecta(1);
            preguntaActual++;
        }
        intento++;
     }else{
-     console.log('superaste tus intentos');
      mostrarCorrecta(0);
      preguntaActual++;
     }
 
 }
 
-let imagen = 'https://firebasestorage.googleapis.com/v0/b/ultimos-cartuchos.appspot.com/o/encontra_al_kinga%2Frespuestas%2Fmartin.jpg?alt=media&token=e5117693-343a-4f74-9585-00c375d2aad2';
 function mostrarCorrecta(valor){
     clearInterval(timer);
     if(valor === 1){
        clase = 'correcto';
+       divCorrecta.style.background = 'linear-gradient(0deg, rgba(57,142,39,1) 0%, rgba(101,176,85,1) 47%, rgba(58,97,48,1) 100%)';
     }else{
         clase = 'incorrecto'; 
+        divCorrecta.style.background = 'linear-gradient(0deg, rgb(142 39 39) 0%, rgb(176 85 85) 47%, rgb(97 48 48) 100%)';
     }
+
     divCorrecta.classList.remove('notblock');
-    divCorrecta.innerHTML = `<div class="respueta-correcta">
-    <p class="`+clase+` animated">`+clase.toUpperCase()+`</p>
-    <img src="`+imagen+`" alt="respueta correcta">
+    divCorrecta.innerHTML = 
+    `<div class="respueta-correcta">
+    <p class="`+clase+` animated rubberBand">`+clase.toUpperCase()+`</p>
     </div>`;
 
 
    let time = setTimeout(function(){
      limpiar();
+     let intento = document.querySelector('#intento-actual');
+     intento.innerHTML = (preguntaActual + 1) +'/10';
      principal();
    }, 5000);
 }
@@ -111,6 +114,11 @@ function limpiar(){
     divCorrecta.innerHTML = '';
     divCorrecta.classList.add('notblock');
     intento = 0;
+}
+
+
+function finalizar(){
+    console.log('finalizado');
 }
 
 
