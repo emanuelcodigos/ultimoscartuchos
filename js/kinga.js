@@ -58,8 +58,9 @@ function principal(){
             temporizador--;
             reloj.innerHTML = temporizador;
 
-            if(temporizador == 0){
+            if(temporizador === 0){
                 mostrarCorrecta(0);
+                preguntaActual++;
             }
         }, 1000);
         

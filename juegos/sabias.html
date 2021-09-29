@@ -18,12 +18,9 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet"/>
         <link rel="stylesheet" href="../css/animate.css">
-        <link rel="stylesheet" href="../css/twittor.css">
+        <link rel="stylesheet" href="../css/sabias.css">
     </head>
     
-    <div class="loading" id="loadingNuevo">
-      <img src="../assets/three-dots.svg" alt="loading">
-    </div>
     <body id="page-top">
         <!-- Navigation-->
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
@@ -37,104 +34,72 @@
             </ul>
         </nav>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">CREAR INVITADO</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-
-          <form id="formNuevoInvitado">
-            <label for="nombre">Nombre</label>
-            <input class="form-control" type="text" name="nombre" id="txt-nombre">
-            <br>
-            
-            <label for="descripcion">Descripcion</label>
-            <textarea name="descripcion" class="form-control" id="txt-descripcion" style="height: 200px"></textarea>
-
-          </form>
-         
-          <div id="faltan-datos"></div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-success" id="btn-nuevoInv">Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-      
         <div type="button" class="boton__escribir" data-bs-toggle="modal" data-bs-target="#exampleModal" id="crearPersonaje">
-          <i class="fas fa-pen-alt"></i>
+            <i class="fas fa-pen-alt"></i>
+          </div>
+        <section id="public-descripcion" class="background__loading" style="display: none;"></section>
+        <!-- Modal -->
+  
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">CREAR</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formNuevaPublicacion">
+                            <label for="nombre" class="form-label">Titulo</label>
+                            <input class="form-control" type="text" name="nombre">
+                            <br>
+                            <label for="categoria" class="form-label">Categoria</label>
+                            <select class="form-control" name="categoria">
+                                <option value="1">Historia</option>
+                                <option value="2">Geografia</option>
+                                <option value="3">Deportes</option>
+                            </select>
+                            <br>
+                            <label for="descripcion" class="form-label">Descripcion</label>
+                            <textarea name="descripcion" class="form-control" style="height: 200px"></textarea>
+                            <br>
+                            <label for="imagen" class="form-label">Imagen (*opcional)</label>
+                            <input class="form-control" type="file" name="imagen">
+                        </form>
+                        <div id="faltan-datos"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" id="btn-crearPubli">Confirmar</button>
+                    </div>
+                </div>
+            </div>
         </div>
       
-        <section style="height: 100vh;font-family: 'Raleway';">
-            <div class="header">
-            <br><br><br>
-             <h2>COSAS QUE NO SABIAS</h2>
+        <section>
+          <div class="header__sabias">
+          <br>
+          <p class="icon_q"><i class="fas fa-question-circle"></i></p>
+          <h2>COSAS QUE NO SABIAS</h2>
+          </div>
 
-            <div class="div__botones">
-              <div class="botones">
-                <div id="btn-recientes" class="boton__traer" onclick="mostrarSegun(0)">Mas recientes</div>
-                <div id="btn-masVotos" class="boton__traer" onclick="mostrarSegun(1)">Mas votados</div>
-              </div>
-            </div>
-            </div> 
+          <div class="div__categorias">
+           <div class="categoria"><p>Historia</p></div>
+           <div class="categoria"><p>Geografia</p></div>
+           <div class="categoria"><p>Arte</p></div>
+           <div class="categoria"><p>Ciencia</p></div>
+           <div class="categoria"><p>Deportes</p></div>
+           <div class="categoria"><p>Random</p></div>
+        
+            
+          </div>
 
-            <section id="elemetos" class="publicacion">
-                <div>
-                    <div style="text-align: start; display: flex; flex-direction: column;">
-                    <p style="margin: 0; font-size: 1.5rem; font-weight: bold; text-transform: capitalize;">Viaje a la luna</p>
-                    <p style="margin: 0; margin-top: 3px;">3 cosas que no sabias</p>
-                    <br>
-                    </div>
-
-                    <div style="display: flex;">
-                        
-                        <div>
-                            <p style="width: 3rem; height: 3rem; font-size: 2rem; font-weight: bold; background-color: saddlebrown; border-radius: 100%;">1</p>
-                            <div class="separador_y"></div>
-                        </div>
-                        
-                        <p>wevwe wwr wegewg ewgwg egwe ge wgew g ewgwegewg egewgewgwegweg weg</p>
-                    </div>
-                    <div style="display: flex;">
-                        
-                        <div>
-                            <p style="width: 3rem; height: 3rem; font-size: 2rem; font-weight: bold; background-color: saddlebrown; border-radius: 100%;">1</p>
-                            <div class="separador_y"></div>
-                        </div>
-                        
-                        <p>wevwe wwr wegewg ewgwg egwe ge wgew g ewgwegewg egewgewgwegweg weg</p>
-                    </div>
-                    <div style="display: flex;">
-                        
-                        <div>
-                            <p style="width: 3rem; height: 3rem; font-size: 2rem; font-weight: bold; background-color: saddlebrown; border-radius: 100%;">1</p>
-                            <div class="separador_y"></div>
-                        </div>
-                        
-                        <p>wevwe wwr wegewg ewgwg egwe ge wgew g ewgwegewg egewgewgwegweg weg</p>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 0.5rem;">
-                        <i class="far fa-thumbs-up"></i>
-                        <i class="far fa-thumbs-up"></i>
-                    </div>
-
-                </div>
-               
-            </section>
-            <br>
-            <div style="margin: auto; display: flex; justify-content: center;">
-              <button class="btn btn-secondary" onclick="cargarMas()">Cargar mas</button>
-            </div>
-            <br><br>
+          <div id="div-publicaciones" class="div__contenedor-publicaciones"></div>
+        </section>
 
         
-        </section>
+
+
+        
 
 
         <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
@@ -148,6 +113,7 @@
         <!-- Core theme JS-->
         <script src="../js/generic.js"></script>
         <script src="../js/scripts.js"></script>
+        <script src="../js/sabias.js"></script>
         
     </body>
 </html>

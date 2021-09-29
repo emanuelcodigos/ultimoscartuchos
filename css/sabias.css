@@ -1,0 +1,96 @@
+body{
+    font-family: 'Raleway';
+    background-color: #e2e2e2;
+}
+.background__loading{
+    height: 100%; width: 100%; display: flex;
+    justify-content: center; flex-direction: column;
+    position: fixed; left: 0; right: 0; top: 0; bottom: 0; margin: auto;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+.background__loading .svg__load{
+    margin: auto; width: 100px;
+}
+
+.publicacion__descripcion{
+    width: 95%; max-width: 600px; padding: 1rem; border-radius: 10px;background-color: cornsilk; 
+    margin: auto; display: flex;
+    justify-content: center; flex-direction: column; align-items: center;
+}
+.publicacion__descripcion h4{
+    text-align: center;
+}
+.publicacion__descripcion p{
+    text-align: center; color: darkgoldenrod; margin: 0.5rem;
+}
+.publicacion__descripcion img{
+    margin: auto; width: 90%; border-radius: 10px; max-height: 300px; max-width: 400px;
+}
+.separador__horizontal{
+    margin-top: 0.5rem; margin-bottom: 0.5rem; width: 95%; border: 1px solid rgb(42, 42, 42);
+}
+
+.txt__descripcion{
+    text-align: justify; width: 95%; max-height: 350px; overflow-y:auto;
+}
+.txt__descripcion p{
+    color: rgb(39, 39, 39); text-align: justify;
+}
+
+.div__acciones-publicacion{
+    display: flex; justify-content: space-around; margin: 0.5rem; width: 90%;
+}
+.div__acciones-publicacion p{
+    margin: 0; font-size: 1.3rem;
+}
+
+.boton__escribir{
+    width: 60px; height: 60px; right: 10px; bottom: 20px;color: #ffffff;
+    border-radius: 100%; display: flex; justify-content: center;
+    flex-direction: column; align-items: center; position: fixed; 
+    background-color: #72649a; text-align: center; font-size: 2rem; box-shadow: 2px 2px 4px #272727;
+}
+
+.div__contenedor-publicaciones{
+    margin: auto; max-width: 500px;
+}
+.div__publicacion{
+    width: 90%; padding: 1rem; background-color: cornsilk; border-radius: 10px; margin: auto; margin-bottom: 1rem;
+}
+.div__publicacion p{
+    color: darkgoldenrod; margin: 0; margin-bottom: 1rem; text-align: start;
+}
+.div__publicacion .titulo{
+    color: rgb(20, 20, 20); font-size: 1.2rem; text-transform: uppercase;
+}
+.div__publicacion button{
+    width: 100%; margin: 0; font-weight: bold; color: #323232;
+}
+
+.header__sabias{
+    background-color: #72649a; margin: auto; text-align: center; border-radius: 0 0 10px 10px;
+    display: flex; justify-content: center; flex-direction: column; align-items: center;
+}
+.header__sabias .icon_q{
+    font-size: 4rem; color: #e4e4e4; margin: 0;
+}
+
+.header__sabias h2{
+    font-weight: bold; color: #e4e4e4; padding-bottom: 1rem;
+}
+
+.div__categorias{
+    display: flex; overflow-x: auto; padding: 0.5rem; margin: auto; margin-bottom: 1rem;
+}
+@media (min-width: 768px){
+    .div__categorias{
+        justify-content: center;
+    }
+}
+.div__categorias .categoria{
+    margin: 0.3rem; border-radius: 10px; background-color: #72649a; 
+    display: flex; justify-content: center; font-weight: bold; 
+}
+.div__categorias .categoria p{
+    margin: 0; padding: 0.5rem; color: #e4e4e4;
+}
