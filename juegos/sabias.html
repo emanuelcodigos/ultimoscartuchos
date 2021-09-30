@@ -26,9 +26,9 @@
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav" id="nav-bar">
-                <li class="sidebar-brand"><a href="#page-top">Ultimos Cartuchos</a></li>
-                <li class="sidebar-nav-item"><a href="#page-top">inicio</a></li>
-                <li class="sidebar-nav-item"><a href="#services">Juegos</a></li>
+                <li class="sidebar-brand"><a href="#">Ultimos Cartuchos</a></li>
+                <li class="sidebar-nav-item"><a href="../">inicio</a></li>
+                <li class="sidebar-nav-item"><a href="../#services">Juegos</a></li>
                 <li id="itemIniciarSesion" class="sidebar-nav-item"><a href="../html/registro.html">Iniciar sesion</a></li>
                
             </ul>
@@ -54,9 +54,12 @@
                             <br>
                             <label for="categoria" class="form-label">Categoria</label>
                             <select class="form-control" name="categoria">
-                                <option value="1">Historia</option>
+                                <option value="1" selected>Historia</option>
                                 <option value="2">Geografia</option>
-                                <option value="3">Deportes</option>
+                                <option value="3">Arte</option>
+                                <option value="4">Ciencia</option>
+                                <option value="5">Deportes</option>
+                                <option value="6">Random</option>
                             </select>
                             <br>
                             <label for="descripcion" class="form-label">Descripcion</label>
@@ -83,18 +86,23 @@
           </div>
 
           <div class="div__categorias">
-           <div class="categoria"><p>Historia</p></div>
-           <div class="categoria"><p>Geografia</p></div>
-           <div class="categoria"><p>Arte</p></div>
-           <div class="categoria"><p>Ciencia</p></div>
-           <div class="categoria"><p>Deportes</p></div>
-           <div class="categoria"><p>Random</p></div>
+           <button class="categoria" onclick="categoriaClickeada(1)"><p>Historia</p></button>
+           <button class="categoria" onclick="categoriaClickeada(2)"><p>Geografia</p></button>
+           <button class="categoria" onclick="categoriaClickeada(3)"><p>Arte</p></button>
+           <button class="categoria" onclick="categoriaClickeada(4)"><p>Ciencia</p></button>
+           <button class="categoria" onclick="categoriaClickeada(5)"><p>Deportes</p></button>
+           <button class="categoria" onclick="categoriaClickeada(6)"><p>Random</p></button>
         
             
           </div>
-
+          
           <div id="div-publicaciones" class="div__contenedor-publicaciones"></div>
+         
         </section>
+        <div style="width: 50%; margin: auto; margin-top: 2rem;display: flex; justify-content: center;">
+            <button id="btn-cargarMas" class="btn btn-secondary">Mostrar mas</button>
+        </div>  
+        <br><br>
 
         
 
@@ -106,6 +114,7 @@
         <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Bootstrap core JS-->

@@ -1,19 +1,29 @@
 window.onload = function(){
-  getUsuario();
   consultarAutenticacion();
   getPublicaciones();
+  getUsuario();
 }
+
+
 const public = document.querySelector('#public-descripcion');
 const db = firebase.firestore();
 const divPublicaciones = document.querySelector('#div-publicaciones');
 let currentUserId;
-
 function getUsuario(){
   firebase.auth().onAuthStateChanged(user => {
     if (user != null) {
         currentUserId = firebase.auth().currentUser.uid;
-    } 
-});
+    }else{
+      currentUserId = null;
+    }
+  });
+}
+
+function categoriaClickeada(value){
+  divPublicaciones.innerHTML = '';
+  publicacionActual = 0;
+  categoriaSeleccionada = value;
+  getPublicacionPorCategoria();
 }
 
 function getPublicaciones(){
@@ -32,7 +42,6 @@ function crearElementoPublicacion(data, id){
   let divNuevo = document.createElement('div');
 
   divNuevo.innerHTML = `
-   
    <div class="div__publicacion">
      <p><i class="far fa-question-circle">  </i>  `+data['categoria']+`</p>
      <p class="titulo">`+data['titulo']+`</p>
@@ -154,19 +163,62 @@ btnCrearPublicacion.addEventListener('click', function(){
 });
 
 function creaPublicacion(){
-  let form = document.querySelector('#formNuevaPublicacion');
+  getUsuario();
+  if(currentUserId != null){ 
 
+  
+  let form = document.querySelector('#formNuevaPublicacion');
+  
   let titulo = form.nombre.value;
   let descripcion = form.descripcion.value;
-  let categoria = form.categoria.value;
- 
+  let categoria = switchCategoria(form.categoria.value);
+  
   if(titulo != '' && descripcion != '' && categoria != ''){
     if(descripcion.length <= 800){
 
-      img = form.imagen.value;
-      if(img != null){
-        
-      }
+      db.collection('cosas_que_no_sabias').orderBy('nroPublicacion','desc').limit(1).get()
+      .then(resp =>{
+        let nroUltimaPublicacion; 
+       resp.forEach(element=>{
+        nroUltimaPublicacion = element.data()['nroPublicacion'] + 1;
+       });
+      db.collection('cosas_que_no_sabias').add({
+        titulo: limpiador(titulo),
+        descripcion: limpiador(descripcion),
+        categoria: categoria,
+        nroPublicacion: nroUltimaPublicacion,
+        creador: currentUserId
+      }).then(resp1=>{
+        let id = resp1.id;
+        img = form.imagen;
+        if(img.files[0] != null && img.files[0]['size'] < 90000){
+          
+          let ref = firebase.storage().ref("cosas_que_no_sabias/"+currentUserId+img.files[0].name);
+          let imgImport = img.files[0];
+          let refImagen = ref.put(imgImport);
+
+          refImagen.on("state_changed", ()=>{},(err)=>{alert(err)},()=>{
+
+            refImagen.snapshot.ref.getDownloadURL().then(url=>{
+
+              db.collection("cosas_que_no_sabias").doc(id).update({
+                   imagen: url
+              })
+            });     
+          });
+          form.reset();
+          alert('Publicacion creada correctamente');
+        }else{
+          form.reset();
+        }
+
+      });
+    })
+      .catch(err=>{
+        alert('Ocurrio un error');
+        console.log(err);
+      });
+
 
     }else{
       alert('Maximo 800 caracteres');
@@ -175,8 +227,100 @@ function creaPublicacion(){
     alert('Completa todos los campos');
   }
 
-  
+  }else{
+    alert('Tenes que iniciar sesion');
+  }
+} 
 
+function limpiador(cadena) {
+  cadena = cadena.split('');
+  let cadenaFinal = '';
 
+  for (let i = 0; i < cadena.length; i++) {
+
+      let char = cadena[i];
+      if (char == "'" || char == "<" || char == ">" || char == "{" || char == "}" || char == "=" || char == "*") {
+          char = '|';
+      }
+      cadenaFinal += char;
+  }
+
+  return cadenaFinal;
 }
 
+
+let publicacionActual = 0;
+let categoriaSeleccionada;
+
+function getPublicacionPorCategoria(){
+  console.log('entroo');
+  let categoria = switchCategoria(categoriaSeleccionada);
+  if(categoria != null){
+    db.collection('cosas_que_no_sabias')
+    .where('categoria','==',categoria).where('nroPublicacion', '>', publicacionActual)
+    .orderBy('nroPublicacion','desc').limit(10).get()
+    .then(resp=>{
+        resp.forEach(element=>{
+          let data = element.data();
+          crearElementoPublicacion(data, element.id);
+          publicacionActual = data['nroPublicacion'];
+        });
+    })
+    .catch(err=>{
+      alert('No pudimos cargar las publicaciones');
+      console.log(err);
+    });
+    
+
+  }else{
+   
+    db.collection('cosas_que_no_sabias')
+    .where('nroPublicacion', '>', publicacionActual)
+    .orderBy('nroPublicacion','desc').limit(10).get()
+    .then(resp=>{
+        resp.forEach(element=>{
+          let data = element.data();
+          crearElementoPublicacion(data, element.id);
+          publicacionActual = data['nroPublicacion'];
+        });
+    })
+    .catch(err=>{
+      alert('No pudimos cargar las publicaciones');
+    });
+
+  }
+  
+}
+
+let btnCargarMasPublicaciones = document.querySelector('#btn-cargarMas');
+btnCargarMasPublicaciones.addEventListener('click', function(){
+  getPublicacionPorCategoria();
+});
+
+function switchCategoria(categoria){
+  switch (parseInt(categoria)) {
+    case 1:
+      categoria = 'historia';
+      break;
+    case 2:
+      categoria = 'geografia';
+    break;
+    case 3:
+      categoria = 'arte';
+      break;
+      case 4:
+        categoria = 'ciencia';
+        break;
+      case 5:
+        categoria = 'deportes';
+        break;
+      case 6:
+      categoria = 'random';
+      break;
+    default:
+      categoria = null;
+      break;
+  }
+
+  return categoria;
+}
