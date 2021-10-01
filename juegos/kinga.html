@@ -29,7 +29,12 @@
 </head>
 
 <body>
-
+    <div id="pantalla-loading" class="loading" style="display: none;">
+        <div class="grid__loading">
+            <img src="../assets/img/trivia-logo.png" class="animated jello" alt="ultimos cartuchos app" width="300px">
+            <img src="../assets/three-dots.svg" alt="loading">
+        </div>
+    </div>
     <!-- Navigation-->
     <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
     <nav id="sidebar-wrapper">
@@ -42,10 +47,18 @@
 
         </ul>
     </nav>
-    <br>
-    <section>
-
-        <div class="div__timer-actual">
+    <div id="comenzarJuego" class="div__modo-juego">
+        <h1>ELEGI UN MAPA</h1>
+        <div id="cardMapaUno" value="1" style="width: 80%; max-width: 400px; margin: 0; padding: 1rem; border-radius: 1rem; background-color: cornsilk; margin-bottom: 1rem;">
+        <img src="../assets/img/kinga1.jpg" width="100%">
+        </div>
+        <div id="cardMapaDos" value="2" style="width: 80%; max-width: 400px; margin: 0; padding: 1rem; border-radius: 1rem; background-color: cornsilk; margin-bottom: 1rem;">
+            <img src="../assets/img/kinga2.jpg" width="100%">
+        </div>
+    </div>
+    <section id="pantalla-juego" class="notblock">
+        <br>
+         <div class="div__timer-actual">
             
             <div class="timer-circle" style="margin: 0;" id="reloj"></div>
             
@@ -54,7 +67,6 @@
 
         <div id="pregunta" class="div__pregunta maxWidth"></div>
 
-    
         <div class="container__map">
             <div class="div__delizar">
                 <p><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i>
@@ -72,10 +84,11 @@
                 </p>
             </div>
         </div>
+        
 
     </section>
     <div id="div-respuesta" class="div__respueta-correcta notblock"></div>
-
+    <section id="resultado"></section>
 
     
      

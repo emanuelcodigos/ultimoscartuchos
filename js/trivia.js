@@ -20,6 +20,7 @@ const divContenidoPrincipal = document.querySelector('#pantalla-juego');
 const divPosResp = document.querySelector('#div-posResp');
 const divResultado = document.querySelector('#resultado');
 
+let preguntasAcertadas = 0;
 let puntosTotales = 0;
 let preguntActual = 1; 
 let arrPrincipal;
@@ -110,8 +111,8 @@ btnComenzar.addEventListener('click', function(){
 
 function contarPuntaje(respuesta){
      if(respuesta === arrPrincipal[preguntaNumeroActual][1]){
-        
          puntosTotales += 500;
+         preguntasAcertadas++;
          divResultado.innerHTML = '<div class="correcto animated tada">CORRECTO!</div>';
      }else{
         divResultado.innerHTML = '<div class="incorrecto animated tada">INCORRECTO!</div>';
@@ -180,7 +181,7 @@ function principal(){
         llenarCampos();
     }else{
         clearInterval(contador);
-        finalizar(puntosTotales);
+        finalizar(puntosTotales, 10,preguntasAcertadas);
     }
     
 }

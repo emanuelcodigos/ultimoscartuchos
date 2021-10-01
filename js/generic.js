@@ -55,7 +55,13 @@ var firebaseConfig = {
       
   }
 
-function finalizar(puntaje){
+function calcualarPorcentajeCorrectas(preg, resp){
+  let porcentaje = (resp * 100) / preg;
+  let resto = 100 - porcentaje;
+  return 'grid-template-columns: '+porcentaje+'% '+resto+'%;';
+}
+
+function finalizar(puntaje, cantPreguntas, cantRespCorrectas){
     
     if(puntaje == null){
       puntaje = 0;
@@ -63,6 +69,8 @@ function finalizar(puntaje){
     if(puntaje > 5000){
       puntaje = 0;
     }
+    
+    
     divContenidoPrincipal.innerHTML = '';
     divContenidoPrincipal.classList.add('notblock');
     loading.style.display = 'flex';
@@ -83,17 +91,17 @@ function finalizar(puntaje){
             <p class="nombre__user">`+data['nombre']+`</p>
             <div class="puntacion">
                <div class="puntos">
-                   <img src="/assets/img/coin.svg" alt="" width="40px">
+                   <img src="../assets/img/coin.svg" alt="" width="40px">
                    <p>`+puntaje+`</p>
                 </div>   
             </div>
             </div>
             <div class="fondo__barra">
-                <div class="barra__puntuacion">
+                <div class="barra__puntuacion" style="`+calcualarPorcentajeCorrectas(cantPreguntas, cantRespCorrectas)+`">
                    <div class="mis__puntos"></div>
                    <div class="puntos__totales"></div>
                 </div>
-                <p class="txt__barra">7 de 10</p>
+                <p class="txt__barra">`+cantRespCorrectas+` de `+cantPreguntas+`</p>
             </div> 
             <div id="ranking" class="div__ranking">`;
         
@@ -111,20 +119,23 @@ function finalizar(puntaje){
 
        }else{
 
-        divResultado.innerHTML = `<div class="div__resultado">
-            <img src="../assets/img/user.png" class="img__user" alt="">
+            divResultado.innerHTML = `<div class="div__resultado">
+            <img src="../assets/img/user.png" class="img__user" alt="imagen de usuario">
             <div class="puntacion">
                <div class="puntos">
-                   <img src="/assets/img/coin.svg" alt="" width="40px">
+                   <img src="../assets/img/coin.svg" alt="" width="40px">
                    <p>`+puntaje+`</p>
-                </div>
-                <div class="barra__puntuacion">
+                </div> 
+                <a href="../html/registro.html" class="btn btn-secondary btn-guardar-puntaje">Guardar puntaje</a>  
+            </div>
+            </div>
+            <div class="fondo__barra">
+                <div class="barra__puntuacion" style="`+calcualarPorcentajeCorrectas(cantPreguntas, cantRespCorrectas)+`">
                    <div class="mis__puntos"></div>
                    <div class="puntos__totales"></div>
                 </div>
-                <p>7 de 10</p>
-            </div>
-            </div>
+                <p class="txt__barra">`+cantRespCorrectas+` de `+cantPreguntas+`</p>
+            </div> 
             <div id="ranking" class="div__ranking">`;
         rankingDeOtrosJugadores();
         loading.style.display = 'none';
@@ -139,7 +150,7 @@ function rankingDeOtrosJugadores(){
   const divJugadores = document.querySelector('#ranking');
   let divJugadoresForEach = `<h2>RANKING GENERAL</h2>`;
 
-  db.collection('usuarios').orderBy("puntaje", "desc").limit(4).get()
+  db.collection('usuarios').orderBy("puntaje", "desc").limit(3).get()
   .then(resp => {
       return resp; 
   }).then(snap=>{
@@ -162,15 +173,15 @@ function rankingDeOtrosJugadores(){
       divJugadoresForEach += 
      
       `<div class="div__play_again">
-      <button class="btn btn-outline-light onclick="irAlInicio()""><i class="fas fa-home"></i></button>
+      <button class="btn btn-outline-light onclick="irAlInicio()"><i class="fas fa-home"></i></button>
       <button class="btn btn-outline-light" onclick="volverAJugar()">Volver a Jugar</button>
       <button class="btn btn-outline-light" onclick="irAConfiguracion()"><i class="fas fa-user-cog"></i></button>
       </div>`;
       divJugadores.innerHTML = divJugadoresForEach; 
       
   }).catch(err =>{
-     //alert('No pudimos obtener el record de otros usuarios');
-     console.log(err);
+     alert('No pudimos obtener el record de otros usuarios');
+     //console.log(err);
   });
 
 }

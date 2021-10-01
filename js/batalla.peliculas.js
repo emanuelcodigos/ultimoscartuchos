@@ -19,7 +19,6 @@ let titulo = document.querySelector('#titulo-pelicula');
 
 const imgPelicula = document.querySelector('#img-pelicula');
 
-let puntaje = 0;
 let reloj = document.querySelector('#reloj');
 let arrPrincipalPelis = new Array();
 let audio = new Audio();
@@ -72,7 +71,8 @@ btnComenzar.addEventListener('click', function(){
     divComoJugar.classList.add('notblock');
     principal();
 });
-
+let respuestasCorrectas = 0;
+let puntaje = 0;
 function principal(){
     if(peliculaActual <= 4){
     reloj.style.backgroundColor = '#e0e0e0';
@@ -85,8 +85,6 @@ function principal(){
     audio.controls = true;
     audio.autoplay = true;
     audio.src = arrPrincipalPelis[peliculaActual]['audio'];
-    //divContenidoPrincipal.appendChild(audio);
-
     
     timer = setInterval(function(){
    
@@ -104,7 +102,7 @@ function principal(){
     }
     },1000);
     }else{
-        finalizar(puntaje);
+        finalizar(puntaje, 5, respuestasCorrectas);
     }
 }
 
@@ -125,7 +123,8 @@ function respuesta(){
         if(quitarAcentos(resp).toUpperCase() == arrPrincipalPelis[peliculaActual]['pelicula'].toUpperCase()
            || quitarAcentos(resp).toUpperCase() == arrPrincipalPelis[peliculaActual]['pelicula_original'].toUpperCase()){
             mostrarCorrecta(0);
-            puntaje = puntaje + 500;
+            puntaje += 500;
+            respuestasCorrectas++;
         }else{
             mostrarCorrecta(1);
         }

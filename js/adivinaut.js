@@ -19,6 +19,7 @@ const divContenidoPrincipal = document.querySelector('#pantalla-juego');
 const divTimer = document.querySelector('#timer');
 let arrCanciones = new Array();
 let cancionActual = 0;
+let respuestasCorrectas = 0;
 let puntaje = 0;
 let temporizador;
 const btnComenzar = document.querySelector('#btn-comenzar');
@@ -96,7 +97,7 @@ function principal(){
          }, 3000);
         
     }else{
-        finalizar(puntaje);
+        finalizar(puntaje, 7, respuestasCorrectas);
     }
 }
 
@@ -133,7 +134,6 @@ function quitarAcentos(cadena){
 }
 
 function puntuar(puntos){
-
     puntaje += puntos;
 }
 
@@ -177,15 +177,18 @@ function verificarRespuesta(opcion, respuesta){
         
         if(cancion.toLowerCase() == respuesta){
             puntuar(500);
+            respuestasCorrectas++;
             correcta = true;
         }else if(artista.toLowerCase() == respuesta){
             puntuar(250);
+            respuestasCorrectas++;
             correcta = true;
         }
 
     }else if (opcion === 2){
        if(cancion.toLowerCase() == respuesta){
            puntuar(100);
+           respuestasCorrectas++;
            correcta = true;
        }
     }

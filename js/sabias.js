@@ -21,17 +21,21 @@ function getUsuario(){
 
 function categoriaClickeada(value){
   divPublicaciones.innerHTML = '';
-  publicacionActual = 0;
+  publicacionActual = 100000;
   categoriaSeleccionada = value;
   getPublicacionPorCategoria();
 }
 
 function getPublicaciones(){
-  db.collection('cosas_que_no_sabias').limit(10).get()
+  db.collection('cosas_que_no_sabias').orderBy('nroPublicacion', 'desc').limit(2).get()
   .then(resp=>{
       resp.forEach(element => {
-       crearElementoPublicacion(element.data(), element.id);
-     });
+        let data = element.data();
+        crearElementoPublicacion(data, element.id);
+        
+        publicacionActual = data['nroPublicacion'];
+         
+      });
 
   }).catch(err=>{
     alert('No pudimos cargar la informacion');
@@ -187,6 +191,7 @@ function creaPublicacion(){
         descripcion: limpiador(descripcion),
         categoria: categoria,
         nroPublicacion: nroUltimaPublicacion,
+        likes: 0,
         creador: currentUserId
       }).then(resp1=>{
         let id = resp1.id;
@@ -253,11 +258,10 @@ let publicacionActual = 0;
 let categoriaSeleccionada;
 
 function getPublicacionPorCategoria(){
-  console.log('entroo');
   let categoria = switchCategoria(categoriaSeleccionada);
   if(categoria != null){
     db.collection('cosas_que_no_sabias')
-    .where('categoria','==',categoria).where('nroPublicacion', '>', publicacionActual)
+    .where('categoria','==',categoria).where('nroPublicacion', '<', publicacionActual)
     .orderBy('nroPublicacion','desc').limit(10).get()
     .then(resp=>{
         resp.forEach(element=>{
@@ -275,13 +279,14 @@ function getPublicacionPorCategoria(){
   }else{
    
     db.collection('cosas_que_no_sabias')
-    .where('nroPublicacion', '>', publicacionActual)
+    .where('nroPublicacion', '<', publicacionActual)
     .orderBy('nroPublicacion','desc').limit(10).get()
     .then(resp=>{
-        resp.forEach(element=>{
+      resp.forEach(element=>{
           let data = element.data();
           crearElementoPublicacion(data, element.id);
           publicacionActual = data['nroPublicacion'];
+            
         });
     })
     .catch(err=>{

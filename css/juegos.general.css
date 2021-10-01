@@ -80,7 +80,7 @@
 }
 
 .div__resultado .nombre__user{
-    margin: 0;font-size: 1rem;font-weight: bold; text-transform: uppercase;color: #eeeeee;
+    margin: 0;font-size: 1rem;font-weight: bold; text-transform: uppercase;color: #eeeeee;font-family: 'Raleway';
 }
 
 .div__resultado .puntacion{
@@ -104,30 +104,29 @@
 
 .fondo__barra{
     background-color:  rgb(235, 235, 235); width: 90%;
-    padding: 10px; border-radius: 10px;margin: 1rem auto;
+    padding: 10px; border-radius: 10px;margin: 1rem auto;max-width: 500px;
 }
 .barra__puntuacion{
     margin: auto; height: 1rem; width: 90%;
-    display: grid; grid-template-columns: 50% 50%;
+    display: grid;
 }
 .txt__barra {
     font-weight: bold; color: darkgoldenrod; margin: 0; text-align: center;
 }
 
 .barra__puntuacion .mis__puntos{
-    height: 100%; width: 100%; background-color: rgb(18, 119, 18);
+    height: 100%; width: 100%; background-color: rgb(81, 141, 81);border-radius: 10px 0 0 10px;
 }
 
 .barra__puntuacion .puntos__totales{
-    height: 100%; width: 100%; background-color: rgb(94, 156, 94);
+    height: 100%; width: 100%; background-color: rgb(159, 177, 159);    border-radius: 0 10px 10px 0;
 }
 
 .div__ranking{
-    width: 90%; margin: auto; margin-top: 1rem ;
+    width: 90%; margin: auto; margin-top: 1rem;max-width: 500px;
 }
 .div__ranking h2{
-    font-weight: bold;
-    color: rgb(34, 34, 34);
+    font-weight: bold;color: rgb(34, 34, 34);
 }
 
 .div__ranking .ranking__usuario{
@@ -152,10 +151,18 @@
 .div__play_again{
     position: fixed;bottom: 1rem;width: 90%;margin: auto;display: grid; grid-template-columns: 15% 70% 15%;
     background: #655a83;padding: 0.5rem;border-radius: 10px;
+    font-family: 'Raleway';max-width: 500px;
 }
 .div__play_again button{
     font-size: 1rem; font-weight: bold;border-color:#655a83;
 }
 .btn-outline-light:hover{
    color: #ffffff;background-color: #564d70;border-color: #3c364e;
+}
+
+.btn-guardar-puntaje{
+    margin-bottom: 1rem;font-family: 'RALEWAY';background-color: #efc75e;font-weight: bold;color: #2c2c2c;text-transform: uppercase;
+}
+.font__raleway{
+    font-family: 'Raleway';
 }

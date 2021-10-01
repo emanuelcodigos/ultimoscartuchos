@@ -1,7 +1,6 @@
 body{
-    background-color: #14618c;
+    background: radial-gradient(circle, rgba(228,228,228,1) 0%, rgba(196,196,196,1) 80%);
 }
-
 .maxWidth{
     max-width: 500px;
 }
@@ -134,7 +133,7 @@ body{
 }
 .respueta-correcta{
     width: 80%;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
@@ -157,6 +156,15 @@ body{
     font-weight: bold;
 }
 
+.div__modo-juego{
+    position: fixed; display: flex;justify-content: center;flex-direction: column;align-items: center;
+    left: 0;right: 0;top: 0;bottom: 0;margin: auto;
+}
+.div__modo-juego .temporizador{
+    width: 300px; height: 300px; background-color: rebeccapurple;text-align: center;
+    display: flex; justify-content: center;flex-direction: column;align-items: center; font-size: 12rem;
+    font-weight: bold;color: seashell;border-radius: 100%;
+}
 
 .notblock{
     display: none;

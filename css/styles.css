@@ -11191,6 +11191,8 @@ footer.footer .social-link:hover {
   bottom: 0.5rem;
   margin: auto;
   margin-top: 2rem;
-  
 }
 
+.style_a{
+  color: #ffffff;text-decoration:none;
+}
