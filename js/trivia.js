@@ -23,15 +23,16 @@ const divResultado = document.querySelector('#resultado');
 let preguntasAcertadas = 0;
 let puntosTotales = 0;
 let preguntActual = 1; 
-let arrPrincipal;
+let arrPrincipal = new Array();
 let click = false;
+let contador;
 
 resp1.addEventListener('click', function(){
     
     resp = resp1.value;
     if(click === false){
         click = true;
-        contarPuntaje(resp);
+        contarPuntaje(resp, 1);
     }
 });
 
@@ -40,7 +41,7 @@ resp2.addEventListener('click', function(){
     
     if(click === false){
         click = true;
-        contarPuntaje(resp);
+        contarPuntaje(resp, 2);
     }
 });
 
@@ -48,7 +49,7 @@ resp3.addEventListener('click', function(){
     resp = resp3.value;
     if(click === false){
         click = true;
-        contarPuntaje(resp);
+        contarPuntaje(resp, 3);
     }
 });
 
@@ -76,26 +77,13 @@ function getPreguntas(){
         return resp;
     }).then(spanShot =>{
         spanShot.forEach(doc => {
-            
             arrData = doc.data();
-            let arrActual = new Array();
-            arrActual.push(arrData['pregunta']);
-            arrActual.push(arrData['correcta']);
-            arrActual.push(arrData['falsa1']);
-            arrActual.push(arrData['falsa2']);
-            if(arrData['imagen']){
-                arrActual.push(arrData['imagen']);
-            }
-
-            arrPreguntas.push(arrActual);
-             
+            arrPrincipal.push(arrData);
          });
          
-          arrPrincipal = desordenar(arrPreguntas);
+          arrPrincipal = desordenar(arrPrincipal);
           loading.style.display = 'none';
           btnComenzar.classList.add('jello');
-          //principal();
-
 
     }).catch(err =>{
         console.log(err);
@@ -109,13 +97,16 @@ btnComenzar.addEventListener('click', function(){
     principal();
 });
 
-function contarPuntaje(respuesta){
-     if(respuesta === arrPrincipal[preguntaNumeroActual][1]){
+function contarPuntaje(respuesta, opcion){
+    clearInterval(contador);
+    if(respuesta == arrPrincipal[preguntaNumeroActual]['correcta']){
          puntosTotales += 500;
          preguntasAcertadas++;
+         mostrarCorrecta(true, opcion);
          divResultado.innerHTML = '<div class="correcto animated tada">CORRECTO!</div>';
      }else{
-        divResultado.innerHTML = '<div class="incorrecto animated tada">INCORRECTO!</div>';
+        mostrarCorrecta(false, opcion);
+        divResultado.innerHTML = '<div class="incorrecto animated tada">INCORRECTO!</div>';  
      }
 }
 
@@ -123,19 +114,17 @@ function contarPuntaje(respuesta){
 let preguntaNumeroActual = 0;
 
 function llenarCampos(){
-
-    respuestasRandom = [
-        arrPrincipal[preguntaNumeroActual][1],
-        arrPrincipal[preguntaNumeroActual][2],
-        arrPrincipal[preguntaNumeroActual][3]
-
-    ];
+    let respuestasRandom = new Array();
+    respuestasRandom[0] = arrPrincipal[preguntaNumeroActual]['correcta'];
+    respuestasRandom[1] = arrPrincipal[preguntaNumeroActual]['falsa1'];
+    respuestasRandom[2] = arrPrincipal[preguntaNumeroActual]['falsa2'];
+    
     respuestasRandom.sort(() => Math.random() - 0.5);
-
-    preg.innerHTML = arrPrincipal[preguntaNumeroActual][0];
+    
+    preg.innerHTML = arrPrincipal[preguntaNumeroActual]['pregunta'];
     preg.classList.add('headShake');
-    if(arrPrincipal[preguntaNumeroActual][4]){ 
-    imgPregunta.src = arrPrincipal[preguntaNumeroActual][4];
+    if(arrPrincipal[preguntaNumeroActual]['imagen']){ 
+    imgPregunta.src = arrPrincipal[preguntaNumeroActual]['imagen'];
     }
     resp1.innerHTML = respuestasRandom[0];
     resp2.innerHTML = respuestasRandom[1];
@@ -148,64 +137,64 @@ function llenarCampos(){
 function principal(){
 
     let temporizador = 15;
-    let inc = 'respuesta incorrecta';
     reloj.style.color = 'black'; 
-    let contador = setInterval(function(){
-    
-        reloj.innerHTML = temporizador;
-        temporizador--;
 
-        if(temporizador == 4){
-           reloj.style.color = 'red'; 
-        }
+    if(preguntaNumeroActual < 10){
 
-        if(temporizador < 0){
-           clearInterval(contador);
-           contarPuntaje(inc);
-           preguntaNumeroActual++;
-           mostrarCorrecta();
-           
-        }
-        if(click === true){
-            clearInterval(contador);
-            preguntaNumeroActual++;
-            mostrarCorrecta();
-        }
-        if(preguntaNumeroActual >= 10){
-            clearInterval(contador);
-        }
-
-    }, 1000);
-
-    if(preguntaNumeroActual < 2){
         llenarCampos();
+        contador = setInterval(function(){
+           
+            reloj.innerHTML = temporizador;
+            if(temporizador == 5){
+               reloj.style.color = 'red'; 
+            }
+            if(temporizador === 0){
+                contarPuntaje('respuesta incorrecta'); 
+             }
+             temporizador--;
+
+        },1000);
+        
     }else{
         clearInterval(contador);
         finalizar(puntosTotales, 10,preguntasAcertadas);
     }
-    
 }
 
 
-function mostrarCorrecta(){
+function mostrarCorrecta(acierto, opcion){
 
     resp1.style.background = '#da4646'; 
     resp2.style.background = '#da4646'; 
     resp3.style.background = '#da4646';
     divPosResp.classList.add('jello');
 
-    if(resp1.value === arrPrincipal[preguntaNumeroActual - 1][1]){
-      resp1.style.background = '#68da73';
-    }else if (resp2.value === arrPrincipal[preguntaNumeroActual - 1][1]){
-      resp2.style.background = '#68da73';
+    if(acierto){
+        if(parseInt(opcion) === 1){
+            resp1.style.background = '#68da73';
+        }else if(parseInt(opcion) === 2){
+            resp2.style.background = '#68da73';
+        }else{
+            resp3.style.background = '#68da73';
+        }
+        
     }else{
-        resp3.style.background = '#68da73';
+        if(resp1.value == arrPrincipal[preguntaNumeroActual]['correcta']){
+            resp1.style.background = '#68da73';
+        }else if(resp2.value == arrPrincipal[preguntaNumeroActual]['correcta']){
+            resp2.style.background = '#68da73'; 
+        }else{
+            resp3.style.background = '#68da73';
+        }
+        
     }
-    
-    time = setTimeout(function(){
-        resp1.style.background = '#e4e4ef'; 
-        resp2.style.background = '#e4e4ef'; 
-        resp3.style.background = '#e4e4ef';
+    preguntaNumeroActual++;
+
+    let timeLoading = setTimeout(function(){
+        
+        resp1.style.background = '#dddca5'; 
+        resp2.style.background = '#dddca5'; 
+        resp3.style.background = '#dddca5';
         imgPregunta.src = '';
         click = false;
         divPosResp.classList.remove('jello');
