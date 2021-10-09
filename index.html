@@ -14,6 +14,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet"/>
         <link rel="stylesheet" href="css/animate.css">
@@ -34,7 +35,7 @@
         <header class="masthead d-flex align-items-center" style="background: radial-gradient(circle, rgb(66 58 84) 0%, rgb(22 22 23) 100%);">
             
             <div class="container header__index text-center">
-                <img id="img-logo" src="assets/img/trivia-logo.png" alt="ultimos cartuchos app" style="width: 100%; max-width: 400px;">
+                <img id="img-logo" src="assets/img/trivia-logo.svg" alt="ultimos cartuchos app" style="width: 100%; max-width: 400px;">
                 <br><br>
                 <div id="btn-animated">
                 <a class="btn btn-outline-secondary" href="#" id="btn-audio-intro" onclick="pausarIntro()">Detener musica</a>
@@ -43,11 +44,13 @@
                 </div>
             </div>
         </header>
-        
+
+        <div id="icon-coffee" class="icon-coffee notblock"><a href='https://cafecito.app/emanuel-programador' target="_blank"><i class="fas fa-mug-hot"></i></i></a></div>
+        <div style="width: 100%; height: 100px; background-color: crimson;" id="muestra"></div>
         <!-- About-->
         <section class="content-section bg-light" id="about">
             <div class="container px-4 px-lg-5 text-center">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center font-raleway">
                     <div class="col-lg-10">
                         <h2>ULTIMOS CARTUCHOS APP <span style="font-size: 1.8rem;">¿QUÉ ES?</span></h2>
                         <p class="lead mb-5">
@@ -69,26 +72,7 @@
             <div class="cardSlider" style="width: 90%;">
                 
                 <div class="card cardInfo" >
-                        <img src="assets/img/portfolio-1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Trivia</h5>
-                          <p class="card-text">Preguntas relacionadas al Show!</p>
-                          
-                          <a href="juegos/trivia.html" class="btn btn-primary">Jugar</a>
-                        </div>
-                </div>
-
-                <div class="card cardInfo">
-                    <img src="assets/img/portfolio-1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">La batalla de las peliculas</h5>
-                      <p class="card-text">Intenta adivinar las peliculas.</p>
-                      <a href="juegos/batalla_peliculas.html" class="btn btn-primary">Jugar</a>
-                    </div>
-                </div>
-
-                <div class="card cardInfo" >
-                    <img src="assets/img/portfolio-1.jpg" class="card-img-top" alt="...">
+                    <img src="assets/img/portadas/adivina-ut.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Adivina Adivina UT</h5>
                       <p class="card-text">Trata de adivinar qué cancion es, pero su letra será reemplazada por UT.</p>
@@ -96,9 +80,28 @@
                       <a href="juegos/adivina_ut.html" class="btn btn-primary">Jugar</a>
                     </div>
                 </div>
+                <div class="card cardInfo">
+                    <img src="assets/img/portadas/batalla-peliculas.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">La batalla de las peliculas</h5>
+                      <p class="card-text">Intenta adivinar las peliculas.</p>
+                      <a href="juegos/batalla_peliculas.html" class="btn btn-primary">Jugar</a>
+                    </div>
+                </div>
+
+                
+                <div class="card cardInfo" >
+                    <img src="assets/img/portadas/trivia.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Trivia</h5>
+                      <p class="card-text">Preguntas relacionadas al Show!</p>
+                      
+                      <a href="juegos/trivia.html" class="btn btn-primary">Jugar</a>
+                    </div>
+                </div>
 
                 <div class="card cardInfo">
-                    <img src="assets/img/portfolio-1.jpg" class="card-img-top" alt="...">
+                    <img src="assets/img/portadas/kinga-portada.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Donde está el kinga</h5>
                       <p class="card-text">Como Where is Wally, pero con cosas de UC</p>
@@ -112,16 +115,17 @@
         <!-- Portfolio-->
         <section class="content-section text-white text-center bg-success" id="more-games">
             
-            <div class="row gx-4 gx-lg-5 mb-5" style="width: 95%; margin: auto;">
-                <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0">Juegos</h3>
-                    <h2 class="mb-5">OTROS JUEGOS</h2>
-                </div>
+            <div class="content-section-heading text-center">
+                <h3 class="text-secondary mb-0">Juegos</h3>
+                <h2 class="mb-5">OTROS JUEGOS</h2>
+            </div>
+            <div class="div-otros-juegos">
+                
                     
                 <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
 
                     <a href="juegos/sabias" class="style_a">
-                        <img style="border-radius: 100%; width: 130px; height: 130px;" src="assets/img/bg-callout.jpg" alt="cosas que no sabias">
+                        <img style="border-radius: 100%; width: 130px; height: 130px;" src="assets/img/portadas/cosas-no-sabias.jpg" alt="cosas que no sabias">
                         <div style="width: 80%; text-align: center; margin: auto;">
                         <h4>Cosas que no sabias</h4>
                         <p>¿Cuanto sabes sobre informacion random?</p>
@@ -131,7 +135,7 @@
                     
                 <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                     <a href="juegos/invitados" class="style_a">
-                        <img style="border-radius: 100%; width: 130px; height: 130px;" src="assets/img/bg-callout.jpg" alt="invitados">
+                        <img style="border-radius: 100%; width: 130px; height: 130px;" src="assets/img/portadas/invitados.jpg" alt="invitados">
                     
                         <div style="width: 80%; text-align: center; margin: auto;">
                         <h4>Me gustaria que vicki</h4>
@@ -143,10 +147,13 @@
         </section>
         <!-- Call to Action-->
         <section class="content-section bg-primary text-white">
-            <div class="container px-4 px-lg-5 text-center">
-                <h2 class="mb-4">Sobre el desarrollador</h2>
-                <a class="btn btn-light me-4" href="#!">Mira mis otros proyectos!</a>
-               
+            <div class="div-info-desarrollador">
+               <h1>SOBRE EL DESARROLLADOR</h1>
+               <div class="font-raleway">
+                <a href="https://emanuelcodigos.github.io/portafolio/">Mira mis otros proyectos!</a>
+                <a href='https://cafecito.app/emanuel-programador' rel='noopener'><img srcset='https://cdn.cafecito.app/imgs/buttons/button_2.png 1x, https://cdn.cafecito.app/imgs/buttons/button_2_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_2_3.75x.png 3.75x' src='https://cdn.cafecito.app/imgs/buttons/button_2.png' alt='Invitame un café en cafecito.app' /></a>
+               </div>
+
             </div>
         </section>
         <!-- Footer-->
@@ -154,10 +161,7 @@
             <div class="container px-4 px-lg-5">
                 <ul class="list-inline mb-5">
                     <li class="list-inline-item ">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!" target="_blank"><i class="icon-social-instagram"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!" target="_blank"><i class="icon-social-youtube"></i></a>
+                        <a class="social-link rounded-circle text-white mr-3" href="https://www.instagram.com/emacisterna/" target="_blank"><i class="icon-social-instagram"></i></a>
                     </li>
                     <li class="list-inline-item">
                         <a class="social-link rounded-circle text-white"  href="https://github.com/emanuelcodigos" target="_blank"><i class="icon-social-github"></i></a>

@@ -7426,7 +7426,7 @@ textarea.form-control-lg {
 }
 
 .bg-success {
-  background-color: #198754 !important;
+  background-color: #639568  !important;
 }
 
 .bg-info {
@@ -11173,7 +11173,7 @@ footer.footer .social-link:hover {
 }
 
 .cardInfo{
-    
+  font-family: 'Raleway';
   min-width: 220px;
   padding: 8px;
 	margin: 5px;
@@ -11195,4 +11195,78 @@ footer.footer .social-link:hover {
 
 .style_a{
   color: #ffffff;text-decoration:none;
+}
+
+.font-raleway{
+  font-family: 'Raleway', sans-serif;
+}
+
+.div-otros-juegos{
+  width: 95%; 
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
+  margin: auto;
+}
+
+@media (min-width:768px){
+  .div-otros-juegos{
+    flex-direction: row;
+  }
+}
+
+.div-info-desarrollador{
+   width: 90%;
+   max-width: 500px;
+   margin: auto;
+   text-align: center;
+}
+.div-info-desarrollador h1{
+  font-size: 2rem;
+}
+.div-info-desarrollador div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-info-desarrollador div a{
+   margin: 1rem;
+   padding: 1rem;
+   background-color: #df6f93;
+   color: #fff;
+   text-decoration: none;
+   font-weight: 700;
+   border-radius: 15px;
+}
+
+
+.icon-coffee{
+  position: fixed;
+  right: 12px;
+  bottom: 20px;
+  background-color: #554c6e;
+  border-radius: 100%;
+  width: 65px; height: 65px;
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: row; align-items: center;
+  z-index: 99999;
+  box-shadow: 2px 2px 4px #242525;
+}
+.icon-coffee a{
+  margin: 0; padding: 0; text-decoration: none; color: #fff;
+}
+
+@media (min-width:768px){
+  .icon-coffee{
+    display: none;
+  }
+}
+
+.notblock{
+  display: none;
 }

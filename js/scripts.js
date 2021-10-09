@@ -127,4 +127,23 @@ if(document.querySelector('#img-logo')){
    
 }
 
+if(document.querySelector('#icon-coffee')){
+    const divJuegos = document.querySelector('#muestra');
+    console.log(divJuegos);
+
+    let botonMostrado = false;
+    divJuegos.addEventListener('scroll', function(){
+        if(!botonMostrado){
+          mostrarBtnCoffee();
+      }
+    
+    });
+
+    function mostrarBtnCoffee(){
+        const btnCoffee = document.querySelector('#icon-coffee');
+        btnCoffee.classList.remove('notblock');
+        botonMostrado = true;
+    }
+}
+
 
