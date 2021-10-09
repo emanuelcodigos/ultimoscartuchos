@@ -11257,12 +11257,39 @@ footer.footer .social-link:hover {
   z-index: 99999;
   box-shadow: 2px 2px 4px #242525;
 }
-.icon-coffee a{
-  margin: 0; padding: 0; text-decoration: none; color: #fff;
+.icon-coffee p{
+  margin: 0; padding: 0; color: #fff;
 }
+
+.descripcion-icon-coffee{
+    position: fixed;
+    right: 80px;
+    bottom: 20px;
+    background-color: #554c6e;
+    border-radius: 10px;
+    z-index: 99999;
+    box-shadow: 2px 2px 4px #242525;
+    max-width: 200px;
+    text-align: center;
+    font-family: 'Raleway';
+    color: #fff;
+}
+.descripcion-icon-coffee p{
+  margin: 0.5rem;
+}
+.descripcion-icon-coffee a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
 
 @media (min-width:768px){
   .icon-coffee{
+    display: none;
+  }
+  .descripcion-icon-coffee{
     display: none;
   }
 }

@@ -113,7 +113,7 @@ if(document.querySelector('#img-logo')){
 
     }, 2500);
 
-    audioIntroUc.play();
+    //audioIntroUc.play();
     function pausarIntro(){
         let btnAudio = document.querySelector('#btn-audio-intro');
          if(audioIntroUc.paused || audioIntroUc.ended){
@@ -128,14 +128,20 @@ if(document.querySelector('#img-logo')){
 }
 
 if(document.querySelector('#icon-coffee')){
-    const divJuegos = document.querySelector('#muestra');
-    console.log(divJuegos);
-
+    
     let botonMostrado = false;
-    divJuegos.addEventListener('scroll', function(){
+    let btnCoffee = document.querySelector('#boton-coffee');
+    
+    btnCoffee.addEventListener('click', function(){
+        let descripCoffee = document.querySelector('.descripcion-icon-coffee');
+        descripCoffee.classList.toggle('notblock');
+    });
+    window.addEventListener('scroll', function(){
         if(!botonMostrado){
-          mostrarBtnCoffee();
-      }
+            
+            mostrarBtnCoffee();
+
+        }
     
     });
 
