@@ -22,6 +22,7 @@ let cancionActual = 0;
 let respuestasCorrectas = 0;
 let puntaje = 0;
 let temporizador;
+let perimitirClick = true;
 const btnComenzar = document.querySelector('#btn-comenzar');
 btnComenzar.addEventListener('click', function(){
 
@@ -118,11 +119,11 @@ function reproducir(status){
 
 btnAceptar.addEventListener('click', function(){
     
-    if(txtCancion.value != ''){
+    if(txtCancion.value != '' && perimitirClick){
       reproducir(false);
       let textoIngresado = txtCancion.value;
       textoIngresado = quitarAcentos(textoIngresado);
-
+      perimitirClick = false;
       verificarRespuesta(1, textoIngresado.toLowerCase());
     }
 
@@ -159,8 +160,11 @@ ayuda.addEventListener('click', function(){
 });
 
 function respuestaConAyuda(respuesta){
-    reproducir(false);
-    verificarRespuesta(2, respuesta.toLowerCase());
+    if(perimitirClick){
+        reproducir(false);
+        perimitirClick = false;
+        verificarRespuesta(2, respuesta.toLowerCase());
+    }
 }
 
 function verificarRespuesta(opcion, respuesta){
@@ -205,6 +209,7 @@ function verificarRespuesta(opcion, respuesta){
       let tiempo = setTimeout(function(){
         
         divCancionCorrecta.innerHTML = '';
+        perimitirClick = true;
         principal();
 
       }, 4000);

@@ -13,6 +13,8 @@ let likesPubliActual = 0;
 let modoRecientes = false;
 let currentUserId = '';
 
+let publicionActual;
+
 function getInfoPublicaciones() {
     
     db.collection('invitados').doc('nroPublicacionesInvitados').get()

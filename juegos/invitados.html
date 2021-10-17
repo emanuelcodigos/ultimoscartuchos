@@ -49,11 +49,11 @@
 
           <form id="formNuevoInvitado">
             <label for="nombre">Nombre</label>
-            <input class="form-control" type="text" name="nombre" id="txt-nombre">
+            <input class="form-control" type="text" name="nombre">
             <br>
             
             <label for="descripcion">Descripcion</label>
-            <textarea name="descripcion" class="form-control" id="txt-descripcion" style="height: 200px"></textarea>
+            <textarea name="descripcion" class="form-control" style="height: 200px"></textarea>
 
           </form>
          
@@ -61,7 +61,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-success" id="btn-nuevoInv">Confirmar</button>
+          <button type="button" class="btn btn-success" id="btn-nuevoInv" onclick="crearNuevoInvitado()">Confirmar</button>
         </div>
       </div>
     </div>
@@ -78,8 +78,8 @@
 
             <div class="div__botones">
               <div class="botones">
-                <div id="btn-recientes" class="boton__traer" onclick="mostrarSegun(0)">Mas recientes</div>
-                <div id="btn-masVotos" class="boton__traer" onclick="mostrarSegun(1)">Mas votados</div>
+                <div id="btn-recientes" class="boton__traer" style="background-color: #72649a;">Mas recientes</div>
+                <div id="btn-masVotos" class="boton__traer">Mas votados</div>
               </div>
             </div>
             </div> 
@@ -106,7 +106,7 @@
         <!-- Core theme JS-->
         <script src="../js/generic.js"></script>
         <script src="../js/scripts.js"></script>
-        <script src="../js/invitados.js"></script>
+        <script src="../js/invitados2.js"></script>
         
     </body>
 </html>
