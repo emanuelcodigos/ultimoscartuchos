@@ -63,7 +63,46 @@ function modificarNombre(){
     }
 }
 
+const btnSetImagen = document.querySelector('#btn-setImagen');
+btnSetImagen.addEventListener('click', () => {
+    modificarImagen();
+});
+
 const btnSetNick = document.querySelector('#id-cambiar-nombre');
 btnSetNick.addEventListener('click', function(){
      modificarNombre();
 });
+
+const modificarImagen = () => {
+
+    const img =  document.querySelector('#imagen-importada');
+    if(img.files[0] != null){
+
+        if(img.files[0].type == 'image/jpeg' || img.files[0].type == 'image/png'){
+            
+            divLoading.style.display = 'flex';
+            let ref = firebase.storage().ref("imgProfile/img-profile-"+ user);
+
+            let refImg = ref.put(img.files[0]);
+            refImg.on("state_changed", ()=>{},(err)=>{alert(err)},()=>{
+
+                refImg.snapshot.ref.getDownloadURL().then(url=>{
+        
+                    db.collection("usuarios").doc(user).update({
+                        photoURL: url
+                    }).then(resp =>{
+                        imgUser.src = url;
+                        divLoading.style.display = 'none';
+                    }).catch(err=>{
+                        divLoading.style.display = 'none';
+                    });
+                });     
+               });
+        }else{
+            alert('Archivo no permitido');
+        }
+    }else{
+       alert('Selecciona una imagen');
+    }
+
+};

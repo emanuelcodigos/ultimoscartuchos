@@ -5,7 +5,6 @@ window.onload = function(){
 }
 
 const db = firebase.firestore();
-//views
 const loading = document.querySelector('#pantalla-loading');
 const btnComenzar = document.querySelector('#btn-comenzar');
 const divContenidoPrincipal = document.querySelector('#pantalla-juego');
@@ -23,7 +22,6 @@ let reloj = document.querySelector('#reloj');
 let arrPrincipalPelis = new Array();
 let audio = new Audio();
 let peliculaActual = 0;
-//let tiempoActual = 0;
 let timer;
 
 
@@ -66,7 +64,6 @@ function desordenar(array) {
 btnComenzar.addEventListener('click', function(){
    
     arrPrincipalPelis =  desordenar(arrPrincipalPelis);
-    //console.log(arrPrincipalPelis);
     divContenidoPrincipal.classList.remove('notblock');
     divComoJugar.classList.add('notblock');
     principal();
@@ -116,7 +113,6 @@ btnResponder.addEventListener('click', function(){
 
 function respuesta(){
     audio.pause();
-    //tiempoActual = -1;
     let input = document.querySelector('#txtPelicula');
     resp = input.value;
     if(resp != ''){
@@ -156,7 +152,6 @@ function mostrarCorrecta(result){
     }
 
     divResultadoRespuesta.classList.add('tada');
-    //botonSiguiente();
 
     let reiniciar = setTimeout(function(){
 
@@ -182,7 +177,6 @@ function botonSiguiente(){
 function reiniciarCampos(){
 
     divLoading = document.querySelector('#loading-secundario');
-    //imgPelicula.style.visibility = 'hidden';
     imgPelicula.style.display = 'none';
     divLoading.style.display = 'flex';
     

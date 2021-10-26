@@ -34,17 +34,12 @@
 
 .modo-ingreso{
     background-color: #ffffff; padding-left: 20px; color: rgb(26, 26, 26);
-    padding-right: 20px; border-radius: 10px; display: flex; align-items: center;
-    box-shadow: 2px 2px 5px #433b5a;
-}
-
-.face{
-    background-color: #3b5998;
-    color: #ffffff;
+    padding-right: 20px; border-radius: 10px;box-shadow: 2px 2px 5px #433b5a;
+    width: 90%; display: flex; justify-content: center; flex-direction: row; align-items: center;
 }
 
 .modo-ingreso p{
-    margin: 0; margin-left: 10px; text-align: center; font-weight: bold;
+    margin: 0; margin-left: 10px; text-align: center; font-weight: bold; color: #1a1a1a;
 }
 
 .div__registrate-aqui{

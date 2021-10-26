@@ -7,9 +7,9 @@ var firebaseConfig = {
     appId: "1:40414595127:web:1efe983bc6410e36bf57b2",
     measurementId: "G-H4EB9YS0Z7"
   };
-  // Initialize Firebase
+
   firebase.initializeApp(firebaseConfig);
-  //firebase.analytics();
+  firebase.analytics();
 
 
   function cerrarSesion(){
@@ -181,12 +181,11 @@ function rankingDeOtrosJugadores(){
       
   }).catch(err =>{
      alert('No pudimos obtener el record de otros usuarios');
-     //console.log(err);
   });
 
 }
 function irAlInicio(){
-  location.href = '../';
+  location.href = '/';
 }
 function irAConfiguracion(){
   location.href = '../html/perfil';

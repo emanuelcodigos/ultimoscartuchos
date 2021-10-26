@@ -44,14 +44,16 @@
                     <label for="imagen-importada">
                         <i class="fas fa-cog text-secondary modificar" id="set-imgUser"></i>
                     </label>
-                    
+                   
                 </div>
+                <br>
+                <button class="btn btn-secondary" id="btn-setImagen">Cambiar imagen</button>
                 
                 <br>
             </div>
 
             <div class="div__info">
-                <input type="file" class="notblock" name="imagen-importada" id="imagen-importada" >
+                <input type="file" class="notblock" name="imagen-importada" id="imagen-importada" accept="image/jpeg, image/png, image/jpg">
                 <div class="info personal">
                     <label class="form-label" for="nombre">Nombre</label>
                     <input class="form-control" type="text" name="nombre" id="txtNick">
@@ -79,6 +81,7 @@
         <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Bootstrap core JS-->
@@ -86,6 +89,6 @@
         <!-- Core theme JS-->
         <script src="../js/scripts.js"></script>
         <script src="../js/generic.js"></script>
-        <script src="../js/perfil.js"></script>
+        <script src="../minjs/perfil.min.js"></script>
     </body>
 </html>

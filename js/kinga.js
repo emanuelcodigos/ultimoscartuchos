@@ -1,6 +1,14 @@
 window.onload = function(){
     consultarAutenticacion();
+    if(opcionRandom > 5){
+     getPreguntas(2);
+    }else{
+        getPreguntas(1);
+    }
 }
+
+const opcionRandom = parseInt(Math.random() * 10);
+
 const WIDTH = 750;
 const HEIGH = 375;
 const divMap = document.querySelector('#map');
@@ -16,7 +24,6 @@ let respuestasCorrectas = 0;
 let puntaje = 0;
 let reloj = document.querySelector('#reloj');
 let intento = 0;
-let divElegirMapa = document.querySelector('#comenzarJuego');
 
 let getDistancia = (e, target) => {
     
@@ -36,18 +43,6 @@ img.addEventListener('click', function(e){
 
 const db = firebase.firestore();
 
-const cardMapaUno = document.querySelector('#cardMapaUno');
-cardMapaUno.addEventListener('click', function(){
-    elegirMapa(cardMapaUno.getAttribute('value'));
-});
-const cardMapaDos = document.querySelector('#cardMapaDos');
-cardMapaDos.addEventListener('click', function(){
-    elegirMapa(cardMapaDos.getAttribute('value'));
-});
-function elegirMapa(mapa){
-     getPreguntas(mapa);
-}
-
 
 function getPreguntas(mapa){
 loading.style.display = 'flex';  
@@ -62,7 +57,6 @@ db.collection('encontra_al_kinga').where('mapa','==', parseInt(mapa)).get()
     arrPuntos.sort(() => Math.random() - 0.5);
     
     loading.style.display = 'none';
-    divElegirMapa.innerHTML = '';
     divContenidoPrincipal.classList.remove('notblock');
     principal();
     
@@ -72,7 +66,7 @@ db.collection('encontra_al_kinga').where('mapa','==', parseInt(mapa)).get()
 let timer;
 function principal(){
     
-    if(preguntaActual < 3){
+    if(preguntaActual < 10){
        divPregunta.innerHTML = 
        `<p class="pregunta-fijo">TENES QUE ENCONTRAR</p>
        <p class="div__pregunta-pregunta animated tada">`+arrPuntos[preguntaActual]['pregunta']+`</p>`;
@@ -139,7 +133,7 @@ function mostrarCorrecta(valor){
      let intento = document.querySelector('#intento-actual');
      intento.innerHTML = (preguntaActual + 1) +'/10';
      principal();
-   }, 5000);
+   }, 3000);
 }
 
 function limpiar(){

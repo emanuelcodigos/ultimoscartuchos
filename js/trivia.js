@@ -5,7 +5,6 @@ window.onload = function(){
 }
 
 const db = firebase.firestore();
-//const loading = document.querySelector('#divLoading');
 const reloj = document.querySelector('#reloj');
 const preg = document.querySelector('#pregunta');
 const resp1 = document.querySelector('#resp1');

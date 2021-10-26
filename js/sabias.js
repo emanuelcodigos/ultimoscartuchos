@@ -27,7 +27,7 @@ function categoriaClickeada(value){
 }
 
 function getPublicaciones(){
-  db.collection('cosas_que_no_sabias').orderBy('nroPublicacion', 'desc').limit(2).get()
+  db.collection('cosas_que_no_sabias').orderBy('nroPublicacion', 'desc').limit(10).get()
   .then(resp=>{
       resp.forEach(element => {
         let data = element.data();

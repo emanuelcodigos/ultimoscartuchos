@@ -120,6 +120,19 @@
     color: red !important;
 }
 
+.alerta-crear{
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #f42d3c;
+    font-family: 'Raleway';
+    font-weight: bold;
+}
+.guardado{
+    background-color: #116f1a;
+}
+
 .notblock{
     display: none;
 }

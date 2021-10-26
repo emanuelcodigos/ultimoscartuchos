@@ -3,7 +3,7 @@ window.onload = function(){
   firebase.auth().onAuthStateChanged(res=>{
 
     if(res != null){
-      location.href = '../';
+      //location.href = '../';
     }else{
       const divLoading = document.querySelector('#loading2');
       divLoading.style.display = 'none';
@@ -76,7 +76,6 @@ function signUpWithEmail(){
             firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(res =>{
             let user = res.user;
-            //document.location.href = '/';
             return firebase.firestore().collection("usuarios").doc(user.uid).set({
  
                 nombre: nickName,
@@ -93,7 +92,7 @@ function signUpWithEmail(){
                publcacion0: 0
               })
               .then(respLike =>{
-                document.location.href = "/ultimoscartuchos";
+                document.location.href = "../";
               });
             }).catch(error=>{
                alert('Ocurrio un error al registrase');
@@ -174,7 +173,7 @@ function loginWithGoogle(){
                     publcacion0: 0
                    })
                    .then(respLike =>{
-                     document.location.href = "/ultimoscartuchos";
+                     document.location.href = "../";
                    });
                 
             }).catch(error=>{
@@ -182,7 +181,7 @@ function loginWithGoogle(){
             });
 
           }else{
-            document.location.href = "/ultimoscartuchos";
+            document.location.href = "../";
           }
       });
       

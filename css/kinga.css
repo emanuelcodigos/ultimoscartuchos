@@ -1,5 +1,5 @@
 body{
-    background: radial-gradient(circle, rgba(228,228,228,1) 0%, rgba(196,196,196,1) 80%);
+    background: radial-gradient(circle, rgb(166 165 177) 0%, rgb(131 126 145) 80%);
 }
 .maxWidth{
     max-width: 500px;
