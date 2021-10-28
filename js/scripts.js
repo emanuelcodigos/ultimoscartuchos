@@ -3,6 +3,8 @@ window.onload = function(){
  
     consultarAutenticacion();
 }
+
+
 window.addEventListener('DOMContentLoaded', event => {
 
     const sidebarWrapper = document.getElementById('sidebar-wrapper');

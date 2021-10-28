@@ -8,6 +8,11 @@ var firebaseConfig = {
     measurementId: "G-H4EB9YS0Z7"
   };
 
+  if( navigator.serviceWorker){
+    navigator.serviceWorker.register('/sw.js');
+  } 
+
+
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
